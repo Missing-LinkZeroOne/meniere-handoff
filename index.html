@@ -2175,6 +2175,66 @@
 
   .blogi-categories { margin-top: 8px; }
 
+  /* Sticky kategoria-navigaatio blogin yläosassa */
+  .blogi-cat-nav {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background: var(--bg-card);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    margin: 0 0 18px;
+    padding: 10px 0;
+  }
+  .blogi-cat-nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .blogi-cat-nav li { margin: 0; padding: 0; }
+  .blogi-cat-nav-link {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 14px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-decoration: none;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--bg-card);
+    white-space: nowrap;
+    -webkit-tap-highlight-color: rgba(0, 94, 184, 0.15);
+    touch-action: manipulation;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+    min-height: 36px;
+  }
+  .blogi-cat-nav-link:hover {
+    background: var(--blue-50);
+    color: var(--nhs-blue);
+    border-color: var(--nhs-blue);
+  }
+  .blogi-cat-nav-link:focus {
+    outline: 4px solid var(--warning-bg);
+    outline-offset: 2px;
+    background: var(--warning-bg);
+    color: var(--text);
+    border-color: var(--amber-600);
+  }
+  .blogi-cat-nav-link.active {
+    background: var(--nhs-blue);
+    color: #ffffff;
+    border-color: var(--nhs-blue);
+  }
+  .blogi-cat-nav-link.active:hover {
+    background: var(--nhs-dark-blue);
+    border-color: var(--nhs-dark-blue);
+    color: #ffffff;
+  }
+
   .blogi-cat-title {
     color: var(--text);
     font-size: 22px;
@@ -2182,6 +2242,8 @@
     margin: 32px 0 12px;
     padding-bottom: 6px;
     border-bottom: 2px solid var(--nhs-blue);
+    /* Sticky-navin korkeus + pieni puskuri jotta otsikko ei jää piiloon */
+    scroll-margin-top: 70px;
   }
   .blogi-cat-title:first-child { margin-top: 0; }
 
@@ -2338,6 +2400,20 @@
     .blogi-article summary::after { right: 18px; top: 14px; }
     .blogi-title { font-size: 17px; }
     .blogi-body { padding: 4px 18px 18px; font-size: 15px; }
+    /* Kategoria-navi: vaakasuora rullaus jos napit eivät mahdu */
+    .blogi-cat-nav ul {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 4px;
+      scrollbar-width: thin;
+    }
+    .blogi-cat-nav-link {
+      font-size: 13px;
+      padding: 7px 12px;
+      flex-shrink: 0;
+    }
   }
   /* ==================================================================
      SUOMI-PIKALINKKIKORTIT — Arki-välilehden alussa
@@ -4956,9 +5032,21 @@
   <p class="lead">Tähän on koottu Ménièren taudin tärkeimpien tieteellisten tutkimusten suomenkielisiä referaatteja. Jokaisessa artikkelissa kerrotaan mitä tutkittiin, miten tutkimus tehtiin, mitä löydettiin ja mitä se tarkoittaa potilaalle. Klikkaa otsikkoa avataksesi koko artikkelin. Linkit alkuperäisiin julkaisuihin löytyvät jokaisen artikkelin lopusta.</p>
 </div>
 
+<nav class="blogi-cat-nav" aria-label="Blogi-kategoriat">
+  <ul>
+    <li><a href="#blogi-cat-ohjeistukset" class="blogi-cat-nav-link">Ohjeistukset</a></li>
+    <li><a href="#blogi-cat-diagnostiikka" class="blogi-cat-nav-link">Diagnostiikka</a></li>
+    <li><a href="#blogi-cat-klusterointi" class="blogi-cat-nav-link">Klusterointi</a></li>
+    <li><a href="#blogi-cat-anatomia" class="blogi-cat-nav-link">Anatomia</a></li>
+    <li><a href="#blogi-cat-immunologia" class="blogi-cat-nav-link">Immunologia</a></li>
+    <li><a href="#blogi-cat-genetiikka" class="blogi-cat-nav-link">Genetiikka</a></li>
+    <li><a href="#blogi-cat-hoidot" class="blogi-cat-nav-link">Hoidot</a></li>
+  </ul>
+</nav>
+
 <div class="blogi-categories">
 
-  <h3 class="blogi-cat-title">Kliiniset ohjeistukset ja yleiskatsaukset</h3>
+  <h3 class="blogi-cat-title" id="blogi-cat-ohjeistukset">Kliiniset ohjeistukset ja yleiskatsaukset</h3>
 
   <details class="blogi-article">
     <summary>
@@ -5067,7 +5155,7 @@
     </div>
   </details>
 
-  <h3 class="blogi-cat-title">Diagnostiset kriteerit ja kuvantaminen</h3>
+  <h3 class="blogi-cat-title" id="blogi-cat-diagnostiikka">Diagnostiset kriteerit ja kuvantaminen</h3>
 
   <details class="blogi-article">
     <summary>
@@ -5162,7 +5250,7 @@
     </div>
   </details>
 
-  <h3 class="blogi-cat-title">Kliininen klusterointi (Akseli 1)</h3>
+  <h3 class="blogi-cat-title" id="blogi-cat-klusterointi">Kliininen klusterointi (Akseli 1)</h3>
 
   <details class="blogi-article">
     <summary>
@@ -5349,7 +5437,7 @@
     </div>
   </details>
 
-  <h3 class="blogi-cat-title">Anatominen endotyypitys (Akseli 2)</h3>
+  <h3 class="blogi-cat-title" id="blogi-cat-anatomia">Anatominen endotyypitys (Akseli 2)</h3>
 
   <details class="blogi-article">
     <summary>
@@ -5477,7 +5565,7 @@
     </div>
   </details>
 
-  <h3 class="blogi-cat-title">Immunologinen alatyypitys (Akseli 3)</h3>
+  <h3 class="blogi-cat-title" id="blogi-cat-immunologia">Immunologinen alatyypitys (Akseli 3)</h3>
 
   <details class="blogi-article">
     <summary>
@@ -5726,7 +5814,7 @@
     </div>
   </details>
 
-  <h3 class="blogi-cat-title">Geneettiset tutkimukset</h3>
+  <h3 class="blogi-cat-title" id="blogi-cat-genetiikka">Geneettiset tutkimukset</h3>
 
   <details class="blogi-article">
     <summary>
@@ -5897,7 +5985,7 @@
     </div>
   </details>
 
-  <h3 class="blogi-cat-title">Hoitotutkimukset</h3>
+  <h3 class="blogi-cat-title" id="blogi-cat-hoidot">Hoitotutkimukset</h3>
 
   <details class="blogi-article">
     <summary>
@@ -6967,6 +7055,57 @@ document.addEventListener('keydown', (e) => {
       goHome();
     }
   });
+})();
+
+// Blogi-välilehden kategoria-navigaatio: smooth scroll klikkauksessa,
+// active-tila scroll-listenerillä (luotettavampi kuin IntersectionObserver
+// kun viewport on pieni tai sticky-elementtejä on useita).
+(function setupBlogiCatNav() {
+  var nav = document.querySelector('.blogi-cat-nav');
+  if (!nav) return;
+  var links = Array.from(nav.querySelectorAll('.blogi-cat-nav-link'));
+  var sections = links.map(function(link) {
+    var id = link.getAttribute('href').replace('#', '');
+    return { link: link, el: document.getElementById(id) };
+  }).filter(function(s) { return !!s.el; });
+  if (!sections.length) return;
+
+  // Klikkaus: vieritä otsikkoon huomioiden sticky-navin korkeus
+  links.forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      var id = link.getAttribute('href').replace('#', '');
+      var target = document.getElementById(id);
+      if (!target) return;
+      var navH = nav.getBoundingClientRect().height;
+      var targetY = Math.max(0, target.getBoundingClientRect().top + window.scrollY - navH - 12);
+      // Käytä positional scrollTo:ta (toimii kaikissa selaimissa). CSS:n
+      // html { scroll-behavior: smooth } voisi tuoda sulavan animaation,
+      // mutta se ei toimi kaikissa konteksteissa (esim. iframe-preview),
+      // joten luotamme suoraan ja luotettavaan hyppyyn.
+      window.scrollTo(0, targetY);
+      // Päivitä active-tila heti — scroll-listener vahvistaa myöhemmin
+      links.forEach(function(l) { l.classList.toggle('active', l === link); });
+    });
+  });
+
+  // Active-tila scrollin perusteella: aktiivinen on viimeinen kategoria,
+  // jonka otsikko on ehtinyt sticky-navin yli (tai sen kohdalle).
+  function updateActive() {
+    var threshold = nav.getBoundingClientRect().height + 20;
+    var currentIdx = 0;
+    for (var i = 0; i < sections.length; i++) {
+      var rect = sections[i].el.getBoundingClientRect();
+      if (rect.top - threshold <= 0) currentIdx = i;
+      else break;
+    }
+    sections.forEach(function(s, i) {
+      s.link.classList.toggle('active', i === currentIdx);
+    });
+  }
+  window.addEventListener('scroll', updateActive, { passive: true });
+  // Aktivoi ensimmäinen heti latauksen yhteydessä jos blogi-paneeli on auki
+  updateActive();
 })();
 
 // Tabs
@@ -8141,7 +8280,8 @@ const SKIP_SELECTORS = [
   '.blogi-summary-meta',  // blogi-artikkelin tagit (kategoria, vuosi, lukuaika)
   '.blogi-source',        // blogi-artikkelin lähde-rivi (sisältää jo linkin)
   '.blogi-placeholder',   // blogi-välilehden "tulossa lisää" -laatikko
-  '.blogi-cat-title'      // blogi-välilehden kategoria-otsikko
+  '.blogi-cat-title',     // blogi-välilehden kategoria-otsikko
+  '.blogi-cat-nav'        // blogi-välilehden sticky kategoria-navigaatio
 ];
 
 function shouldSkip(el) {
