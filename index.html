@@ -2148,6 +2148,198 @@
     .arki-a { padding: 4px 18px 18px; font-size: 16px; }
   }
   /* ==================================================================
+     BLOGI — tieteellisten tutkimusten selkokielinen referointi suomeksi.
+     Rakenne hyödyntää <details>/<summary>-mallia kuten Arki-välilehti.
+     ================================================================== */
+  .blogi-intro {
+    background: var(--bg-card);
+    border-left: 8px solid var(--nhs-blue);
+    border-top: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 22px 26px;
+    margin-bottom: 24px;
+  }
+  .blogi-intro h2 {
+    margin: 0 0 8px;
+    color: var(--nhs-blue);
+    font-size: 24px;
+    font-weight: 700;
+  }
+  .blogi-intro p.lead {
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--text);
+  }
+
+  .blogi-categories { margin-top: 8px; }
+
+  .blogi-cat-title {
+    color: var(--text);
+    font-size: 22px;
+    font-weight: 700;
+    margin: 32px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--nhs-blue);
+  }
+  .blogi-cat-title:first-child { margin-top: 0; }
+
+  .blogi-article {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    margin-bottom: 14px;
+  }
+  .blogi-article[open] {
+    border-color: var(--nhs-blue);
+    border-left: 4px solid var(--nhs-blue);
+  }
+  .blogi-article summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 18px 56px 18px 22px;
+    position: relative;
+    -webkit-tap-highlight-color: rgba(0, 94, 184, 0.15);
+    touch-action: manipulation;
+  }
+  .blogi-article summary::-webkit-details-marker { display: none; }
+  .blogi-article summary::after {
+    content: "+";
+    position: absolute;
+    right: 22px;
+    top: 16px;
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--nhs-blue);
+    background: var(--blue-50);
+    border-radius: 50%;
+  }
+  .blogi-article[open] summary::after {
+    content: "−";
+    background: var(--coral-50);
+    color: var(--coral-600);
+  }
+  .blogi-article summary:hover {
+    background: var(--blue-50);
+  }
+  .blogi-article summary:focus {
+    outline: 4px solid var(--warning-bg);
+    outline-offset: -2px;
+    background: var(--warning-bg);
+  }
+
+  .blogi-summary-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 8px;
+    align-items: center;
+  }
+  .blogi-tag {
+    font-size: 12px;
+    text-transform: lowercase;
+    letter-spacing: 0.04em;
+    padding: 3px 9px;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+  .blogi-tag.purple { background: var(--purple-50); border: 1px solid var(--purple-600); color: var(--purple-800); }
+  .blogi-tag.coral  { background: var(--coral-50);  border: 1px solid var(--coral-600);  color: var(--coral-800); }
+  .blogi-tag.pink   { background: var(--pink-50);   border: 1px solid var(--pink-600);   color: var(--pink-800); }
+  .blogi-tag.amber  { background: var(--amber-50);  border: 1px solid var(--amber-600);  color: var(--amber-800); }
+  .blogi-tag.blue   { background: var(--blue-50);   border: 1px solid var(--blue-600);   color: var(--blue-800); }
+  .blogi-tag.teal   { background: var(--teal-50);   border: 1px solid var(--teal-600);   color: var(--teal-800); }
+  .blogi-year {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+  .blogi-readtime {
+    font-size: 12px;
+    color: var(--text-faint);
+    margin-left: auto;
+  }
+
+  .blogi-title {
+    margin: 0 0 6px;
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.35;
+  }
+  .blogi-summary-text {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--text-muted);
+  }
+
+  .blogi-body {
+    padding: 4px 22px 22px;
+    border-top: 1px solid var(--border);
+    background: var(--bg);
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text);
+  }
+  .blogi-body h5 {
+    margin: 16px 0 6px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--nhs-blue);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+  .blogi-body h5:first-child { margin-top: 12px; }
+  .blogi-body p { margin: 0 0 12px; }
+  .blogi-body p:last-child { margin-bottom: 0; }
+  .blogi-body ul {
+    margin: 4px 0 12px;
+    padding-left: 22px;
+  }
+  .blogi-body li { margin-bottom: 4px; line-height: 1.55; }
+  .blogi-body strong { font-weight: 700; }
+
+  .blogi-source {
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+  .blogi-source a {
+    color: var(--nhs-blue);
+    word-break: break-word;
+  }
+
+  .blogi-placeholder {
+    background: var(--bg-card);
+    border: 1px dashed var(--border-strong);
+    padding: 18px 22px;
+    margin: 16px 0 24px;
+    font-size: 15px;
+    color: var(--text-muted);
+    line-height: 1.55;
+  }
+  .blogi-placeholder strong { color: var(--text); font-weight: 700; }
+
+  /* Mobiilisäätö blogi */
+  @media (max-width: 480px) {
+    .blogi-intro { padding: 18px 20px; }
+    .blogi-intro h2 { font-size: 22px; }
+    .blogi-intro p.lead { font-size: 16px; }
+    .blogi-cat-title { font-size: 19px; }
+    .blogi-article summary { padding: 16px 50px 16px 18px; }
+    .blogi-article summary::after { right: 18px; top: 14px; }
+    .blogi-title { font-size: 17px; }
+    .blogi-body { padding: 4px 18px 18px; font-size: 15px; }
+  }
+  /* ==================================================================
      SUOMI-PIKALINKKIKORTIT — Arki-välilehden alussa
      12 korttia tärkeimmille suomalaisille palveluille.
      ================================================================== */
@@ -2838,6 +3030,7 @@
   <button class="tab-button" data-tab="hoidot" role="tab">Hoidot</button>
   <button class="tab-button" data-tab="arki" role="tab">Arki</button>
   <button class="tab-button" data-tab="lahteet" role="tab">Lähdekirjasto</button>
+  <button class="tab-button" data-tab="blogi" role="tab">Blogi</button>
   <button class="tab-button" data-tab="sanasto" role="tab">Sanasto</button>
 </div>
 
@@ -4752,6 +4945,237 @@
       <span class="source-tag">Suomi</span>
     </div>
   </div>
+</div>
+
+</div>
+
+<div class="tab-panel" id="panel-blogi" role="tabpanel">
+
+<div class="blogi-intro">
+  <h2>Tutkimukset selkokielellä</h2>
+  <p class="lead">Tähän on koottu Ménièren taudin tärkeimpien tieteellisten tutkimusten suomenkielisiä referaatteja. Jokaisessa artikkelissa kerrotaan mitä tutkittiin, miten tutkimus tehtiin, mitä löydettiin ja mitä se tarkoittaa potilaalle. Klikkaa otsikkoa avataksesi koko artikkelin. Linkit alkuperäisiin julkaisuihin löytyvät jokaisen artikkelin lopusta.</p>
+</div>
+
+<div class="blogi-categories">
+
+  <h3 class="blogi-cat-title">Kliiniset ohjeistukset ja yleiskatsaukset</h3>
+
+  <details class="blogi-article">
+    <summary>
+      <div class="blogi-summary-meta">
+        <span class="blogi-tag amber">ohjeistus</span>
+        <span class="blogi-year">2020</span>
+        <span class="blogi-readtime">~3 min lukea</span>
+      </div>
+      <h4 class="blogi-title">Kansainvälinen hoitosuositus Ménièren tautiin (AAO-HNS 2020)</h4>
+      <p class="blogi-summary-text">Yhdysvaltalaisen KNK-akatemian päivitetty hoitosuositus, joka kokoaa nykyisen näytön perusteella 16 keskeistä toimenpidesuositusta. Tämä on kansainvälinen "kultainen standardi", jota suomalainenkin hoito käytännössä seuraa Käypä hoidon ohella.</p>
+    </summary>
+    <div class="blogi-body">
+      <h5>Mitä tutkittiin?</h5>
+      <p>Yhdysvaltalainen korva-, nenä- ja kurkkutautien yhdistys (AAO-HNSF) muodosti monitieteisen asiantuntijaryhmän, jonka tehtävänä oli päivittää Ménièren taudin diagnoosin ja hoidon suositukset edellisestä vuosikymmenistä. Tavoitteena oli auttaa lääkäreitä tekemään näyttöön perustuvia päätöksiä yhtenäisellä tavalla.</p>
+
+      <h5>Miten tutkimus tehtiin?</h5>
+      <p>Asiantuntijat kävivät läpi laajaa kirjallisuutta ja arvioivat näytön tasoa kunkin hoitomuodon osalta. Kukin suositus luokiteltiin sen mukaan, kuinka vahvaa näyttöä sen tueksi on (vahva, kohtalainen, valinnainen). Suositukset käytiin julkisella kommenttikierroksella ennen julkaisua.</p>
+
+      <h5>Mitä löydettiin?</h5>
+      <p>Suosituksia on yhteensä 16. Tärkeimmät:</p>
+      <ul>
+        <li><strong>Diagnostiikka:</strong> audiogrammi (kuulokuvio) on otettava molemmista korvista (vahva suositus)</li>
+        <li><strong>Konservatiivinen hoito:</strong> ruokavalio- ja elämäntapaohjaus annetaan ensilinjana (kohtalainen); diureetit ja betahistiini ovat valinnaisia, näyttö on rajallista</li>
+        <li><strong>Toissijainen hoito:</strong> intratympaaninen kortikosteroidi on vahvasti suositeltu hoitoresistentissä taudissa</li>
+        <li><strong>Ablaiivinen hoito:</strong> intratympaaninen gentamisiini vain harkitusti, koska se uhkaa kuuloa</li>
+        <li><strong>Kirurgia:</strong> endolymfaattisen pussin kirurgia ja vestibulaarihermon katkaisu erityistapauksissa</li>
+        <li><strong>Tukitoimet:</strong> kuulokoje ja vestibulaarinen kuntoutus (VRT)</li>
+      </ul>
+
+      <h5>Mitä tämä tarkoittaa?</h5>
+      <p>Suomessa hoito perustuu pitkälti AAO-HNS 2020 -suositukseen yhdessä Käypä hoidon kanssa. Voit kohtuudella odottaa, että:</p>
+      <ul>
+        <li>Audiogrammi otetaan diagnoosin yhteydessä molemmista korvista</li>
+        <li>Vähäsuolainen ruokavalio ja elämäntapaohjaus tarjotaan ensilinjana</li>
+        <li>Intratympaaninen steroidi tarjotaan ennen ablaiivisia hoitoja</li>
+        <li>Yksilölliset valinnat huomioidaan: kuulonsäästö, työ, ajaminen ja elämäntilanne</li>
+      </ul>
+
+      <p class="blogi-source">Lähde: <a href="https://aao-hnsfjournals.onlinelibrary.wiley.com/doi/10.1177/0194599820909438" target="_blank" rel="noopener">Basura GJ et al. — Clinical Practice Guideline: Ménière's Disease. Otolaryngol Head Neck Surg, 2020.</a></p>
+    </div>
+  </details>
+
+  <details class="blogi-article">
+    <summary>
+      <div class="blogi-summary-meta">
+        <span class="blogi-tag coral">yleiskatsaus</span>
+        <span class="blogi-year">2025</span>
+        <span class="blogi-readtime">~4 min lukea</span>
+      </div>
+      <h4 class="blogi-title">Uusi viitekehys Ménièren taudin tutkimukseen ja hoitoon (Chari ym. 2025)</h4>
+      <p class="blogi-summary-text">Tämä Massachusetts Eye and Ear -tutkijaryhmän yhteenvetoartikkeli haastaa perinteisen "endolymfaattinen hydrops" -teorian ja esittää uuden mallin, jossa endolymfaattisen pussin toimintahäiriö on keskeinen mekanismi. Artikkeli yhdistää kolme alatyypitysakselia.</p>
+    </summary>
+    <div class="blogi-body">
+      <h5>Mitä tutkittiin?</h5>
+      <p>Yli sadan vuoden ajan oletettiin että Ménièren taudin keskeinen mekanismi on endolymfaattinen hydrops — sisäkorvan endolymfa-nesteen kerääntyminen liialliseksi. Mutta uudemmat tutkimukset ovat osoittaneet, että hydropsia esiintyy myös ihmisillä, joilla ei ole MD-oireita. Hydrops on siis löydös, ei taudin syy. Mutta mikä on todellinen syy?</p>
+
+      <h5>Miten tutkimus tehtiin?</h5>
+      <p>Adam Chari ja kollegat Massachusetts Eye and Ear -sairaalasta yhdistivät vuosikymmenten aikana kertyneitä tutkimuksia synteesiksi. He kävivät läpi anatomisia obduktiokirjallisuutta, kliinisiä kohorttitutkimuksia ja immunologisia profilointeja. Tavoitteena oli muodostaa uusi patofysiologinen viitekehys, joka selittäisi taudin heterogeenisuuden.</p>
+
+      <h5>Mitä löydettiin?</h5>
+      <p>Keskeinen havainto: <strong>endolymfaattinen pussi</strong> (endolymphatic sac, ES) on Ménièren taudin keskuselin. Pussi vastaa endolymfan tasapainosta, immuunivasteesta ja ionien säätelystä sisäkorvassa. Kun pussi on toimintahäiriössä — joko anatomisesti tai immunologisesti — kaikki muut löydökset (hydrops, kuulonmenetys, kohtaukset) seuraavat.</p>
+      <p>Tutkijat ehdottavat, että MD pitäisi käsittää <strong>kolmella akselilla</strong>:</p>
+      <ul>
+        <li><strong>Akseli 1 — kliininen klusteri</strong> (Frejon viisi alaryhmää: klassinen, perheittäinen, migreeni, autoimmuuni, viivästynyt)</li>
+        <li><strong>Akseli 2 — anatominen endotyyppi</strong> (MD-hp hypoplastinen vs MD-dg degeneratiivinen)</li>
+        <li><strong>Akseli 3 — immunologinen profiili</strong> (autoimmuuni, autoinflammatorinen, allerginen Th2)</li>
+      </ul>
+
+      <h5>Mitä tämä tarkoittaa?</h5>
+      <p>Tämä on uusin kompassi, joka ohjaa tulevia tutkimuksia ja hoitoa. Käytännössä:</p>
+      <ul>
+        <li>Diagnoosin yhteydessä pitäisi miettiä mihin kolmen akselin yhdistelmään potilas asettuu</li>
+        <li>Hoito pitäisi yksilöllistää alatyypin mukaan, ei käyttää "yksi koko sopii kaikille" -lähestymistapaa</li>
+        <li>Tulevaisuuden hoidot kohdistuvat nimenomaan endolymfaattiseen pussiin (esim. immuno­biologiset lääkkeet)</li>
+        <li>Suomalaiselle potilaalle: hoidon yksilöllistäminen edellyttää nykyistä tarkempaa diagnostiikkaa (kuvantaminen, mahdollisesti immunologinen profilointi)</li>
+      </ul>
+
+      <p class="blogi-source">Lähde: <a href="https://www.frontiersin.org/journals/neurology/articles/10.3389/fneur.2025.1607435/full" target="_blank" rel="noopener">Chari DA, Bose A, Ramirez K, Robles-Bolivar P, Lin K-Y, Juliano AF, Rauch SD, Eckhard AH — A modern conceptual framework for study and treatment of Meniere's disease. Front Neurol, 2025.</a></p>
+    </div>
+  </details>
+
+  <h3 class="blogi-cat-title">Kliininen klusterointi (Akseli 1)</h3>
+
+  <details class="blogi-article">
+    <summary>
+      <div class="blogi-summary-meta">
+        <span class="blogi-tag purple">kliininen</span>
+        <span class="blogi-year">2017</span>
+        <span class="blogi-readtime">~3 min lukea</span>
+      </div>
+      <h4 class="blogi-title">Viisi alaryhmää: Ménièren tauti ei olekaan yksi tauti (Frejo ym. 2017)</h4>
+      <p class="blogi-summary-text">Espanjalainen tutkimusryhmä analysoi 988 yksipuolista Ménière-potilasta ja tunnisti viisi erillistä kliinistä alaryhmää, joilla on selvästi erilaisia oireita ja taustatekijöitä. Tämä paradigman muutos osoitti, että Ménièren tauti on heterogeeninen oireyhtymä, ei yksi sairaus.</p>
+    </summary>
+    <div class="blogi-body">
+      <h5>Mitä tutkittiin?</h5>
+      <p>Ménièren tautia on perinteisesti hoidettu yhtenä tautina, vaikka kliinikot ovat huomanneet potilaiden välillä suuria eroja. Frejo, Lopez-Escamez ja kollegat kysyivät: voitaisiinko systemaattisella tilastollisella analyysillä löytää selkeitä alaryhmiä, joilla on yhtenäisiä piirteitä?</p>
+
+      <h5>Miten tutkimus tehtiin?</h5>
+      <p>Tutkijat keräsivät tiedot <strong>988 yksipuolisesta Ménière-potilaasta</strong> kahdeksasta espanjalaisesta sairaalasta. Jokaiselta potilaalta kerättiin laaja oirekuvaus, komorbiditeetit (autoimmuuni, migreeni, allergiat, perheen historia) ja kuulokäyrät. Sitten käytettiin <strong>klusterointi-analyysiä</strong>, joka ryhmittelee potilaat yhtenäisten piirteiden mukaan ilman ennakko-oletuksia.</p>
+
+      <h5>Mitä löydettiin?</h5>
+      <p>Tutkimuksessa tunnistettiin viisi kliinistä alaryhmää:</p>
+      <ul>
+        <li><strong>Tyyppi 1 — klassinen sporadinen</strong> (~53 %): tavallinen Ménière ilman erityisiä taustatekijöitä</li>
+        <li><strong>Tyyppi 2 — viivästynyt MD</strong> (~8 %): kuulonmenetys edelsi huimausta vuosilla</li>
+        <li><strong>Tyyppi 3 — perheittäinen</strong> (~13 %): lähisukulaisilla diagnosoitu MD</li>
+        <li><strong>Tyyppi 4 — migreeniryhmä</strong> (~15 %): samanaikainen migreeni tai vahva migreenitausta</li>
+        <li><strong>Tyyppi 5 — autoimmuuniryhmä</strong> (~11 %): samanaikainen systeeminen autoimmuunisairaus</li>
+      </ul>
+      <p>Eri ryhmillä oli erilaiset taudin kulut, kohtausten taajuus ja todennäköiset syyt — eli ne edustavat erillisiä alasairauksia eivätkä saman taudin variantteja.</p>
+
+      <h5>Mitä tämä tarkoittaa?</h5>
+      <p>Tämä on paradigman muutos Ménière-tutkimuksessa. Käytännössä:</p>
+      <ul>
+        <li>Kun lääkäri arvioi sinun MD:tä, kannattaa miettiä mihin ryhmään kuulut — siitä voi päätellä mikä hoito sopii parhaiten</li>
+        <li>Migreeniryhmälle migreenilääkkeet (topiramaatti, propranololi) ennen perinteisiä Ménière-lääkkeitä</li>
+        <li>Autoimmuuniryhmälle steroidikuuri voi olla diagnostis-terapeuttinen</li>
+        <li>Perheittäisessä muodossa geneettinen neuvonta voi olla aiheellinen</li>
+        <li>Tämä työ pohjustaa nykyistä "kolmen akselin" viitekehystä (Chari 2025)</li>
+      </ul>
+
+      <p class="blogi-source">Lähde: <a href="https://pubmed.ncbi.nlm.nih.gov/28166395/" target="_blank" rel="noopener">Frejo L, Martin-Sanz E, Teggi R et al. — Extended phenotype and clinical subgroups in unilateral Meniere disease. Clin Otolaryngol, 2017.</a></p>
+    </div>
+  </details>
+
+  <h3 class="blogi-cat-title">Anatominen endotyypitys (Akseli 2)</h3>
+
+  <details class="blogi-article">
+    <summary>
+      <div class="blogi-summary-meta">
+        <span class="blogi-tag coral">anatominen</span>
+        <span class="blogi-year">2019</span>
+        <span class="blogi-readtime">~4 min lukea</span>
+      </div>
+      <h4 class="blogi-title">Hypoplastinen vai degeneratiivinen — kaksi anatomisesti erilaista Ménière-tyyppiä (Bächinger ym. 2019)</h4>
+      <p class="blogi-summary-text">Sveitsiläinen tutkijaryhmä osoitti MRI-kuvantamisella, että Ménière-potilaat jakautuvat kahteen anatomisesti erilaiseen ryhmään: hypoplastinen (MD-hp, ~25 %) ja degeneratiivinen (MD-dg, ~75 %) endotyyppi. Tämä havainto vaikuttaa merkittävästi hoitopäätöksiin — etenkin destruktiivisten hoitojen valintaan.</p>
+    </summary>
+    <div class="blogi-body">
+      <h5>Mitä tutkittiin?</h5>
+      <p>Ménièren tautia oli pitkään pidetty yhtenä anatomisena tautina, mutta vuoden 2010 jälkeen huomattiin, että endolymfaattisen pussin (sisäkorvan endolymfaa kierrättävä elin) anatomia vaihtelee suuresti potilaiden välillä. Bächinger ja Eckhard kysyivät: voitaisiinko MRI-kuvantamisella tunnistaa anatomiset alaryhmät, ja onko niillä kliinistä merkitystä?</p>
+
+      <h5>Miten tutkimus tehtiin?</h5>
+      <p>Tutkijat tutkivat <strong>89 Ménière-potilasta</strong> ja <strong>32 verrokkia</strong> käyttäen gadolinium-tehosteista MRI-kuvantamista. He mittasivat <strong>vestibulaariakveduktin (VA) kulman</strong> — käytävän, joka yhdistää sisäkorvan endolymfaattiseen pussiin. Lisäksi he vertasivat MRI-löydöksiä obduktion yhteydessä tehtyihin pussipreparaatteihin, mikä on kriittistä luotettavuuden kannalta.</p>
+
+      <h5>Mitä löydettiin?</h5>
+      <p>Ménière-potilaat jakautuvat kahteen selvästi erilaiseen anatomiseen ryhmään:</p>
+      <ul>
+        <li><strong>MD-hp (hypoplastinen, ~25 %):</strong> vestibulaariakveduktin kulma on tylpempi, endolymfaattisen pussin distaaliosa on pieni tai puuttuva. Anatomia on kehityshäiriö sikiöajalta. Potilaat ovat usein nuorempia, miehiä, ja sairaus on useammin molemminpuolinen ja perheittäinen.</li>
+        <li><strong>MD-dg (degeneratiivinen, ~75 %):</strong> vestibulaariakvedukti on terävämpi (normaalimpi), pussi on alunperin kehittynyt mutta on degeneroitunut myöhemmässä elämässä. Potilaat ovat yleensä vanhempia, naisia, yksipuolinen tauti, migreenikomorbiditeetti yleinen.</li>
+      </ul>
+      <p><strong>Erityisen tärkeä löydös:</strong> Myöhemmin Lin ja Eckhard (2024) osoittivat, että MD-hp-potilailla on <strong>8 kertaa suurempi riski edetä sisäkorvaistute-ehdokkuuteen</strong> kuin MD-dg-potilailla.</p>
+
+      <h5>Mitä tämä tarkoittaa?</h5>
+      <p>Tämä on yksi nykyhetken eniten hoitopäätöksiä ohjaavista tutkimuksista. Käytännössä:</p>
+      <ul>
+        <li>Jos sinulla diagnostisoidaan Ménière, kannattaa pyytää MRI-kuvantaminen endotyypin selvittämiseksi (vestibulaariakveduktin kulma)</li>
+        <li><strong>MD-hp-potilailla</strong> pitää välttää ablaiivisia hoitoja kuten gentamisiinia ja labyrintektomiaa, koska kuurouden riski on suuri ja vastapuoli voi sairastua</li>
+        <li><strong>MD-dg-potilailla</strong> anatomia on suotuisampi kirurgialle, ja endolymfaattisen pussin kirurgia (ESS) voi tehota</li>
+        <li>Suomessa kuvantaminen ei ole tähän tarkoitukseen rutiinia, joten se on erikseen pyydettävä</li>
+      </ul>
+
+      <p class="blogi-source">Lähde: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6459933/" target="_blank" rel="noopener">Bächinger D, Brühlmann C, Honegger T et al. — Endotype-Phenotype Patterns in Meniere's Disease Based on Gadolinium-Enhanced MRI of the Vestibular Aqueduct. Front Neurol, 2019.</a></p>
+    </div>
+  </details>
+
+  <h3 class="blogi-cat-title">Immunologinen alatyypitys (Akseli 3)</h3>
+
+  <details class="blogi-article">
+    <summary>
+      <div class="blogi-summary-meta">
+        <span class="blogi-tag pink">immunologia</span>
+        <span class="blogi-year">2025</span>
+        <span class="blogi-readtime">~4 min lukea</span>
+      </div>
+      <h4 class="blogi-title">Ménièren tauti immunologisena oireyhtymänä (Yuan ym. 2025)</h4>
+      <p class="blogi-summary-text">Pittsburghin yliopiston tutkijoiden kattava katsaus immunologisista mekanismeista Ménièren taudissa. Artikkeli kokoaa yhteen sytokiiniprofiilit, makrofagipolarisaation ja T- ja B-solujen roolin ja esittää, että MD on monilla potilailla immuunivälitteinen sairaus.</p>
+    </summary>
+    <div class="blogi-body">
+      <h5>Mitä tutkittiin?</h5>
+      <p>Pitkään ajateltiin, että Ménièren tauti on yksinomaan sisäkorvan mekaaninen häiriö (endolymfaattinen hydrops). Mutta useat tutkimukset ovat osoittaneet immuuni­valmiuden ja systeemiset tulehdusmerkit Ménière-potilailla. Yuan, Xia ja Santa Maria kysyivät: kuinka kattava on immunologisten mekanismien rooli MD:ssä, ja mitä uusia hoitomahdollisuuksia se avaa?</p>
+
+      <h5>Miten tutkimus tehtiin?</h5>
+      <p>Kyseessä on kattava katsaus, jossa tutkijat kävivät läpi yli 200 immunologista tutkimusta Ménièren taudista. He synteesivät tiedot:</p>
+      <ul>
+        <li><strong>Innate immuniteetti:</strong> makrofagit, NK-solut, neutrofiilit</li>
+        <li><strong>Adaptiivinen immuniteetti:</strong> T- ja B-solut, autovasta-aineet, sytokiinit</li>
+        <li><strong>Systeemiset tulehdusmerkit:</strong> CRP, IL-1β, IL-6, TNF-α, IL-4, IL-13</li>
+        <li><strong>Hoitomahdollisuudet:</strong> kortikosteroidit, biologiset lääkkeet</li>
+      </ul>
+
+      <h5>Mitä löydettiin?</h5>
+      <p>Yhteenveto on selvä: Ménièren tauti on monilla potilailla immuunivälitteinen sairaus. Päätulokset:</p>
+      <ul>
+        <li><strong>~25 % potilaista</strong> kuuluu allergiseen Th2-fenotyyppiin (korkea IgE, IL-4, IL-13, atopia-tausta)</li>
+        <li><strong>Pieni mutta merkittävä alaryhmä</strong> kuuluu autoinflammatoriseen IL-1β-tyyppiin (kohonneet inflammasomi-markkerit, hyvä vaste steroideille)</li>
+        <li><strong>Stressivälitteinen β-adrenerginen tyyppi:</strong> krooninen psykososiaalinen stressi → sympaattinen yliaktivaatio → systeeminen tulehdus</li>
+        <li><strong>Hoitomahdollisuuksia:</strong> kortikosteroidit (jo käytössä), biologiset lääkkeet (anakinra, dupilumabi, anti-TNF) tutkimusvaiheessa</li>
+      </ul>
+
+      <h5>Mitä tämä tarkoittaa?</h5>
+      <p>Suomalaiselle potilaalle tämä tarkoittaa:</p>
+      <ul>
+        <li>Jos kortikosteroidit (oraaliset tai intratympaaniset) tehoavat hyvin, tämä viittaa immuunipohjaan</li>
+        <li>Jos sinulla on selvä allergiatausta (atopia, astma, kohonnut IgE), kuulut todennäköisesti Th2-allergiseen ryhmään</li>
+        <li>Tulevaisuudessa biologiset lääkkeet (esim. dupilumabi astmaan) voivat tulla käyttöön myös MD:hen</li>
+        <li>Reumatologin tai immunologin konsultaatio voi olla aiheellinen, jos autoimmuuni-tausta on vahva</li>
+        <li>Stressinhallinta ja CBT eivät ole pelkkää "pehmeää" hoitoa — niillä voi olla biologinen perustelu beta-adrenergisen reitin vaimentamisessa</li>
+      </ul>
+
+      <p class="blogi-source">Lähde: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12420328/" target="_blank" rel="noopener">Yuan VG, Xia A, Santa Maria PL — Immunological mechanisms in Meniere's disease. Front Immunol, 2025.</a></p>
+    </div>
+  </details>
+
+</div>
+
+<div class="blogi-placeholder">
+  <strong>Lisää artikkeleita tulossa.</strong> Tämä blogi on rakennusvaiheessa: viisi ensimmäistä artikkelia kattavat tärkeimmät viitekehysartikkelit. Lähdekirjasto-osiossa on yhteensä 43 tutkimusta, joista loput voidaan lisätä tähän blogiin selkokielisinä referaatteina.
 </div>
 
 </div>
@@ -6725,7 +7149,11 @@ const SKIP_SELECTORS = [
   '.nhs-header',          // koko yläbanner
   '.print-modal',         // tulostusmodaali (oma elementti)
   '.results-print-action', // tulosta-profiili-nappi tulosriville
-  '.glossary-search'      // sanaston hakukenttä (sisältää status-tekstin)
+  '.glossary-search',     // sanaston hakukenttä (sisältää status-tekstin)
+  '.blogi-summary-meta',  // blogi-artikkelin tagit (kategoria, vuosi, lukuaika)
+  '.blogi-source',        // blogi-artikkelin lähde-rivi (sisältää jo linkin)
+  '.blogi-placeholder',   // blogi-välilehden "tulossa lisää" -laatikko
+  '.blogi-cat-title'      // blogi-välilehden kategoria-otsikko
 ];
 
 function shouldSkip(el) {
@@ -6835,6 +7263,7 @@ let mindmapLinked = false;
 let kyselyLinked = false;
 let hoidotLinked = false;
 let arkiLinked = false;
+let blogiLinked = false;
 
 function lazyLinkPanel(panelId) {
   const panel = document.getElementById('panel-' + panelId);
@@ -6870,6 +7299,14 @@ function lazyLinkPanel(panelId) {
     const intro = panel.querySelector('.arki-intro');
     if (intro) autoLinkContainer(intro);
     arkiLinked = true;
+  } else if (panelId === 'blogi' && !blogiLinked) {
+    // Blogissa jokainen artikkelin body on oma säiliö
+    autoLinkContainer(panel, { scopeSelector: '.blogi-body' });
+    // Erityiskäsittely intro-laatikolle (artikkeli-summary-tekstit eivät linkity,
+    // koska autoLinkContainer scope-rajaa skannauksen .blogi-body:hin)
+    const intro = panel.querySelector('.blogi-intro');
+    if (intro) autoLinkContainer(intro);
+    blogiLinked = true;
   }
 }
 
