@@ -148,6 +148,24 @@
     border-radius: 4px;
     line-height: 1;
     flex-shrink: 0;
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: rgba(255,255,255,0.3);
+    touch-action: manipulation;
+    transition: background 0.15s, color 0.15s, transform 0.1s;
+  }
+  .nhs-logo:hover {
+    background: var(--blue-50);
+  }
+  .nhs-logo:active {
+    transform: scale(0.96);
+  }
+  .nhs-logo:focus {
+    outline: 4px solid var(--warning-bg);
+    outline-offset: 2px;
+  }
+  .nhs-logo:focus:not(:focus-visible) {
+    outline: none;
   }
   .nhs-header-title {
     font-size: 18px;
@@ -2789,7 +2807,8 @@
 
 <div class="nhs-header">
   <div class="nhs-header-inner">
-    <span class="nhs-logo">MD</span>
+    <span class="nhs-logo" id="nhs-logo-home" role="button" tabindex="0"
+          aria-label="Siirry etusivulle" onclick="void(0)">MD</span>
     <span class="nhs-header-title">Ménièren tauti — tietopalvelu</span>
     <div class="text-size-control" role="group" aria-label="Tekstikoon säätö">
       <span class="text-size-label" aria-hidden="true">Tekstikoko:</span>
@@ -5537,6 +5556,24 @@ overlay.addEventListener('click', (e) => {
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closeModal();
 });
+
+// MD-logo → vaihda etusivu-välilehteen ja vieritä ylös
+(function setupLogoHomeLink() {
+  const logo = document.getElementById('nhs-logo-home');
+  if (!logo) return;
+  function goHome() {
+    const homeBtn = document.querySelector('.tab-button[data-tab="etusivu"]');
+    if (homeBtn) homeBtn.click();
+    try { window.scrollTo({ top: 0, behavior: 'smooth' }); } catch (_) { window.scrollTo(0, 0); }
+  }
+  logo.addEventListener('click', goHome);
+  logo.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      goHome();
+    }
+  });
+})();
 
 // Tabs
 document.querySelectorAll('.tab-button').forEach(btn => {
