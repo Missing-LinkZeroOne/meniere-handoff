@@ -1658,6 +1658,7 @@
   .landing-card.color-teal { border-left-color: var(--teal-600); }
   .landing-card.color-amber { border-left-color: #ed8b00; } /* NHS orange */
   .landing-card.color-blue { border-left-color: var(--nhs-blue); }
+  .landing-card.color-indigo { border-left-color: #4338ca; } /* indigo blogille */
 
   .landing-card-header {
     display: flex;
@@ -3202,15 +3203,23 @@
     <div class="landing-stat-label">hoitomuotoa esitelty</div>
   </div>
   <div class="landing-stat">
-    <div class="landing-stat-num">11</div>
+    <div class="landing-stat-num">39</div>
+    <div class="landing-stat-label">tutkimusartikkelia</div>
+  </div>
+  <div class="landing-stat">
+    <div class="landing-stat-num">12</div>
     <div class="landing-stat-label">arjen kysymystä</div>
+  </div>
+  <div class="landing-stat">
+    <div class="landing-stat-num">6</div>
+    <div class="landing-stat-label">elämäntapakategoriaa</div>
   </div>
   <div class="landing-stat">
     <div class="landing-stat-num">43</div>
     <div class="landing-stat-label">vertaisarvioitua lähdettä</div>
   </div>
   <div class="landing-stat">
-    <div class="landing-stat-num">105</div>
+    <div class="landing-stat-num">123</div>
     <div class="landing-stat-label">selitettyä termiä</div>
   </div>
 </div>
@@ -3253,7 +3262,7 @@
       <div class="landing-card-title">Arki</div>
     </div>
     <div class="landing-card-prompt">Voinko ajaa, matkustaa, työskennellä?</div>
-    <div class="landing-card-desc">Käytännön vastaukset yleisimpiin kysymyksiin sairauden kanssa: autolla ajaminen Suomessa, lentomatkat, ruokavalio, työ, alkoholi, harrastukset, vakuutukset ja läheisten rooli.</div>
+    <div class="landing-card-desc">Kaksi näkymää: arjen käytännön kysymykset (ajaminen, matkat, ruokavalio, työ, vakuutukset) ja "Elämäntavat ja näyttö" — kuusi tutkimusperusteista kategoriaa nesteytyksestä, unesta, stressinhallinnasta ja vestibulaarikuntoutuksesta näytön tasoineen.</div>
     <div class="landing-card-cta">Lue ohjeet</div>
   </button>
 
@@ -3267,13 +3276,23 @@
     <div class="landing-card-cta">Avaa kirjasto</div>
   </button>
 
+  <button class="landing-card color-indigo" data-goto-tab="blogi">
+    <div class="landing-card-header">
+      <div class="landing-card-icon">✎</div>
+      <div class="landing-card-title">Blogi</div>
+    </div>
+    <div class="landing-card-prompt">Mitä tutkimukset oikeasti sanovat?</div>
+    <div class="landing-card-desc">39 tieteellisen tutkimuksen suomenkielinen referointi selkokielellä rakenteella "Mitä tutkittiin / Miten / Mitä löydettiin / Mitä tämä tarkoittaa". Seitsemän kategoriaa kliinisistä ohjeistuksista hoitotutkimuksiin, sticky-navigaatio kategorian vaihtoon.</div>
+    <div class="landing-card-cta">Lue artikkelit</div>
+  </button>
+
   <button class="landing-card color-amber" data-goto-tab="sanasto">
     <div class="landing-card-header">
       <div class="landing-card-icon">A</div>
       <div class="landing-card-title">Sanasto</div>
     </div>
     <div class="landing-card-prompt">Mikä on tämä termi?</div>
-    <div class="landing-card-desc">105 lääketieteellistä termiä selitettynä selkokielellä ja Ménière-kontekstissa. Hakukenttä, aakkosnavigointi ja automaattiset linkit muiden välilehtien tekstistä.</div>
+    <div class="landing-card-desc">123 lääketieteellistä termiä selitettynä selkokielellä ja Ménière-kontekstissa. Hakukenttä, aakkosnavigointi ja automaattiset linkit muiden välilehtien tekstistä.</div>
     <div class="landing-card-cta">Selaa sanastoa</div>
   </button>
 
@@ -3284,8 +3303,8 @@
 </div>
 
 <div class="landing-footer">
-  <p><strong>Tietopohja:</strong> Sisältö perustuu mm. AAO-HNS 2020 -ohjeistukseen, Frejo et al. -klusteritutkimuksiin (2016–2024), Bächinger &amp; Eckhardin anatomiseen luokitteluun (2019–2024), Yuan et al. -immunologiseen synteesiin (2025) ja Käypä hoito -suosituksiin. Kaikki keskeiset väitteet on linkitetty alkuperäisjulkaisuihin.</p>
-  <p><strong>Sivusto on offline-toimiva</strong> — kaikki sisältö ja toiminnot ovat tämän yhden HTML-tiedoston sisällä, eivätkä vaadi verkkoyhteyttä toimiakseen. Lähdelinkit avautuvat erikseen verkkoselaimessa.</p>
+  <p><strong>Tietopohja:</strong> Sisältö perustuu mm. AAO-HNS 2020 -ohjeistukseen, Frejo et al. -klusteritutkimuksiin (2016–2024), Bächinger &amp; Eckhardin anatomiseen luokitteluun (2019–2024), Yuan et al. -immunologiseen synteesiin (2025), Cochrane-katsauksiin (2018, 2023), Kitahara 2016 -RCT:hen (vesijuonti, uni) sekä Käypä hoito -suosituksiin. Kaikki keskeiset väitteet on linkitetty alkuperäisjulkaisuihin Lähdekirjastossa, ja tärkeimmistä tutkimuksista on suomenkielinen selkokielinen referointi Blogi-välilehdellä.</p>
+  <p><strong>Sivusto on offline-toimiva</strong> — kaikki sisältö ja toiminnot ovat tämän yhden HTML-tiedoston sisällä, eivätkä vaadi verkkoyhteyttä toimiakseen. Lähdelinkit avautuvat erikseen verkkoselaimessa. Oirekyselyn tulokset voi tulostaa A4-raportiksi (PDF) klikattavin lähdelinkein lääkärikäyntiä varten.</p>
 </div>
 
 </div>
