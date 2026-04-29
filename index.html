@@ -7181,6 +7181,53 @@ document.querySelectorAll('.landing-card').forEach(card => {
       .filter(function(x) { return x.length > 0; });
   }
 
+  // Mappaus lähdetekstistä alkuperäiseen julkaisuun. Avain on lähdekirjasto-
+  // viitteen lyhytmuoto, joka voi esiintyä MODALS[key].source -kentässä joko
+  // sellaisenaan tai pidempänä variantina (esim. "Lin et al. 2024"
+  // matchaa myös "Lin et al. 2024 (PMC12105948)"). URL:t on poimittu
+  // lähdekirjasto-osiosta jotta linkit pysyvät yhtenäisinä.
+  var SOURCES_URLS = {
+    'AAO-HNS Clinical Practice Guideline 2020': 'https://aao-hnsfjournals.onlinelibrary.wiley.com/doi/10.1177/0194599820909438',
+    'Bächinger et al. 2019':                   'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6459933/',
+    'Chari et al. 2025':                        'https://www.frontiersin.org/journals/neurology/articles/10.3389/fneur.2025.1607435/full',
+    'Escalera-Balsera et al. 2025':             'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12449340/',
+    'Flook et al. 2023':                        'https://www.sciencedirect.com/science/article/pii/S1521661623001316',
+    'Frejo & Lopez-Escamez 2022':               'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8907396/',
+    'Frejo et al. 2017':                        'https://pubmed.ncbi.nlm.nih.gov/28166395/',
+    'Frejo et al. 2024':                        'https://pubmed.ncbi.nlm.nih.gov/39622350/',
+    'Käypä hoito':                              'https://www.kaypahoito.fi/',
+    'Lin et al. 2024':                          'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12105948/',
+    'Lopez-Escamez, Vela & Frejo 2023':         'https://aao-hnsfjournals.onlinelibrary.wiley.com/doi/10.1002/ohn.386',
+    'Parra-Perez & Lopez-Escamez 2023':         'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10335989/',
+    'Phillips et al. 2024':                     'https://onlinelibrary.wiley.com/doi/10.1002/lary.31272',
+    'Vambutas et al. 2014':                     'https://www.jci.org/articles/view/76503',
+    'Yuan et al. 2025':                         'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12420328/'
+    // Roman-Naranjo et al. 2021 ja ResearchGate-julkaisu 2025 — ei
+    // täsmällistä URL:a tunnetussa lähdekirjastossa, jätetään ilman linkkiä.
+  };
+
+  // Etsi URL annetulle viitteelle: pisin SOURCES_URLS-avain, joka esiintyy
+  // viitteen alussa, voittaa. Palauttaa null jos ei löydy.
+  function findSourceUrl(refStr) {
+    if (!refStr) return null;
+    var best = null;
+    for (var key in SOURCES_URLS) {
+      if (refStr.indexOf(key) === 0 && (!best || key.length > best.length)) {
+        best = key;
+      }
+    }
+    return best ? SOURCES_URLS[best] : null;
+  }
+
+  // Renderoi viite linkkinä jos URL tiedossa, muuten plain HTML-escapena.
+  function renderRefAsLink(refStr) {
+    var url = findSourceUrl(refStr);
+    if (url) {
+      return '<a href="' + esc(url) + '" target="_blank" rel="noopener">' + esc(refStr) + '</a>';
+    }
+    return esc(refStr);
+  }
+
   // Kerää kaikki raportissa viitatut lähteet pisteyttäneiltä alatyypeiltä,
   // deduplikoituna ja järjestyksessä jossa ne ensimmäisen kerran esiintyvät.
   function collectAllReferencedSources(scoresEntries) {
@@ -7337,16 +7384,16 @@ document.querySelectorAll('.landing-card').forEach(card => {
       var meta = SUBTYPE_NAMES[key];
       var desc = SUBTYPE_DESCRIPTIONS[key] || '';
       var modal = (typeof MODALS !== 'undefined') ? MODALS[key] : null;
-      var sourceText = (modal && modal.source) ? modal.source.replace(/&amp;/g, '&') : '';
+      var sourceRefs = (modal && modal.source) ? splitSourceField(modal.source) : [];
       var topClass = idx === 0 ? ' print-subtype-top' : '';
       html += '  <div class="print-subtype' + topClass + '">';
       html += '    <p class="print-subtype-rank">Sija ' + (idx + 1) +
               (score > 0 ? ' &middot; ' + score + ' pistettä' : ' &middot; oletusehdokas') + '</p>';
       html += '    <p class="print-subtype-name">' + esc(meta.name) + '</p>';
       html += '    <p class="print-subtype-desc">' + esc(desc) + '</p>';
-      if (sourceText) {
+      if (sourceRefs.length) {
         html += '    <p class="print-subtype-sources"><strong>Seuraavat tutkimukset tukevat näitä päätelmiä:</strong> ' +
-                esc(sourceText) + '</p>';
+                sourceRefs.map(renderRefAsLink).join('; ') + '</p>';
       }
       html += '  </div>';
     });
@@ -7431,7 +7478,7 @@ document.querySelectorAll('.landing-card').forEach(card => {
               'hoito-suositukset perustuvat. Täydelliset linkit löytyvät verkkosivuston Lähdekirjasto-osiosta.</p>';
       html += '  <ol class="print-references-list">';
       refs.forEach(function(ref) {
-        html += '<li>' + esc(ref) + '</li>';
+        html += '<li>' + renderRefAsLink(ref) + '</li>';
       });
       html += '  </ol>';
       html += '</div>';
