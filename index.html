@@ -1766,10 +1766,32 @@
   }
   .landing-stat {
     text-align: center;
-    padding: 8px 4px;
+    padding: 10px 6px;
     background: transparent;
-    border: none;
-    border-radius: 0;
+    border: 2px solid transparent;
+    border-radius: 6px;
+    font-family: inherit;
+    color: inherit;
+    cursor: pointer;
+    -webkit-tap-highlight-color: rgba(0, 94, 184, 0.2);
+    touch-action: manipulation;
+    transition: background 0.15s, border-color 0.15s, transform 0.1s;
+    display: block;
+    width: 100%;
+  }
+  .landing-stat:hover {
+    background: var(--bg-card);
+    border-color: var(--nhs-blue);
+  }
+  .landing-stat:active {
+    transform: scale(0.97);
+  }
+  .landing-stat:focus {
+    outline: 4px solid var(--warning-bg);
+    outline-offset: 2px;
+  }
+  .landing-stat:focus:not(:focus-visible) {
+    outline: none;
   }
   .landing-stat-num {
     font-size: 32px;
@@ -3190,38 +3212,38 @@
 </div>
 
 <div class="landing-stats">
-  <div class="landing-stat">
+  <button type="button" class="landing-stat" data-goto-tab="mindmap" aria-label="Avaa Mindmap-välilehti — kolme alatyypitysakselia">
     <div class="landing-stat-num">3</div>
     <div class="landing-stat-label">alatyypitysakselia</div>
-  </div>
-  <div class="landing-stat">
+  </button>
+  <button type="button" class="landing-stat" data-goto-tab="mindmap" aria-label="Avaa Mindmap-välilehti — kymmenen alatyyppiä">
     <div class="landing-stat-num">10</div>
     <div class="landing-stat-label">tunnistettua alatyyppiä</div>
-  </div>
-  <div class="landing-stat">
+  </button>
+  <button type="button" class="landing-stat" data-goto-tab="hoidot" aria-label="Avaa Hoidot-välilehti">
     <div class="landing-stat-num">34</div>
     <div class="landing-stat-label">hoitomuotoa esitelty</div>
-  </div>
-  <div class="landing-stat">
+  </button>
+  <button type="button" class="landing-stat" data-goto-tab="blogi" aria-label="Avaa Blogi-välilehti">
     <div class="landing-stat-num">39</div>
     <div class="landing-stat-label">tutkimusartikkelia</div>
-  </div>
-  <div class="landing-stat">
+  </button>
+  <button type="button" class="landing-stat" data-goto-tab="arki" data-arki-subview="kysymykset" aria-label="Avaa Arki-välilehti, Arjen kysymyksiä -näkymä">
     <div class="landing-stat-num">12</div>
     <div class="landing-stat-label">arjen kysymystä</div>
-  </div>
-  <div class="landing-stat">
+  </button>
+  <button type="button" class="landing-stat" data-goto-tab="arki" data-arki-subview="elamantavat" aria-label="Avaa Arki-välilehti, Elämäntavat ja näyttö -näkymä">
     <div class="landing-stat-num">6</div>
     <div class="landing-stat-label">elämäntapakategoriaa</div>
-  </div>
-  <div class="landing-stat">
+  </button>
+  <button type="button" class="landing-stat" data-goto-tab="lahteet" aria-label="Avaa Lähdekirjasto-välilehti">
     <div class="landing-stat-num">43</div>
     <div class="landing-stat-label">vertaisarvioitua lähdettä</div>
-  </div>
-  <div class="landing-stat">
+  </button>
+  <button type="button" class="landing-stat" data-goto-tab="sanasto" aria-label="Avaa Sanasto-välilehti">
     <div class="landing-stat-num">123</div>
     <div class="landing-stat-label">selitettyä termiä</div>
-  </div>
+  </button>
 </div>
 
 <div class="landing-cards">
@@ -9002,13 +9024,23 @@ document.querySelectorAll('.tab-button').forEach(btn => {
   });
 });
 
-// Etusivun korttien klikkaus vaihtaa vastaavalle välilehdelle
-document.querySelectorAll('.landing-card').forEach(card => {
-  card.addEventListener('click', () => {
-    const target = card.dataset.gotoTab;
+// Etusivun korttien ja stat-nappien klikkaus vaihtaa vastaavalle välilehdelle.
+// Stat-napilla voi olla data-arki-subview joka vaihtaa myös Arki-subview:n
+// (kysymykset / elamantavat) tab-vaihdon jälkeen.
+document.querySelectorAll('.landing-card[data-goto-tab], .landing-stat[data-goto-tab]').forEach(el => {
+  el.addEventListener('click', () => {
+    const target = el.dataset.gotoTab;
     if (!target) return;
     const btn = document.querySelector('.tab-button[data-tab="' + target + '"]');
     if (btn) btn.click();
+    const subview = el.dataset.arkiSubview;
+    if (target === 'arki' && subview) {
+      // Pieni viive jotta tab-vaihto + autolinkitys ehtii ennen subview-vaihtoa
+      setTimeout(() => {
+        const subBtn = document.querySelector('.arki-subtab-link[data-subview="' + subview + '"]');
+        if (subBtn) subBtn.click();
+      }, 60);
+    }
   });
 });
 
