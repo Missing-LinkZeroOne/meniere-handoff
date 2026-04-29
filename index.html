@@ -2571,6 +2571,92 @@
     line-height: 1.5;
   }
 
+  /* Raportin alaotsikko ja narratiivi-kappaleet */
+  .print-profile-subhead {
+    margin: 4px 0 12px;
+    font-size: 14px;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+  .print-narrative {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--text);
+    margin: 0 0 10px;
+  }
+  .print-narrative:last-child { margin-bottom: 0; }
+  .print-narrative strong { font-weight: 700; }
+
+  /* Oireprofiili — jäsennelty määrittelylista */
+  .print-symptom-profile {
+    margin: 0;
+    display: grid;
+    grid-template-columns: 38% 62%;
+    gap: 0;
+    font-size: 14px;
+    line-height: 1.45;
+  }
+  .print-symptom-profile dt {
+    font-weight: 700;
+    color: var(--text);
+    padding: 5px 12px 5px 0;
+    border-bottom: 1px dashed var(--border);
+  }
+  .print-symptom-profile dd {
+    margin: 0;
+    padding: 5px 0;
+    color: var(--text);
+    border-bottom: 1px dashed var(--border);
+  }
+  .print-symptom-profile dt:last-of-type,
+  .print-symptom-profile dd:last-of-type {
+    border-bottom: none;
+  }
+
+  /* Alatyypin tutkimusviittaukset (avainvirke "Seuraavat tutkimukset...") */
+  .print-subtype-sources {
+    font-size: 13px;
+    line-height: 1.45;
+    margin: 8px 0 0;
+    color: var(--text);
+    border-top: 1px dashed var(--border);
+    padding-top: 6px;
+  }
+  .print-subtype-sources strong { font-weight: 700; }
+
+  /* Itsehoito- ja lääkärin kanssa keskusteltavien osioiden listat */
+  .print-self-care-list { margin-top: 8px; }
+
+  .print-doc-questions-title {
+    font-size: 14px;
+    margin: 0 0 6px;
+    color: var(--text);
+  }
+  .print-doc-questions-subhead {
+    margin-top: 14px;
+  }
+  .print-doc-questions-list { margin-top: 4px; }
+  .print-doc-questions-block {
+    margin-bottom: 12px;
+    page-break-inside: avoid;
+  }
+  .print-doc-questions-subtitle {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--nhs-blue);
+    margin: 0 0 4px;
+  }
+
+  /* Lähdeluettelo loppuun */
+  .print-references-list {
+    margin: 8px 0 0 22px;
+    padding: 0;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--text);
+  }
+  .print-references-list li { margin-bottom: 4px; }
+
   /* ==================================================================
      PRINT-CSS — tulostuksen sääntö
      Piilottaa kaiken muun ja näyttää vain print-modal-bodyn sisällön
@@ -2660,6 +2746,41 @@
       background: transparent !important;
       border: 1px solid #444 !important;
       color: #000000 !important;
+    }
+    /* Uudet raporttiosiot tulosteessa */
+    .print-narrative {
+      color: #000000 !important;
+      font-size: 11pt !important;
+    }
+    .print-profile-subhead {
+      color: #444 !important;
+      font-size: 10pt !important;
+    }
+    .print-symptom-profile {
+      font-size: 10.5pt !important;
+    }
+    .print-symptom-profile dt,
+    .print-symptom-profile dd {
+      border-bottom-color: #888 !important;
+      color: #000000 !important;
+    }
+    .print-subtype-sources {
+      border-top-color: #444 !important;
+      color: #000000 !important;
+      font-size: 10pt !important;
+    }
+    .print-doc-questions-subtitle {
+      color: #000000 !important;
+    }
+    .print-references-list {
+      font-size: 10pt !important;
+    }
+    .print-symptom-profile,
+    .print-self-care-list,
+    .print-doc-questions-list,
+    .print-doc-questions-block,
+    .print-references-list {
+      page-break-inside: avoid !important;
     }
   }
 </style>
@@ -4771,8 +4892,8 @@
   <div class="modal print-modal">
     <div class="print-modal-header">
       <button type="button" class="print-modal-close" id="print-modal-close" aria-label="Sulje">×</button>
-      <h2 id="print-modal-title">Tulostettava profiili</h2>
-      <p>Tarkista alla oleva yhteenveto ja paina "Tulosta" — paperilla on alatyyppisi, suositellut hoidot ja muistilistasi lääkärikäyntiä varten.</p>
+      <h2 id="print-modal-title">Tulostettava raportti lääkärikäyntiä varten</h2>
+      <p>Tarkista alla oleva raportti ja paina "Tulosta" — paperilla on yhteenveto, oireprofiilisi, mahdolliset alatyypit perusteluineen, omahoitosuositukset, ehdotukset keskusteltavaksi lääkärin kanssa ja lähdeluettelo.</p>
       <div class="print-modal-actions">
         <button type="button" class="btn-do-print" id="btn-do-print">
           <span aria-hidden="true">🖨</span> Tulosta tämä sivu
@@ -5517,6 +5638,60 @@ const SUBTYPE_DESCRIPTIONS = {
     'Stressi-välitteinen β-adrenerginen tyyppi: krooninen stressi laukaisee kohtauksia, sympatikotonus korkea. Hoidetaan beta-salpaajilla yhdistettynä stressinhallintaan.'
 };
 
+// Alatyyppi-spesifiset keskustelu- ja tutkimusehdotukset terveydenhuollon
+// ammattilaiselle. Näytetään tulostettavassa raportissa yleisten kysymysten
+// jälkeen, jokaiselle pisteyttäneelle alatyypille.
+const SUBTYPE_DOC_QUESTIONS = {
+  'klassinen-sporadinen': [
+    'Onko vähäsuolaisesta ruokavaliosta + diureetista perustellusti hyötyä juuri minulla?',
+    'Milloin harkitaan intratympaanisia injektioita (steroidi tai gentamisiini)?'
+  ],
+  'migreeni-ryhma': [
+    'Voitaisiinko kokeilla migreeniprofylaksia (topiramaatti, propranololi, B2 400 mg, magnesium 400 mg) ennen perinteisiä Ménière-lääkkeitä?',
+    'Onko CGRP-vasta-ainehoito (erenumabi, fremanetsumabi) kohdallani harkittavissa?',
+    'Olisiko neurologin konsultaatio aiheellinen?'
+  ],
+  'autoimmuuni-ryhma': [
+    'Voitaisiinko tehdä autoimmuuni-laboratoriokokeet (ANA, RF, anti-CCP, TPO, ANCA, immunoglobuliinit, C3/C4)?',
+    'Olisiko reumatologin tai immunologin konsultaatio aiheellinen?',
+    'Voitaisiinko kokeilla systeemistä kortikosteroidikuuria diagnostis-terapeuttisesti?'
+  ],
+  'perheittainen': [
+    'Voitaisiinko järjestää geneettinen neuvonta (perinnöllisyyspoliklinikka)?',
+    'Onko eksomi- tai geenipanelitestaus (OTOG, MYO7A, TECTA, COCH) tutkimus­asetelmassa mahdollinen?',
+    'Olisiko lähisukulaisille suositeltavaa varhaista kuuloseurantaa?'
+  ],
+  'md-hp': [
+    'Voitaisiinko tehdä TT- tai MRI-kuvantaminen vestibulaariakveduktin kulman (ATVA) ja retrolabyrinttisen luun paksuuden mittaamiseksi?',
+    'Olisiko gentamisiinin ja muiden ablaiivisten hoitojen välttäminen perusteltua?',
+    'Onko sisäkorvaistute-arvio aiheellista tehdä jo aikaisessa vaiheessa?'
+  ],
+  'md-dg': [
+    'Voitaisiinko tehdä TT- tai MRI-kuvantaminen endotyypin (MD-dg) vahvistamiseksi?',
+    'Onko endolymfaattisen pussin kirurgia (ESS) harkittavissa hoitoresistenteissä tapauksissa?',
+    'Olisiko migreeniprofylaksin kokeilu perusteltua, jos migreenityyppisiä piirteitä esiintyy?'
+  ],
+  'xlh-linkki': [
+    'Voitaisiinko tutkia X-kytköisen hypofosfatemian (XLH) mahdollisuus: seerumin fosfaatti, alkalinen fosfataasi, FGF23, tarvittaessa PHEX-geenitesti?',
+    'Olisiko endokrinologin tai luustosairauksiin perehtyneen lääkärin konsultaatio aiheellinen?'
+  ],
+  'th2-allerginen': [
+    'Voitaisiinko tutkia seerumin kokonais-IgE ja allergiapaneeli (ihopistokokeet tai spesifiset IgE)?',
+    'Olisiko allergologin konsultaatio aiheellinen?',
+    'Voisiko antihistamiinikuuri olla diagnostis-terapeuttinen kokeilu?'
+  ],
+  'autoinflammatorinen': [
+    'Voitaisiinko mitata tulehdusmerkit (CRP, ESR) ja tarvittaessa tutkimus­asetelmassa IL-1β, TNF-α, IL-6, MMP-9?',
+    'Onko korkea-annoksinen kortikosteroidikuurin vaste arvioitavissa diagnostiikkana?',
+    'Olisiko tulevaisuudessa anti-IL-1-hoidot (anakinra) tutkimusasetelmassa kohdallani aiheellisia?'
+  ],
+  'stressi-adrenerginen': [
+    'Olisiko CBT-pohjainen stressinhallinta tai ohjattu stressi­ryhmä saatavissa hoito­polkuun?',
+    'Voitaisiinko kokeilla beta-salpaajaa (esim. propranololi)?',
+    'Onko unen, liikunnan ja palautumisen tukeminen huomioitu hoitosuunnitelmassa?'
+  ]
+};
+
 function getRadio(name) {
   const el = document.querySelector(`input[name="${name}"]:checked`);
   return el ? el.value : null;
@@ -5544,7 +5719,12 @@ function analyzeAnswers() {
 
   // If no core Ménière symptoms, we cannot infer subtype
   if (coreSymptoms < 2) {
-    return { scores: null, coreSymptoms, gateFailed: true };
+    return {
+      scores: null,
+      coreSymptoms,
+      gateFailed: true,
+      rawAnswers: { huimaus, kuulo, tinnitus, paine }
+    };
   }
 
   // Q5 — laterality
@@ -5673,7 +5853,18 @@ function analyzeAnswers() {
     scores['klassinen-sporadinen'] += 3;
   }
 
-  return { scores, coreSymptoms, gateFailed: false };
+  return {
+    scores,
+    coreSymptoms,
+    gateFailed: false,
+    rawAnswers: {
+      huimaus, kuulo, tinnitus, paine,
+      puoli, ika, sukupuoli, suku,
+      kuuloEdelta, migreeni,
+      autoimmuuni, atopia, metabolinen, luusto,
+      triggerit, steroidit, tinnitusTyyppi, stressi
+    }
+  };
 }
 
 function renderResults(result) {
@@ -6793,6 +6984,227 @@ document.querySelectorAll('.landing-card').forEach(card => {
     return d.getDate() + '.' + (d.getMonth() + 1) + '.' + d.getFullYear();
   }
 
+  // Muunna kyselyvastaukset (rawAnswers) jäsennellyksi oireprofiiliksi
+  // ammattilaiselle. Palauttaa lista [{label, value}] -oliota.
+  function formatSymptomProfile(raw) {
+    if (!raw) return [];
+    var rows = [];
+
+    // Ydinoireet (Q1-Q4)
+    var core = [];
+    if (raw.huimaus === 'kylla') core.push('toistuvat huimauskohtaukset');
+    if (raw.kuulo === 'kylla') core.push('vaihteleva kuulonmenetys');
+    if (raw.tinnitus === 'kylla') core.push('tinnitus');
+    if (raw.paine === 'kylla') core.push('paineen tunne korvassa');
+    rows.push({
+      label: 'Ménière-ydinoireet',
+      value: core.length ? core.join(', ') : 'Ei raportoitu kaikkia neljää ydinoiretta.'
+    });
+
+    // Puolisuus (Q5)
+    if (raw.puoli) {
+      var puoliText = raw.puoli === 'molemmat' ? 'molemminpuolinen'
+                    : raw.puoli === 'yksi'     ? 'yksipuolinen'
+                    : 'epävarma / ei tiedossa';
+      rows.push({ label: 'Lateraalisuus', value: puoliText });
+    }
+
+    // Alkamisikä (Q6)
+    if (raw.ika) {
+      var ikaText = raw.ika === 'nuori'    ? 'alle 35-vuotiaana'
+                  : raw.ika === 'vanhempi' ? 'yli 50-vuotiaana'
+                  : '35–50 vuoden iässä';
+      rows.push({ label: 'Oireiden alkamisikä', value: ikaText });
+    }
+
+    // Sukupuoli (Q7)
+    if (raw.sukupuoli && raw.sukupuoli !== 'muu') {
+      rows.push({
+        label: 'Sukupuoli',
+        value: raw.sukupuoli === 'mies' ? 'mies' : 'nainen'
+      });
+    }
+
+    // Perhehistoria (Q8)
+    if (raw.suku === 'kylla') {
+      rows.push({ label: 'Perhehistoria', value: 'Lähisukulaisilla diagnosoitu Ménièren tauti.' });
+    } else if (raw.suku === 'ei') {
+      rows.push({ label: 'Perhehistoria', value: 'Ei tunnettua suvuittaista esiintymistä.' });
+    }
+
+    // Q9 — kuulonmenetys edelsi huimausta
+    if (raw.kuuloEdelta === 'kylla') {
+      rows.push({
+        label: 'Kuulonmenetyksen ja huimauksen järjestys',
+        value: 'Kuulonmenetys ja tinnitus alkoivat ennen huimauskohtauksia (delayed MD -piirre).'
+      });
+    }
+
+    // Q10 — migreeni
+    if (raw.migreeni === 'kylla') {
+      rows.push({ label: 'Migreeni', value: 'Diagnosoitu migreeni tai vahva migreenitausta.' });
+    }
+
+    // Q11 — autoimmuunisairaudet (lista)
+    if (raw.autoimmuuni && raw.autoimmuuni.length) {
+      var autoLabels = raw.autoimmuuni
+        .filter(function(v) { return v !== 'ei-mikaan'; })
+        .map(function(v) {
+          var map = {
+            'kilpirauhanen': 'kilpirauhassairaus (Hashimoto/Graves)',
+            'nivelreuma': 'nivelreuma',
+            'psoriaasi': 'psoriaasi',
+            'sle': 'SLE',
+            'iibd': 'IBD (Crohn/colitis)',
+            'vitiligo': 'vitiligo',
+            'tyypin1-diabetes': 'tyypin 1 diabetes',
+            'muu': 'muu autoimmuunisairaus'
+          };
+          return map[v] || v;
+        });
+      if (autoLabels.length) {
+        rows.push({ label: 'Autoimmuunisairaudet', value: autoLabels.join(', ') });
+      }
+    }
+
+    // Q12 — atopia
+    if (raw.atopia && raw.atopia.length) {
+      var atoLabels = raw.atopia
+        .filter(function(v) { return v !== 'ei-mikaan'; })
+        .map(function(v) {
+          var map = {
+            'astma': 'astma',
+            'allerginen-riniitti': 'allerginen riniitti',
+            'atooppinen-ihottuma': 'atooppinen ihottuma',
+            'ruoka-allergia': 'ruoka-allergia',
+            'korkea-ige': 'tunnettu kohonnut IgE'
+          };
+          return map[v] || v;
+        });
+      if (atoLabels.length) {
+        rows.push({ label: 'Atooppiset/allergiset oireet', value: atoLabels.join(', ') });
+      }
+    }
+
+    // Q13 — metabolinen oireyhtymä
+    if (raw.metabolinen === 'kylla') {
+      rows.push({ label: 'Metabolinen oireyhtymä', value: 'Diagnosoitu (lihavuus, dyslipidemia, insuliiniresistenssi tai T2D).' });
+    }
+
+    // Q14 — luusto-oireet
+    if (raw.luusto === 'kylla') {
+      rows.push({
+        label: 'Luustoperäiset oireet',
+        value: 'Lyhytkasvuisuus, riisitauti tai muut luustopoikkeavuudet — XLH-yhteys harkittavissa erityisesti miespotilaalla.'
+      });
+    }
+
+    // Q15 — triggerit
+    if (raw.triggerit && raw.triggerit.length) {
+      var trigMap = {
+        'stressi': 'stressi',
+        'vahainen-uni': 'vähäinen uni',
+        'allergia-kausi': 'allergiakaudet',
+        'saa': 'säänvaihtelut / ilmanpaine',
+        'alkoholi': 'alkoholi',
+        'suolainen-ruoka': 'suolainen ruoka',
+        'kahvi': 'kahvi/kofeiini',
+        'kuukautiskierto': 'kuukautiskierto'
+      };
+      var trigLabels = raw.triggerit
+        .filter(function(v) { return v !== 'ei-tieda'; })
+        .map(function(v) { return trigMap[v] || v; });
+      if (trigLabels.length) {
+        rows.push({ label: 'Tunnistetut laukaisijat', value: trigLabels.join(', ') });
+      }
+    }
+
+    // Q16 — steroidivaste
+    if (raw.steroidit === 'hyva-vaste') {
+      rows.push({ label: 'Vaste kortikosteroideille', value: 'Hyvä — viittaa autoimmuuni- tai autoinflammatoriseen mekanismiin.' });
+    } else if (raw.steroidit === 'osittainen') {
+      rows.push({ label: 'Vaste kortikosteroideille', value: 'Osittainen.' });
+    } else if (raw.steroidit === 'ei-vastetta') {
+      rows.push({ label: 'Vaste kortikosteroideille', value: 'Ei merkittävää vastetta.' });
+    }
+
+    // Q17 — tinnitustyyppi
+    if (raw.tinnitusTyyppi === 'matala') {
+      rows.push({ label: 'Tinnituksen luonne', value: 'Matalataajuinen / huminamainen.' });
+    } else if (raw.tinnitusTyyppi === 'korkea') {
+      rows.push({ label: 'Tinnituksen luonne', value: 'Korkeataajuinen / vihellysmäinen.' });
+    }
+
+    // Q18 — krooninen stressi
+    if (raw.stressi === 'kylla') {
+      rows.push({ label: 'Krooninen stressi', value: 'Pitkäkestoinen kuormitus (työ, perhe, talous tai muu psykososiaalinen).' });
+    } else if (raw.stressi === 'ajoittain') {
+      rows.push({ label: 'Krooninen stressi', value: 'Ajoittaisia kuormitusjaksoja.' });
+    }
+
+    return rows;
+  }
+
+  // Kerää top-N alatyypin Itsehoito-luokan hoidot deduplikoituna.
+  // Jos itsehoito-listoja on vähän, lisätään aina yleinen elämäntapa- ja
+  // VRT-runko, koska ne soveltuvat kaikille alatyypeille.
+  function collectSelfCareSet(scoresEntries, topN) {
+    var seen = {};
+    var ids = [];
+    var n = Math.min(topN || 3, scoresEntries.length);
+    for (var i = 0; i < n; i++) {
+      var key = scoresEntries[i][0];
+      var tx = SUBTYPE_TREATMENTS[key] || {};
+      var cat = tx['Itsehoito'];
+      if (cat) {
+        cat.forEach(function(id) {
+          if (!seen[id]) { seen[id] = true; ids.push(id); }
+        });
+      }
+    }
+    // Aina mukaan yleinen elämäntapa- ja vestibulaarikuntoutus-runko
+    ['tx-yleinen-elamantavat', 'tx-yleinen-vrt'].forEach(function(id) {
+      if (!seen[id]) { seen[id] = true; ids.push(id); }
+    });
+    return ids;
+  }
+
+  // Pilko alatyyppi-kohtaisen MODALS[key].source -kentän puolipiste-erotteinen
+  // teksti yksittäisiin viitteisiin. Säilyttää järjestyksen, dekoodaa &amp;.
+  // Dekoodaus tehdään ENNEN pilkkomista, koska &amp; sisältää ;-merkin.
+  function splitSourceField(s) {
+    if (!s) return [];
+    return String(s)
+      .replace(/&amp;/g, '&')
+      .split(/;\s*/)
+      .map(function(x) { return x.trim(); })
+      .filter(function(x) { return x.length > 0; });
+  }
+
+  // Kerää kaikki raportissa viitatut lähteet pisteyttäneiltä alatyypeiltä,
+  // deduplikoituna ja järjestyksessä jossa ne ensimmäisen kerran esiintyvät.
+  function collectAllReferencedSources(scoresEntries) {
+    var seen = {};
+    var refs = [];
+    scoresEntries.forEach(function(entry) {
+      var key = entry[0];
+      var modal = (typeof MODALS !== 'undefined') ? MODALS[key] : null;
+      if (!modal || !modal.source) return;
+      splitSourceField(modal.source).forEach(function(ref) {
+        var k = ref.toLowerCase();
+        if (!seen[k]) { seen[k] = true; refs.push(ref); }
+      });
+    });
+    // Lisää aina yleiset kliiniset peruslähteet
+    ['AAO-HNS Clinical Practice Guideline 2020 (Basura et al., Otolaryngol Head Neck Surg)',
+     'Käypä hoito -suositus (Suomalainen Lääkäriseura Duodecim)']
+      .forEach(function(ref) {
+        var k = ref.toLowerCase();
+        if (!seen[k]) { seen[k] = true; refs.push(ref); }
+      });
+    return refs;
+  }
+
   // HTML-escape
   function esc(s) {
     if (s == null) return '';
@@ -6803,116 +7215,231 @@ document.querySelectorAll('.landing-card').forEach(card => {
       .replace(/"/g, '&quot;');
   }
 
-  // Rakenna tulostussisältö viimeisimmän tuloksen perusteella
+  // Rakenna tulostussisältö viimeisimmän tuloksen perusteella.
+  // Raportin rakenne (kahdeksanosainen):
+  //   1) Header (pvm, nimi, syntymäaika, lääkäri)
+  //   2) Vastuuvapauslauseke
+  //   3) Yhteenveto ammattilaiselle (kärki­alatyypit, tukevat seikat)
+  //   4) Yksilön oireprofiili (kyselyvastausten jäsennelty näkymä)
+  //   5) Mahdolliset alatyypit perusteluineen (kaikki pisteyttäneet, tutkimusviittaukset)
+  //   6) Omahoitosuositukset (top-3 itsehoito + yleiset)
+  //   7) Suositellut keskustelut ja tutkimukset lääkärin kanssa (yleiset + alatyyppikohtaiset)
+  //   8) Lähdeluettelo (deduplikoitu)
   function buildPrintContent() {
     if (!lastAnalysisResult) {
       body.innerHTML = '<p>Tulokset eivät ole saatavilla. Palaa kyselyyn ja paina "Analysoi vastaukset" ensin.</p>';
       return;
     }
 
-    // Sort scores
-    var sorted = Object.entries(lastAnalysisResult.scores)
-      .filter(function(entry) { return entry[1] > 0; })
-      .sort(function(a, b) { return b[1] - a[1]; });
-
-    // Jos pisteytys ei tuota mitään, käytä klassinen sporadinen oletuksena
-    var top;
-    if (sorted.length === 0) {
-      top = [['klassinen-sporadinen', 0]];
-    } else {
-      top = sorted.slice(0, 3);
-    }
-
-    var topKey = top[0][0];
-    var topName = SUBTYPE_NAMES[topKey].name;
-
-    // Header
     var html = '';
+
+    // 1) HEADER
     html += '<div class="print-profile-header">';
-    html += '  <h1>Ménière — alatyyppi-profiili</h1>';
+    html += '  <h1>Ménière-oirekyselyn raportti</h1>';
+    html += '  <p class="print-profile-subhead">Yhteenveto terveydenhuollon ammattilaiselle keskustelun pohjaksi</p>';
     html += '  <div class="print-profile-meta">';
     html += '    <div class="print-profile-meta-item"><strong>Päivämäärä:</strong> ' + esc(fmtDate()) + '</div>';
     html += '    <div class="print-profile-meta-item"><strong>Nimi:</strong> _______________________________</div>';
+    html += '    <div class="print-profile-meta-item"><strong>Syntymäaika:</strong> ____________________</div>';
     html += '    <div class="print-profile-meta-item"><strong>Lääkäri:</strong> _______________________________</div>';
     html += '  </div>';
     html += '</div>';
 
-    // Disclaimer
+    // 2) VASTUUVAPAUSLAUSEKE
     html += '<div class="print-disclaimer">';
-    html += '  <strong>Tärkeää:</strong> Tämä on opetuksellinen yhteenveto oirekyselyn vastauksista — ei lääketieteellinen diagnoosi. ';
-    html += '  Ménièren taudin diagnoosi ja alatyypin määritys edellyttävät aina KNK-erikoislääkärin arviota, audiogrammia ja tarvittaessa kuvantamista. ';
-    html += '  Käytä tätä paperia keskustelun apuna oman lääkärisi kanssa.';
+    html += '  <strong>Vastuuvapauslauseke:</strong> Tämä on yksinomaan opetuksellinen ' +
+            'yhteenveto verkkosivuston oirekyselyn vastauksista — ei lääketieteellinen diagnoosi. ' +
+            'Ménièren taudin diagnoosi ja alatyypin määritys edellyttävät aina KNK-erikoislääkärin arvion, ' +
+            'audiogrammin ja tarvittaessa kuvantamisen sekä laboratoriokokeet. Raportti on tarkoitettu ' +
+            'tukemaan jäsenneltyä keskustelua hoitavan lääkärin kanssa.';
     html += '</div>';
 
-    // Top-3 alatyypit
+    // GATE-FAILED: ydinoireita ei riittävästi → ei alatyyppi-arviota
+    if (lastAnalysisResult.gateFailed) {
+      html += '<div class="print-section">';
+      html += '  <h2 class="print-section-title">Yhteenveto</h2>';
+      html += '  <p class="print-narrative">Kyselyn vastauksissa ei näy tarpeeksi Ménièren taudin ' +
+              'tunnusomaisia ydinoireita (toistuvat huimauskohtaukset, vaihteleva kuulonmenetys, tinnitus, ' +
+              'paineen tunne korvassa). Alatyyppi-arviota ei voi tehdä ilman näitä peruselementtejä. ' +
+              'Suositellaan KNK-erikoislääkärin arviota oireiden taustan selvittämiseksi.</p>';
+      html += '</div>';
+      var gfRows = formatSymptomProfile(lastAnalysisResult.rawAnswers);
+      if (gfRows.length) {
+        html += '<div class="print-section">';
+        html += '  <h2 class="print-section-title">Yksilön oireprofiili (kyselyvastaukset)</h2>';
+        html += '  <dl class="print-symptom-profile">';
+        gfRows.forEach(function(r) {
+          html += '<dt>' + esc(r.label) + '</dt><dd>' + esc(r.value) + '</dd>';
+        });
+        html += '  </dl>';
+        html += '</div>';
+      }
+      html += '<div class="print-footer">';
+      html += '  Päiväys ' + esc(fmtDate()) + ' · Ménière-tietopalvelu — opetuksellinen yhteenveto, ei lääketieteellinen diagnoosi.';
+      html += '</div>';
+      body.innerHTML = html;
+      return;
+    }
+
+    // PISTEET — kaikki pisteyttäneet (score > 0), järjestyksessä
+    var sorted = Object.entries(lastAnalysisResult.scores)
+      .filter(function(entry) { return entry[1] > 0; })
+      .sort(function(a, b) { return b[1] - a[1]; });
+
+    // Jos pisteytys ei tuota mitään (mahdollisesti hyvin niukasti vastattu),
+    // käytetään klassinen-sporadinen oletusehdokkaana
+    if (sorted.length === 0) sorted = [['klassinen-sporadinen', 0]];
+
+    var topKey = sorted[0][0];
+    var topName = SUBTYPE_NAMES[topKey].name;
+    var topScore = sorted[0][1];
+    var topThreeNames = sorted.slice(0, 3).map(function(e) { return SUBTYPE_NAMES[e[0]].name; });
+
+    // 3) YHTEENVETO AMMATTILAISELLE
     html += '<div class="print-section">';
-    html += '  <h2 class="print-section-title">Alatyyppi-arvio (top ' + top.length + ')</h2>';
-    top.forEach(function(entry, idx) {
+    html += '  <h2 class="print-section-title">Yhteenveto</h2>';
+    var summary;
+    if (sorted.length === 1) {
+      summary = 'Kyselyn vastausten perusteella yksilöllä on mahdollisesti yksi alatyyppi: ' +
+                '<strong>' + esc(topName) + '</strong>' +
+                (topScore > 0 ? ' (' + topScore + ' pistettä)' : '') + '.';
+    } else {
+      var rest = sorted.length > 3 ? ' Lisäksi pisteyttivät lievemmin ' + (sorted.length - 3) + ' muuta alatyyppiä, jotka esitetään kohdassa 5.' : '';
+      summary = 'Kyselyn vastausten perusteella yksilöllä on mahdollisesti seuraavat alatyypit ' +
+                '(vahvuusjärjestyksessä): <strong>' + topThreeNames.map(esc).join('</strong>, <strong>') + '</strong>. ' +
+                'Vahvinta tukea saa <strong>' + esc(topName) + '</strong> (' + topScore + ' pistettä).' + rest;
+    }
+    html += '  <p class="print-narrative">' + summary + '</p>';
+    html += '  <p class="print-narrative">Seuraavissa osioissa esitetään yksilön oireprofiili ' +
+            'kyselyvastauksista, perustelut kunkin alatyypin osalta tutkimusviittauksineen, ' +
+            'omahoitosuositukset sekä jäsennellyt ehdotukset keskusteltavaksi hoitavan lääkärin kanssa.</p>';
+    html += '</div>';
+
+    // 4) YKSILÖN OIREPROFIILI
+    var rows = formatSymptomProfile(lastAnalysisResult.rawAnswers);
+    if (rows.length) {
+      html += '<div class="print-section">';
+      html += '  <h2 class="print-section-title">Yksilön oireprofiili (kyselyvastaukset)</h2>';
+      html += '  <dl class="print-symptom-profile">';
+      rows.forEach(function(r) {
+        html += '<dt>' + esc(r.label) + '</dt><dd>' + esc(r.value) + '</dd>';
+      });
+      html += '  </dl>';
+      html += '</div>';
+    }
+
+    // 5) ALATYYPIT PERUSTELUINEEN — kaikki pisteyttäneet
+    html += '<div class="print-section">';
+    html += '  <h2 class="print-section-title">Mahdolliset alatyypit perusteluineen (' + sorted.length + ')</h2>';
+    sorted.forEach(function(entry, idx) {
       var key = entry[0];
       var score = entry[1];
       var meta = SUBTYPE_NAMES[key];
       var desc = SUBTYPE_DESCRIPTIONS[key] || '';
+      var modal = (typeof MODALS !== 'undefined') ? MODALS[key] : null;
+      var sourceText = (modal && modal.source) ? modal.source.replace(/&amp;/g, '&') : '';
       var topClass = idx === 0 ? ' print-subtype-top' : '';
       html += '  <div class="print-subtype' + topClass + '">';
-      html += '    <p class="print-subtype-rank">Sija ' + (idx + 1) + (score > 0 ? ' — ' + score + ' pistettä' : ' — oletusehdokas') + '</p>';
+      html += '    <p class="print-subtype-rank">Sija ' + (idx + 1) +
+              (score > 0 ? ' &middot; ' + score + ' pistettä' : ' &middot; oletusehdokas') + '</p>';
       html += '    <p class="print-subtype-name">' + esc(meta.name) + '</p>';
       html += '    <p class="print-subtype-desc">' + esc(desc) + '</p>';
+      if (sourceText) {
+        html += '    <p class="print-subtype-sources"><strong>Seuraavat tutkimukset tukevat näitä päätelmiä:</strong> ' +
+                esc(sourceText) + '</p>';
+      }
       html += '  </div>';
     });
     html += '</div>';
 
-    // Top-1 alatyypin räätälöidyt hoidot
-    var txMap = SUBTYPE_TREATMENTS[topKey] || {};
-    var categories = Object.keys(txMap).filter(function(cat) { return txMap[cat] && txMap[cat].length > 0; });
-    if (categories.length > 0) {
+    // 6) OMAHOITOSUOSITUKSET — kerätään top-3 itsehoito + yleiset
+    var selfCareIds = collectSelfCareSet(sorted, 3);
+    if (selfCareIds.length) {
       html += '<div class="print-section">';
-      html += '  <h2 class="print-section-title">Suositellut hoidot — ' + esc(topName) + '</h2>';
-      categories.forEach(function(cat) {
-        var ids = txMap[cat];
-        html += '  <div class="print-tx-cat">';
-        html += '    <h3 class="print-tx-cat-title">' + esc(cat) + '</h3>';
-        ids.forEach(function(txId) {
-          var info = getTreatmentInfo(txId);
-          if (!info) return;
-          html += '    <div class="print-tx-step">';
-          html += '      <p class="print-tx-step-name">' + esc(info.title);
-          if (info.evidence) {
-            html += ' <span class="print-tx-step-evidence ' + esc(info.evidenceClass) + '">' + esc(info.evidence) + '</span>';
-          }
-          html += '      </p>';
-          if (info.desc) {
-            // Lyhennä kuvausta jos liian pitkä
-            var shortDesc = info.desc.length > 280 ? info.desc.slice(0, 277) + '…' : info.desc;
-            html += '      <p class="print-tx-step-desc">' + esc(shortDesc) + '</p>';
-          }
-          html += '    </div>';
-        });
-        html += '  </div>';
+      html += '  <h2 class="print-section-title">Omahoitosuositukset</h2>';
+      html += '  <p class="print-narrative">Seuraavat omahoidon toimet on koottu vahvimpien ' +
+              'alatyyppien yksilöllisistä suosituksista sekä kaikille Ménière-potilaille soveltuvasta ' +
+              'yleisestä elämäntaparungosta. Omahoito tukee mutta ei korvaa lääkehoitoa — keskustele ' +
+              'hoitavan lääkärin kanssa ennen muutoksia.</p>';
+      html += '  <div class="print-self-care-list">';
+      selfCareIds.forEach(function(id) {
+        var info = getTreatmentInfo(id);
+        if (!info) return;
+        html += '    <div class="print-tx-step">';
+        html += '      <p class="print-tx-step-name">' + esc(info.title);
+        if (info.evidence) {
+          html += ' <span class="print-tx-step-evidence ' + esc(info.evidenceClass) + '">' + esc(info.evidence) + '</span>';
+        }
+        html += '      </p>';
+        if (info.desc) {
+          var shortDesc = info.desc.length > 320 ? info.desc.slice(0, 317) + '…' : info.desc;
+          html += '      <p class="print-tx-step-desc">' + esc(shortDesc) + '</p>';
+        }
+        html += '    </div>';
       });
+      html += '  </div>';
       html += '</div>';
     }
 
-    // Muistilista lääkärikäynnille
+    // 7) SUOSITELLUT KESKUSTELUT JA TUTKIMUKSET LÄÄKÄRIN KANSSA
     html += '<div class="print-section">';
-    html += '  <h2 class="print-section-title">Muistilista lääkärikäynnille</h2>';
+    html += '  <h2 class="print-section-title">Suositellut keskustelut ja tutkimukset lääkärin kanssa</h2>';
+    html += '  <p class="print-doc-questions-title"><strong>Yleiset (kaikille):</strong></p>';
     html += '  <ul class="print-checklist">';
     html += '    <li>Pyydä audiogrammi (kuulokuvio) molemmista korvista — Ménièren diagnostiikan perusta.</li>';
-    html += '    <li>Kerro lääkärille kohtausten taajuus, kesto ja vakavuus (oirepäiväkirja auttaa).</li>';
+    html += '    <li>Kerro kohtausten taajuus, kesto ja vakavuus (oirepäiväkirja auttaa).</li>';
     html += '    <li>Mainitse mahdolliset laukaisijat: stressi, suolainen ruoka, alkoholi, kahvi, säätila.</li>';
-    html += '    <li>Kysy: onko alatyyppini selvitettävissä tarkemmin (kuvantaminen, verikokeet)?</li>';
-    html += '    <li>Kysy: mikä hoitolinja sopisi minun tapauksessani parhaiten?</li>';
+    html += '    <li>Kysy: onko alatyyppini selvitettävissä tarkemmin (kuvantaminen, laboratoriokokeet)?</li>';
+    html += '    <li>Kysy: mikä hoitolinja sopisi parhaiten minun tapauksessani?</li>';
     html += '    <li>Kysy: minkä lääkkeiden Kela-korvattavuus minun tapaukseeni soveltuu?</li>';
     html += '    <li>Sovi seurantakäynti — mitä mitataan, milloin tarkistetaan?</li>';
     html += '    <li>Vaikuttaako sairaus ajamiseen, työhön tai liikuntaan minun tapauksessani?</li>';
-    html += '    <li>Kysy paikallista vertaistukea: Huimaus- ja Meniere-liitto ry, paikallisyhdistykset.</li>';
+    html += '    <li>Kysy paikallisesta vertaistuesta: Huimaus- ja Meniere-liitto ry, paikallisyhdistykset.</li>';
     html += '  </ul>';
+
+    var hasSubQs = sorted.some(function(e) {
+      var qs = SUBTYPE_DOC_QUESTIONS[e[0]];
+      return qs && qs.length;
+    });
+    if (hasSubQs) {
+      html += '  <p class="print-doc-questions-title print-doc-questions-subhead">' +
+              '<strong>Alatyyppikohtaiset (vahvuusjärjestyksessä):</strong></p>';
+      html += '  <div class="print-doc-questions-list">';
+      sorted.forEach(function(entry) {
+        var key = entry[0];
+        var qs = SUBTYPE_DOC_QUESTIONS[key];
+        if (!qs || !qs.length) return;
+        html += '    <div class="print-doc-questions-block">';
+        html += '      <p class="print-doc-questions-subtitle">' + esc(SUBTYPE_NAMES[key].name) + '</p>';
+        html += '      <ul class="print-checklist">';
+        qs.forEach(function(q) {
+          html += '<li>' + esc(q) + '</li>';
+        });
+        html += '      </ul>';
+        html += '    </div>';
+      });
+      html += '  </div>';
+    }
     html += '</div>';
+
+    // 8) LÄHDELUETTELO
+    var refs = collectAllReferencedSources(sorted);
+    if (refs.length) {
+      html += '<div class="print-section">';
+      html += '  <h2 class="print-section-title">Lähteet</h2>';
+      html += '  <p class="print-narrative">Tutkimusviitteet, joihin yllä esitetyt päätelmät ja ' +
+              'hoito-suositukset perustuvat. Täydelliset linkit löytyvät verkkosivuston Lähdekirjasto-osiosta.</p>';
+      html += '  <ol class="print-references-list">';
+      refs.forEach(function(ref) {
+        html += '<li>' + esc(ref) + '</li>';
+      });
+      html += '  </ol>';
+      html += '</div>';
+    }
 
     // Footer
     html += '<div class="print-footer">';
-    html += '  Tämä yhteenveto on tulostettu Ménière-tietopalvelusta. ';
-    html += '  Lähdeviitteet ja päivitetyt suositukset löytyvät sivuston Lähdekirjasto-osiosta. ';
-    html += '  Tärkeimmät lähteet: AAO-HNS 2020, Chari et al. 2025, Käypä hoito.';
+    html += '  Päiväys ' + esc(fmtDate()) + ' · Ménière-tietopalvelu — opetuksellinen yhteenveto, ei lääketieteellinen diagnoosi.';
     html += '</div>';
 
     body.innerHTML = html;
