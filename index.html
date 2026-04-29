@@ -3058,6 +3058,17 @@
     padding-bottom: 14px;
     margin-bottom: 18px;
   }
+  .print-profile-banner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 4px;
+  }
+  .print-profile-banner-icon {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+  }
   .print-profile-header h1 {
     margin: 0 0 8px;
     font-size: 22px;
@@ -3675,6 +3686,67 @@
   </div>
 </div>
 
+<figure class="figure-scientific">
+  <svg viewBox="0 0 700 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="img04-title img04-desc">
+    <title id="img04-title">Sisäkorvan anatomia — keskeiset rakenteet numeroitu</title>
+    <desc id="img04-desc">Sisäkorvan kaaviokuva, jossa on numeroitu seitsemän rakennetta: 1 tärykalvo, 2 kuuloluut (vasara, alasin, jalustin), 3 cochlea eli simpukka, 4 kaarikäytävät (kolme), 5 vestibulaariakvedukti, 6 endolymfaattinen pussi, 7 kuulohermo. Kuvauksen vasemmassa reunassa korvakanava johtaa tärykalvoon, keskellä välikorvan kuuloluut yhdistävät tärykalvon simpukkaan, oikealla on tasapainoelin kaarikäytävineen ja sen alapuolella endolymfaattinen pussi.</desc>
+    <text x="350" y="28" text-anchor="middle" font-size="16" font-weight="700" fill="#212B32">Sisäkorvan anatomia</text>
+
+    <!-- Korvakanava (vasemmalta) -->
+    <path d="M 30 240 L 100 230 L 100 270 L 30 260 Z" fill="#F0F4F5" stroke="#005EB8" stroke-width="2"/>
+    <text x="65" y="220" text-anchor="middle" font-size="11" fill="#4c6272">Korvakanava</text>
+
+    <!-- 1. Tärykalvo -->
+    <line x1="100" y1="220" x2="115" y2="280" stroke="#DA291C" stroke-width="3"/>
+    <circle cx="120" cy="180" r="14" fill="#005EB8"/>
+    <text x="120" y="185" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">1</text>
+    <text x="155" y="185" font-size="11" fill="#212B32">Tärykalvo</text>
+
+    <!-- 2. Kuuloluut (välikorva) -->
+    <ellipse cx="170" cy="240" rx="10" ry="6" fill="#FFE3E0" stroke="#212B32" stroke-width="1.5"/>
+    <ellipse cx="195" cy="245" rx="10" ry="6" fill="#FFE3E0" stroke="#212B32" stroke-width="1.5"/>
+    <ellipse cx="220" cy="250" rx="8" ry="5" fill="#FFE3E0" stroke="#212B32" stroke-width="1.5"/>
+    <circle cx="195" cy="190" r="14" fill="#005EB8"/>
+    <text x="195" y="195" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">2</text>
+    <text x="230" y="195" font-size="11" fill="#212B32">Kuuloluut (vasara, alasin, jalustin)</text>
+
+    <!-- 3. Cochlea (simpukka) -->
+    <path d="M 280 280 Q 310 250 340 270 Q 360 290 350 320 Q 335 345 305 340 Q 280 330 285 305" fill="#41B6E6" fill-opacity="0.4" stroke="#005EB8" stroke-width="2"/>
+    <path d="M 295 305 Q 315 290 330 300 Q 340 312 325 322" fill="none" stroke="#005EB8" stroke-width="1.5"/>
+    <circle cx="320" cy="380" r="14" fill="#005EB8"/>
+    <text x="320" y="385" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">3</text>
+    <text x="320" y="408" text-anchor="middle" font-size="11" fill="#212B32">Cochlea (simpukka)</text>
+
+    <!-- 4. Kaarikäytävät (kolme silmukkaa) -->
+    <ellipse cx="450" cy="170" rx="50" ry="18" fill="none" stroke="#005EB8" stroke-width="2.5" transform="rotate(-25 450 170)"/>
+    <ellipse cx="500" cy="200" rx="45" ry="16" fill="none" stroke="#005EB8" stroke-width="2.5" transform="rotate(40 500 200)"/>
+    <ellipse cx="455" cy="220" rx="40" ry="15" fill="none" stroke="#005EB8" stroke-width="2.5" transform="rotate(80 455 220)"/>
+    <circle cx="475" cy="100" r="14" fill="#005EB8"/>
+    <text x="475" y="105" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">4</text>
+    <text x="475" y="80" text-anchor="middle" font-size="11" fill="#212B32">Kaarikäytävät (3 kpl)</text>
+
+    <!-- 5. Vestibulaariakvedukti (kanava) -->
+    <line x1="490" y1="280" x2="560" y2="330" stroke="#330072" stroke-width="3"/>
+    <circle cx="525" cy="305" r="14" fill="#005EB8"/>
+    <text x="525" y="310" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">5</text>
+    <text x="600" y="285" text-anchor="middle" font-size="11" fill="#212B32">Vestibulaari-</text>
+    <text x="600" y="299" text-anchor="middle" font-size="11" fill="#212B32">akvedukti</text>
+
+    <!-- 6. Endolymfaattinen pussi -->
+    <ellipse cx="595" cy="365" rx="22" ry="14" fill="#41B6E6" fill-opacity="0.5" stroke="#005EB8" stroke-width="2"/>
+    <circle cx="595" cy="410" r="14" fill="#005EB8"/>
+    <text x="595" y="415" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">6</text>
+    <text x="595" y="438" text-anchor="middle" font-size="11" fill="#212B32">Endolymfaattinen pussi</text>
+
+    <!-- 7. Kuulohermo -->
+    <path d="M 360 320 Q 400 365 460 380" fill="none" stroke="#5b6770" stroke-width="3"/>
+    <circle cx="410" cy="370" r="14" fill="#005EB8"/>
+    <text x="410" y="375" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">7</text>
+    <text x="410" y="345" text-anchor="middle" font-size="11" fill="#212B32">Kuulohermo</text>
+  </svg>
+  <figcaption>Kuva 4. Sisäkorvan keskeiset rakenteet kaaviokuvana. Tämän sivuston anatomiset termit (cochlea, kaarikäytävät, endolymfaattinen pussi, vestibulaariakvedukti) viittaavat näihin numeroituihin osiin.</figcaption>
+</figure>
+
 <div class="arrow">↓</div>
 
 <div class="stage-label">Vaihe 4 — alatyypin määritys (3 rinnakkaista akselia)</div>
@@ -3692,6 +3764,101 @@
     <div class="node-sub">Sytokiiniprofiili, IgE, IL-1β, Th2</div>
   </div>
 </div>
+
+<figure class="figure-scientific">
+  <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="img05-title img05-desc">
+    <title id="img05-title">Endolymfaattinen hydrops — terve sisäkorva vs. patologinen tila</title>
+    <desc id="img05-desc">Kahden paneelin vertailu: vasemmalla terve sisäkorvan poikkileikkaus, jossa endolymfa- ja perilymfa-tilat ovat normaalit. Oikealla endolymfaattinen hydrops, jossa endolymfan tilavuus on poikkeavasti laajentunut ja painaa muita rakenteita. Punainen nuoli osoittaa muutoskohtaa.</desc>
+    <text x="300" y="28" text-anchor="middle" font-size="16" font-weight="700" fill="#212B32">Endolymfaattinen hydrops — terve vs. patologinen</text>
+
+    <!-- Vasen paneeli: terve -->
+    <text x="150" y="60" text-anchor="middle" font-size="14" font-weight="600" fill="#007F3B">Terve sisäkorva</text>
+    <ellipse cx="150" cy="220" rx="115" ry="135" fill="#F0F4F5" stroke="#005EB8" stroke-width="2.5"/>
+    <text x="150" y="115" text-anchor="middle" font-size="11" fill="#4c6272">Perilymfa</text>
+    <text x="150" y="128" text-anchor="middle" font-size="10" fill="#4c6272">(vaaleanharmaa)</text>
+    <ellipse cx="150" cy="230" rx="60" ry="80" fill="#41B6E6" fill-opacity="0.55" stroke="#005EB8" stroke-width="2"/>
+    <text x="150" y="225" text-anchor="middle" font-size="11" font-weight="600" fill="#005EB8">Endolymfa</text>
+    <text x="150" y="240" text-anchor="middle" font-size="10" fill="#4c6272">(normaali tilavuus)</text>
+    <text x="150" y="385" text-anchor="middle" font-size="11" fill="#212B32">Nesteet tasapainossa</text>
+
+    <!-- Erotin -->
+    <line x1="300" y1="60" x2="300" y2="380" stroke="#d8dde0" stroke-width="1" stroke-dasharray="4 4"/>
+
+    <!-- Oikea paneeli: hydrops -->
+    <text x="450" y="60" text-anchor="middle" font-size="14" font-weight="600" fill="#DA291C">Endolymfaattinen hydrops</text>
+    <ellipse cx="450" cy="220" rx="115" ry="135" fill="#F0F4F5" stroke="#005EB8" stroke-width="2.5"/>
+    <text x="370" y="115" text-anchor="end" font-size="10" fill="#4c6272">Perilymfa</text>
+    <text x="370" y="128" text-anchor="end" font-size="10" fill="#4c6272">puristuu</text>
+    <ellipse cx="450" cy="230" rx="92" ry="118" fill="#41B6E6" fill-opacity="0.7" stroke="#005EB8" stroke-width="2"/>
+    <text x="450" y="225" text-anchor="middle" font-size="11" font-weight="700" fill="#005EB8">Endolymfa</text>
+    <text x="450" y="240" text-anchor="middle" font-size="10" fill="#212B32">laajentunut</text>
+
+    <!-- Nuoli muutoskohdasta -->
+    <line x1="535" y1="160" x2="500" y2="195" stroke="#DA291C" stroke-width="2.5"/>
+    <polygon points="500,195 510,193 506,200" fill="#DA291C"/>
+    <text x="555" y="148" text-anchor="middle" font-size="10" font-weight="600" fill="#DA291C">paine</text>
+    <text x="555" y="160" text-anchor="middle" font-size="10" font-weight="600" fill="#DA291C">kasvaa</text>
+    <text x="450" y="385" text-anchor="middle" font-size="11" fill="#212B32">Endolymfan kertymä → kohtaus</text>
+  </svg>
+  <figcaption>Kuva 5. Endolymfaattisen hydropsin kaaviokuvaus. Terveessä sisäkorvassa endolymfa- ja perilymfa-tilojen tasapaino on stabiili; Ménièressä endolymfan tilavuus laajenee ja painaa kalvorakenteita, mikä laukaisee oireet.</figcaption>
+</figure>
+
+<figure class="figure-scientific">
+  <svg viewBox="0 0 700 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="img06-title img06-desc">
+    <title id="img06-title">MD-hp vs. MD-dg — anatominen vertailu</title>
+    <desc id="img06-desc">Bächinger–Eckhardin endotypityksen vertailukaavio. Vasemmalla MD-hp (hypoplastinen): kapea vestibulaariakvedukti ja pieni endolymfaattinen pussi (kehityshäiriö). Oikealla MD-dg (degeneratiivinen): normaalileveä vestibulaariakvedukti ja normaalikokoinen pussi, mutta degeneraatiomerkkejä. Vestibulaariakveduktin kulmat (ATVA) merkitty.</desc>
+    <text x="350" y="26" text-anchor="middle" font-size="16" font-weight="700" fill="#212B32">MD-hp vs. MD-dg — vestibulaariakveduktin morfologia</text>
+
+    <!-- Vasen: MD-hp -->
+    <text x="175" y="58" text-anchor="middle" font-size="14" font-weight="700" fill="#005EB8">MD-hp (hypoplastinen)</text>
+    <text x="175" y="74" text-anchor="middle" font-size="11" fill="#4c6272">~25 % MD-potilaista — kehityshäiriö</text>
+
+    <!-- Sisäkorvan ääriviiva -->
+    <ellipse cx="155" cy="200" rx="55" ry="70" fill="#F0F4F5" stroke="#005EB8" stroke-width="2"/>
+    <!-- Vestibulaariakvedukti (kapea) -->
+    <path d="M 200 195 L 285 175 L 280 195 L 200 215 Z" fill="#bcd4ec" stroke="#005EB8" stroke-width="1.5"/>
+    <!-- Pussi (pieni) -->
+    <ellipse cx="290" cy="185" rx="18" ry="10" fill="#41B6E6" stroke="#005EB8" stroke-width="1.5"/>
+    <!-- ATVA-kulmamerkki (tylpempi → suurempi kulma) -->
+    <path d="M 200 215 L 200 195 L 285 175" fill="none" stroke="#DA291C" stroke-width="2"/>
+    <text x="225" y="245" text-anchor="middle" font-size="11" font-weight="700" fill="#DA291C">ATVA tylppä</text>
+    <text x="225" y="259" text-anchor="middle" font-size="10" fill="#4c6272">(suurempi kulma)</text>
+
+    <!-- MD-hp piirteet -->
+    <text x="175" y="295" text-anchor="middle" font-size="11" font-weight="600" fill="#212B32">Tunnusmerkit:</text>
+    <text x="175" y="312" text-anchor="middle" font-size="10" fill="#212B32">• Pussi pieni / vajaakehittynyt</text>
+    <text x="175" y="326" text-anchor="middle" font-size="10" fill="#212B32">• Useammin miehiä, nuoria</text>
+    <text x="175" y="340" text-anchor="middle" font-size="10" fill="#212B32">• Useammin molemminpuolinen</text>
+    <text x="175" y="358" text-anchor="middle" font-size="10" font-weight="600" fill="#DA291C">⚠ Vältä gentamisiinia</text>
+
+    <!-- Erotin -->
+    <line x1="350" y1="60" x2="350" y2="370" stroke="#d8dde0" stroke-width="1" stroke-dasharray="4 4"/>
+
+    <!-- Oikea: MD-dg -->
+    <text x="525" y="58" text-anchor="middle" font-size="14" font-weight="700" fill="#007F3B">MD-dg (degeneratiivinen)</text>
+    <text x="525" y="74" text-anchor="middle" font-size="11" fill="#4c6272">~75 % MD-potilaista — degeneraatio</text>
+
+    <ellipse cx="505" cy="200" rx="55" ry="70" fill="#F0F4F5" stroke="#005EB8" stroke-width="2"/>
+    <!-- Vestibulaariakvedukti (normaalileveä, terävä) -->
+    <path d="M 550 215 L 640 165 L 632 195 L 550 225 Z" fill="#bcd4ec" stroke="#005EB8" stroke-width="1.5"/>
+    <!-- Pussi (normaalikokoinen, mutta degeneraatiomerkkejä — pisteitä) -->
+    <ellipse cx="650" cy="180" rx="28" ry="16" fill="#41B6E6" fill-opacity="0.85" stroke="#005EB8" stroke-width="1.5"/>
+    <circle cx="640" cy="178" r="2" fill="#DA291C"/>
+    <circle cx="652" cy="184" r="2" fill="#DA291C"/>
+    <circle cx="660" cy="174" r="2" fill="#DA291C"/>
+    <!-- ATVA terävä -->
+    <path d="M 550 225 L 550 215 L 640 165" fill="none" stroke="#007F3B" stroke-width="2"/>
+    <text x="585" y="245" text-anchor="middle" font-size="11" font-weight="700" fill="#007F3B">ATVA terävä</text>
+    <text x="585" y="259" text-anchor="middle" font-size="10" fill="#4c6272">(normaali kulma)</text>
+
+    <text x="525" y="295" text-anchor="middle" font-size="11" font-weight="600" fill="#212B32">Tunnusmerkit:</text>
+    <text x="525" y="312" text-anchor="middle" font-size="10" fill="#212B32">• Pussi normaalikoko, degeneraatio</text>
+    <text x="525" y="326" text-anchor="middle" font-size="10" fill="#212B32">• Useammin naisia, vanhempia</text>
+    <text x="525" y="340" text-anchor="middle" font-size="10" fill="#212B32">• Useammin yksipuolinen, migreeni</text>
+    <text x="525" y="358" text-anchor="middle" font-size="10" font-weight="600" fill="#007F3B">✓ ESS-leikkaus harkittavissa</text>
+  </svg>
+  <figcaption>Kuva 6. Bächinger–Eckhardin endotypityksen ydinhavainto: vestibulaariakveduktin kulma (ATVA) MRI-kuvauksessa erottaa hypoplastisen ja degeneratiivisen Ménièren toisistaan. Endotyyppi ohjaa hoitovalintaa erityisesti destruktiivisten hoitojen osalta.</figcaption>
+</figure>
 
 <div class="arrow">↓</div>
 
@@ -4093,6 +4260,62 @@
     <div class="treatment-step-body">
       <p>Toissijainen hoito, kun konservatiivinen hoito ei riitä. Pistetään tärykalvon läpi välikorvaan vastaanotolla. Säilyttää kuulon paremmin kuin gentamisiini.</p>
       <p>Lancet-julkaistun RCT:n mukaan metyyliprednisoloni oli yhtä tehokas kuin gentamisiini huimauksen hallinnassa, mutta vähemmän riskialtti kuulolle. Huimauskontrolli 31–90 % tutkimuksesta riippuen.</p>
+      <figure class="figure-scientific">
+        <svg viewBox="0 0 500 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="img10-title img10-desc">
+          <title id="img10-title">Intratympaaninen pistoshoito — sivuprofiili</title>
+          <desc id="img10-desc">Kaaviokuvaus korvan sivuprofiilista, jossa numeroitu intratympaanisen pistoshoidon polku: 1) korvakanava, 2) tärykalvo, 3) välikorva, 4) round window (pyöreä ikkuna), 5) sisäkorva. Pisto-neula menee tärykalvon läpi välikorvaan, ja lääke (deksametasoni tai metyyliprednisoloni) imeytyy round window -kalvon kautta sisäkorvaan.</desc>
+          <text x="250" y="22" text-anchor="middle" font-size="14" font-weight="700" fill="#212B32">Intratympaaninen pistoshoito</text>
+
+          <!-- Korvakanava -->
+          <path d="M 30 170 L 130 175 L 130 215 L 30 220 Z" fill="#F0F4F5" stroke="#005EB8" stroke-width="2"/>
+          <circle cx="55" cy="195" r="13" fill="#005EB8"/>
+          <text x="55" y="200" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">1</text>
+          <text x="80" y="155" text-anchor="middle" font-size="11" fill="#212B32">Korvakanava</text>
+
+          <!-- Tärykalvo -->
+          <line x1="130" y1="175" x2="148" y2="220" stroke="#DA291C" stroke-width="3"/>
+          <circle cx="155" cy="135" r="13" fill="#005EB8"/>
+          <text x="155" y="140" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">2</text>
+          <text x="195" y="135" font-size="11" fill="#212B32">Tärykalvo</text>
+
+          <!-- Välikorva -->
+          <ellipse cx="200" cy="195" rx="50" ry="40" fill="#FFF7BF" fill-opacity="0.7" stroke="#005EB8" stroke-width="2"/>
+          <ellipse cx="190" cy="190" rx="6" ry="4" fill="#FFE3E0" stroke="#212B32" stroke-width="1"/>
+          <ellipse cx="205" cy="195" rx="6" ry="4" fill="#FFE3E0" stroke="#212B32" stroke-width="1"/>
+          <ellipse cx="220" cy="200" rx="5" ry="3" fill="#FFE3E0" stroke="#212B32" stroke-width="1"/>
+          <circle cx="245" cy="245" r="13" fill="#005EB8"/>
+          <text x="245" y="250" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">3</text>
+          <text x="245" y="270" text-anchor="middle" font-size="11" fill="#212B32">Välikorva</text>
+
+          <!-- Round window -->
+          <ellipse cx="265" cy="195" rx="6" ry="14" fill="#41B6E6" stroke="#005EB8" stroke-width="2"/>
+          <circle cx="290" cy="170" r="13" fill="#005EB8"/>
+          <text x="290" y="175" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">4</text>
+          <text x="295" y="148" text-anchor="middle" font-size="10" fill="#212B32">Round window</text>
+
+          <!-- Sisäkorva (cochlea + canals) -->
+          <path d="M 320 220 Q 340 195 365 215 Q 380 235 360 250 Q 345 265 325 250" fill="#41B6E6" fill-opacity="0.45" stroke="#005EB8" stroke-width="2"/>
+          <ellipse cx="380" cy="170" rx="35" ry="12" fill="none" stroke="#005EB8" stroke-width="2" transform="rotate(-25 380 170)"/>
+          <ellipse cx="400" cy="190" rx="30" ry="10" fill="none" stroke="#005EB8" stroke-width="2" transform="rotate(40 400 190)"/>
+          <ellipse cx="385" cy="200" rx="25" ry="9" fill="none" stroke="#005EB8" stroke-width="2" transform="rotate(85 385 200)"/>
+          <circle cx="425" cy="245" r="13" fill="#005EB8"/>
+          <text x="425" y="250" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">5</text>
+          <text x="425" y="270" text-anchor="middle" font-size="11" fill="#212B32">Sisäkorva</text>
+
+          <!-- Pisto-neula tärykalvon läpi -->
+          <line x1="40" y1="125" x2="148" y2="195" stroke="#DA291C" stroke-width="2.5"/>
+          <polygon points="148,195 140,191 144,201" fill="#DA291C"/>
+          <text x="60" y="115" font-size="11" font-weight="700" fill="#DA291C">Pisto-neula</text>
+          <!-- Lääke (tippa) -->
+          <ellipse cx="200" cy="190" rx="3" ry="4" fill="#DA291C"/>
+          <ellipse cx="240" cy="200" rx="2.5" ry="3.5" fill="#DA291C"/>
+          <ellipse cx="265" cy="195" rx="2" ry="2.5" fill="#DA291C"/>
+          <text x="200" y="320" text-anchor="middle" font-size="11" fill="#212B32">Lääke (deksametasoni / metyyliprednisoloni)</text>
+          <text x="200" y="335" text-anchor="middle" font-size="11" fill="#212B32">jää välikorvaan ja imeytyy</text>
+          <text x="200" y="350" text-anchor="middle" font-size="11" fill="#212B32">round window -kalvon kautta sisäkorvaan</text>
+        </svg>
+        <figcaption>Kuva 7. Intratympaanisen pistoshoidon polku: lääke ruiskutetaan tärykalvon läpi välikorvaan, josta se imeytyy pyöreän ikkunan kautta sisäkorvaan. Toimenpide tehdään vastaanotolla ja kestää muutaman minuutin.</figcaption>
+      </figure>
     </div>
     <div class="treatment-refs">
       <a href="https://www.thelancet.com/journals/lancet/article/PIIS01406736(16)31461-1/fulltext" target="_blank" rel="noopener">Patel 2016 (Lancet RCT)</a>
@@ -6242,6 +6465,94 @@
         <li>Tämä työ pohjustaa nykyistä "kolmen akselin" viitekehystä (Chari 2025)</li>
       </ul>
 
+      <figure class="figure-scientific">
+        <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="img21-title img21-desc">
+          <title id="img21-title">Frejon klusterianalyysi: viisi alaryhmää 988 yksipuolisessa Ménière-potilaassa</title>
+          <desc id="img21-desc">Pisteviuhka-tyyppinen visualisointi, jossa 988 Ménière-potilasta on ryhmitelty viiteen klusteriin: tyyppi 1 klassinen sporadinen 53 prosenttia, tyyppi 4 migreeniryhmä 15 prosenttia, tyyppi 3 perheittäinen 13 prosenttia, tyyppi 5 autoimmuuniryhmä 11 prosenttia, ja tyyppi 2 viivästynyt MD 8 prosenttia. Klusterit erotettu väreittäin.</desc>
+          <text x="300" y="26" text-anchor="middle" font-size="15" font-weight="700" fill="#212B32">Frejo 2017: 988 potilasta → 5 kliinistä alaryhmää</text>
+
+          <!-- Klusterointi-akselit (taustaan) -->
+          <line x1="60" y1="340" x2="540" y2="340" stroke="#d8dde0" stroke-width="1"/>
+          <line x1="60" y1="80" x2="60" y2="340" stroke="#d8dde0" stroke-width="1"/>
+
+          <!-- Tyyppi 1: Klassinen sporadinen ~53 % (suurin klusteri keskellä) -->
+          <g opacity="0.85">
+            <circle cx="200" cy="200" r="6" fill="#005EB8"/>
+            <circle cx="220" cy="190" r="6" fill="#005EB8"/>
+            <circle cx="240" cy="180" r="6" fill="#005EB8"/>
+            <circle cx="190" cy="220" r="6" fill="#005EB8"/>
+            <circle cx="210" cy="215" r="6" fill="#005EB8"/>
+            <circle cx="230" cy="205" r="6" fill="#005EB8"/>
+            <circle cx="250" cy="195" r="6" fill="#005EB8"/>
+            <circle cx="180" cy="200" r="6" fill="#005EB8"/>
+            <circle cx="195" cy="180" r="6" fill="#005EB8"/>
+            <circle cx="225" cy="170" r="6" fill="#005EB8"/>
+            <circle cx="205" cy="195" r="6" fill="#005EB8"/>
+            <circle cx="235" cy="220" r="6" fill="#005EB8"/>
+            <circle cx="215" cy="170" r="6" fill="#005EB8"/>
+            <circle cx="245" cy="215" r="6" fill="#005EB8"/>
+            <circle cx="175" cy="215" r="6" fill="#005EB8"/>
+          </g>
+          <ellipse cx="215" cy="195" rx="55" ry="35" fill="none" stroke="#005EB8" stroke-width="2" stroke-dasharray="4 3"/>
+          <text x="215" y="148" text-anchor="middle" font-size="11" font-weight="700" fill="#005EB8">Tyyppi 1: Klassinen</text>
+          <text x="215" y="261" text-anchor="middle" font-size="11" font-weight="700" fill="#005EB8">~53 %</text>
+
+          <!-- Tyyppi 4: Migreeniryhmä ~15 % (oikealla ylhäällä) -->
+          <g opacity="0.85">
+            <circle cx="380" cy="120" r="6" fill="#330072"/>
+            <circle cx="395" cy="115" r="6" fill="#330072"/>
+            <circle cx="405" cy="130" r="6" fill="#330072"/>
+            <circle cx="385" cy="135" r="6" fill="#330072"/>
+            <circle cx="370" cy="125" r="6" fill="#330072"/>
+            <circle cx="395" cy="140" r="6" fill="#330072"/>
+          </g>
+          <ellipse cx="389" cy="127" rx="28" ry="20" fill="none" stroke="#330072" stroke-width="2" stroke-dasharray="4 3"/>
+          <text x="389" y="98" text-anchor="middle" font-size="11" font-weight="700" fill="#330072">Tyyppi 4: Migreeni</text>
+          <text x="389" y="170" text-anchor="middle" font-size="11" font-weight="700" fill="#330072">~15 %</text>
+
+          <!-- Tyyppi 3: Perheittäinen ~13 % (vasen ylhäällä) -->
+          <g opacity="0.85">
+            <circle cx="105" cy="125" r="6" fill="#007F3B"/>
+            <circle cx="120" cy="115" r="6" fill="#007F3B"/>
+            <circle cx="135" cy="130" r="6" fill="#007F3B"/>
+            <circle cx="118" cy="138" r="6" fill="#007F3B"/>
+            <circle cx="100" cy="140" r="6" fill="#007F3B"/>
+          </g>
+          <ellipse cx="118" cy="129" rx="25" ry="18" fill="none" stroke="#007F3B" stroke-width="2" stroke-dasharray="4 3"/>
+          <text x="118" y="98" text-anchor="middle" font-size="11" font-weight="700" fill="#007F3B">Tyyppi 3:</text>
+          <text x="118" y="111" text-anchor="middle" font-size="10" fill="#007F3B">Perheittäinen</text>
+          <text x="118" y="170" text-anchor="middle" font-size="11" font-weight="700" fill="#007F3B">~13 %</text>
+
+          <!-- Tyyppi 5: Autoimmuuniryhmä ~11 % (oikealla alhaalla) -->
+          <g opacity="0.85">
+            <circle cx="395" cy="280" r="6" fill="#DA291C"/>
+            <circle cx="410" cy="275" r="6" fill="#DA291C"/>
+            <circle cx="380" cy="290" r="6" fill="#DA291C"/>
+            <circle cx="405" cy="295" r="6" fill="#DA291C"/>
+          </g>
+          <ellipse cx="397" cy="285" rx="22" ry="16" fill="none" stroke="#DA291C" stroke-width="2" stroke-dasharray="4 3"/>
+          <text x="397" y="255" text-anchor="middle" font-size="11" font-weight="700" fill="#DA291C">Tyyppi 5:</text>
+          <text x="397" y="268" text-anchor="middle" font-size="10" fill="#DA291C">Autoimmuuni</text>
+          <text x="397" y="318" text-anchor="middle" font-size="11" font-weight="700" fill="#DA291C">~11 %</text>
+
+          <!-- Tyyppi 2: Viivästynyt MD ~8 % (vasen alhaalla) -->
+          <g opacity="0.85">
+            <circle cx="120" cy="280" r="6" fill="#B58F00"/>
+            <circle cx="135" cy="290" r="6" fill="#B58F00"/>
+            <circle cx="105" cy="290" r="6" fill="#B58F00"/>
+          </g>
+          <ellipse cx="120" cy="287" rx="22" ry="14" fill="none" stroke="#B58F00" stroke-width="2" stroke-dasharray="4 3"/>
+          <text x="120" y="258" text-anchor="middle" font-size="11" font-weight="700" fill="#B58F00">Tyyppi 2:</text>
+          <text x="120" y="271" text-anchor="middle" font-size="10" fill="#B58F00">Viivästynyt</text>
+          <text x="120" y="316" text-anchor="middle" font-size="11" font-weight="700" fill="#B58F00">~8 %</text>
+
+          <!-- Akselit -->
+          <text x="300" y="376" text-anchor="middle" font-size="11" fill="#4c6272">Komorbiditeetit (immunologinen / migreeni / perhe / autoimmuuni)</text>
+          <text x="20" y="200" text-anchor="middle" font-size="11" fill="#4c6272" transform="rotate(-90, 20, 200)">Oirekuva (vakavuus / kesto / molemminpuolisuus)</text>
+        </svg>
+        <figcaption>Kuva 9. Frejon klusterianalyysin idea: 988 yksipuolista Ménière-potilasta jakautuu viiteen tilastollisesti erottuvaan ryhmään, kun heitä luokitellaan oirekuvan ja komorbiditeettien perusteella. Suurin ryhmä (~53 %) on klassinen sporadinen ilman erityisiä taustatekijöitä; muut neljä ryhmää määrittelevät komorbiditeettiset ja perinnölliset alalajit.</figcaption>
+      </figure>
+
       <p class="blogi-source">Lähde: <a href="https://pubmed.ncbi.nlm.nih.gov/28166395/" target="_blank" rel="noopener">Frejo L, Martin-Sanz E, Teggi R et al. — Extended phenotype and clinical subgroups in unilateral Meniere disease. Clin Otolaryngol, 2017.</a></p>
     </div>
   </details>
@@ -6303,6 +6614,68 @@
 
       <h5>Mitä tämä tarkoittaa?</h5>
       <p>Jos koet että stressi on selvästi kohtauksiesi laukaisija, et ole yksin — tämä on tunnistettu alatyyppi. Hoidoiksi voi sopia stressinhallinta (CBT, mindfulness), beta-salpaajat ja unen säätely. Tämä ei ole "vain päässä" — vaan biologinen sympatikotonuksen ja immuunivasteen yhdistelmä.</p>
+
+      <figure class="figure-scientific">
+        <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="img20-title img20-desc">
+          <title id="img20-title">Stressi → vasopressiini → endolymfaattinen hydrops -reitti</title>
+          <desc id="img20-desc">Kaaviokuva stressivälitteisestä mekanismista: krooninen stressi aktivoi hypotalamus-aivolisäke-akselin (HPA-akseli), jolloin aivolisäkkeen takalohko vapauttaa vasopressiinia (ADH). Vasopressiini sitoutuu V2-reseptoreihin endolymfaattisen pussin epiteelisoluissa, mikä lisää aquaporiini-2:n ekspressiota. Vesikanavien lisääntyminen kasvattaa endolymfaattista tilavuutta — endolymfaattinen hydrops — mikä laukaisee Ménière-kohtauksen.</desc>
+          <text x="300" y="26" text-anchor="middle" font-size="15" font-weight="700" fill="#212B32">Stressi → vasopressiini → endolymfaattinen hydrops</text>
+
+          <!-- 1. Stressi -->
+          <rect x="40" y="60" width="120" height="60" fill="#FFF7BF" stroke="#B58F00" stroke-width="2" rx="8"/>
+          <text x="100" y="84" text-anchor="middle" font-size="12" font-weight="700" fill="#212B32">Krooninen</text>
+          <text x="100" y="102" text-anchor="middle" font-size="12" font-weight="700" fill="#212B32">stressi</text>
+
+          <!-- Nuoli -->
+          <line x1="160" y1="90" x2="200" y2="90" stroke="#212B32" stroke-width="2"/>
+          <polygon points="200,90 192,86 192,94" fill="#212B32"/>
+
+          <!-- 2. HPA-akseli (aivolisäke) -->
+          <rect x="200" y="60" width="180" height="60" fill="#FFE3E0" stroke="#DA291C" stroke-width="2" rx="8"/>
+          <text x="290" y="80" text-anchor="middle" font-size="12" font-weight="700" fill="#212B32">HPA-akseli</text>
+          <text x="290" y="96" text-anchor="middle" font-size="11" fill="#4c6272">aivolisäke aktivoituu</text>
+          <text x="290" y="111" text-anchor="middle" font-size="10" fill="#4c6272">(takalohko vapauttaa ADH:n)</text>
+
+          <!-- Nuoli -->
+          <line x1="380" y1="90" x2="420" y2="90" stroke="#212B32" stroke-width="2"/>
+          <polygon points="420,90 412,86 412,94" fill="#212B32"/>
+
+          <!-- 3. Vasopressiini -->
+          <rect x="420" y="55" width="140" height="70" fill="#bcd4ec" stroke="#005EB8" stroke-width="2" rx="8"/>
+          <text x="490" y="78" text-anchor="middle" font-size="13" font-weight="700" fill="#005EB8">Vasopressiini</text>
+          <text x="490" y="94" text-anchor="middle" font-size="11" fill="#212B32">(ADH-hormoni)</text>
+          <text x="490" y="112" text-anchor="middle" font-size="10" fill="#4c6272">verenkierrossa ↑</text>
+
+          <!-- Nuoli alas -->
+          <line x1="490" y1="125" x2="490" y2="170" stroke="#212B32" stroke-width="2"/>
+          <polygon points="490,170 486,162 494,162" fill="#212B32"/>
+
+          <!-- 4. Endolymfaattinen pussi + V2-reseptori -->
+          <rect x="350" y="170" width="280" height="80" fill="#41B6E6" fill-opacity="0.25" stroke="#005EB8" stroke-width="2" rx="8"/>
+          <text x="490" y="192" text-anchor="middle" font-size="12" font-weight="700" fill="#005EB8">Endolymfaattinen pussi</text>
+          <text x="490" y="210" text-anchor="middle" font-size="11" fill="#212B32">V2-reseptorit aktivoituvat</text>
+          <text x="490" y="226" text-anchor="middle" font-size="11" fill="#212B32">→ aquaporiini-2 lisääntyy</text>
+          <text x="490" y="242" text-anchor="middle" font-size="10" fill="#4c6272">(vesikanavia syntyy enemmän)</text>
+
+          <!-- Nuoli alas + vasen -->
+          <line x1="490" y1="250" x2="490" y2="290" stroke="#212B32" stroke-width="2"/>
+          <line x1="490" y1="290" x2="200" y2="290" stroke="#212B32" stroke-width="2"/>
+          <line x1="200" y1="290" x2="200" y2="310" stroke="#212B32" stroke-width="2"/>
+          <polygon points="200,310 196,302 204,302" fill="#212B32"/>
+
+          <!-- 5. Hydrops -->
+          <rect x="60" y="310" width="280" height="60" fill="#FFE3E0" stroke="#DA291C" stroke-width="2.5" rx="8"/>
+          <text x="200" y="334" text-anchor="middle" font-size="13" font-weight="700" fill="#DA291C">Endolymfaattinen hydrops</text>
+          <text x="200" y="352" text-anchor="middle" font-size="11" fill="#212B32">→ Ménière-kohtaus</text>
+
+          <!-- Hoito-vihje oikealla -->
+          <rect x="380" y="310" width="200" height="60" fill="#F0F4F5" stroke="#007F3B" stroke-width="2" rx="8" stroke-dasharray="4 4"/>
+          <text x="480" y="328" text-anchor="middle" font-size="11" font-weight="700" fill="#007F3B">Hoito kohdistuu tähän:</text>
+          <text x="480" y="345" text-anchor="middle" font-size="10" fill="#212B32">vesijuonti, uni, CBT,</text>
+          <text x="480" y="358" text-anchor="middle" font-size="10" fill="#212B32">stressinhallinta → ADH ↓</text>
+        </svg>
+        <figcaption>Kuva 8. Stressivälitteinen vasopressiini-reitti: krooninen stressi → HPA-akselin aktivaatio → vasopressiinin (ADH) vapautuminen → V2-reseptoreiden aktivaatio endolymfaattisessa pussissa → aquaporiini-2 ↑ → endolymfaattinen hydrops → kohtaus. Reitin tunnistaminen luo perustan elämäntapainterventioille (vesijuonti, pimeä uni, stressinhallinta).</figcaption>
+      </figure>
 
       <p class="blogi-source">Lähde: <a href="https://onlinelibrary.wiley.com/doi/10.1002/lary.31272" target="_blank" rel="noopener">Phillips JS, Murdin L, Rea P, Sutton L — Cluster Analysis to Identify Clinical Subtypes of Ménière's Disease. Laryngoscope, 2024.</a></p>
     </div>
@@ -6424,6 +6797,65 @@
         <li><strong>MD-dg-potilailla</strong> anatomia on suotuisampi kirurgialle, ja endolymfaattisen pussin kirurgia (ESS) voi tehota</li>
         <li>Suomessa kuvantaminen ei ole tähän tarkoitukseen rutiinia, joten se on erikseen pyydettävä</li>
       </ul>
+
+      <figure class="figure-scientific">
+        <svg viewBox="0 0 600 450" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="img22-title img22-desc">
+          <title id="img22-title">Endolymfaattinen pussi MRI-kuvauksessa</title>
+          <desc id="img22-desc">Yksinkertaistettu MRI-tyylinen kaaviokuva, jossa endolymfaattinen pussi on korostettu sisäkorvan rakenteissa. Pussin sijainti vestibulaariakveduktin lopussa, takaraivoluun puolella. Kahdessa paneelissa vertailu MD-hp:n pieneen, vajaakehittyneeseen pussiin ja MD-dg:n normaalikokoiseen mutta degeneroituneeseen pussiin.</desc>
+          <text x="300" y="26" text-anchor="middle" font-size="15" font-weight="700" fill="#212B32">Endolymfaattinen pussi — keskeinen rakenne (Bächinger 2019)</text>
+
+          <!-- MRI-tyylinen tausta vasen -->
+          <rect x="30" y="60" width="270" height="320" fill="#212B32" stroke="#005EB8" stroke-width="2" rx="4"/>
+          <text x="165" y="80" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">MD-hp — gadolinium-MRI</text>
+
+          <!-- Sisäkorva sumea, pussi pieni -->
+          <ellipse cx="120" cy="220" rx="50" ry="60" fill="#5b6770" opacity="0.7"/>
+          <ellipse cx="170" cy="200" rx="35" ry="9" fill="none" stroke="#bcd4ec" stroke-width="2" opacity="0.7" transform="rotate(-25 170 200)"/>
+          <ellipse cx="195" cy="220" rx="30" ry="8" fill="none" stroke="#bcd4ec" stroke-width="2" opacity="0.7" transform="rotate(40 195 220)"/>
+          <ellipse cx="180" cy="240" rx="26" ry="7" fill="none" stroke="#bcd4ec" stroke-width="2" opacity="0.7" transform="rotate(85 180 240)"/>
+
+          <!-- Vestibulaariakvedukti — kapea -->
+          <line x1="220" y1="240" x2="265" y2="280" stroke="#41B6E6" stroke-width="2"/>
+          <!-- Pussi — pieni -->
+          <ellipse cx="265" cy="280" rx="10" ry="6" fill="#DA291C" stroke="#FFE3E0" stroke-width="2"/>
+
+          <!-- Selitys-nuolet -->
+          <line x1="265" y1="280" x2="240" y2="320" stroke="#DA291C" stroke-width="1.5" stroke-dasharray="3 3"/>
+          <text x="200" y="335" font-size="10" fill="#FFE3E0">Pussi pieni</text>
+          <text x="200" y="349" font-size="10" fill="#FFE3E0">(vajaakehitys)</text>
+
+          <text x="165" y="365" text-anchor="middle" font-size="11" font-weight="600" fill="#FFE3E0">MD-hp ~25 % MD-potilaista</text>
+
+          <!-- MRI-tyylinen oikea -->
+          <rect x="320" y="60" width="270" height="320" fill="#212B32" stroke="#005EB8" stroke-width="2" rx="4"/>
+          <text x="455" y="80" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">MD-dg — gadolinium-MRI</text>
+
+          <ellipse cx="410" cy="220" rx="50" ry="60" fill="#5b6770" opacity="0.7"/>
+          <ellipse cx="460" cy="200" rx="35" ry="9" fill="none" stroke="#bcd4ec" stroke-width="2" opacity="0.7" transform="rotate(-25 460 200)"/>
+          <ellipse cx="485" cy="220" rx="30" ry="8" fill="none" stroke="#bcd4ec" stroke-width="2" opacity="0.7" transform="rotate(40 485 220)"/>
+          <ellipse cx="470" cy="240" rx="26" ry="7" fill="none" stroke="#bcd4ec" stroke-width="2" opacity="0.7" transform="rotate(85 470 240)"/>
+
+          <!-- Vestibulaariakvedukti — leveämpi -->
+          <path d="M 510 240 L 555 270 L 553 290 L 508 260 Z" fill="#41B6E6" stroke="#41B6E6" stroke-width="1.5"/>
+          <!-- Pussi — normaalikokoinen, mutta degeneraatio (täplitetty) -->
+          <ellipse cx="565" cy="285" rx="20" ry="12" fill="#41B6E6" fill-opacity="0.9" stroke="#FFE3E0" stroke-width="2"/>
+          <circle cx="558" cy="282" r="2" fill="#DA291C"/>
+          <circle cx="568" cy="288" r="2" fill="#DA291C"/>
+          <circle cx="572" cy="280" r="2" fill="#DA291C"/>
+
+          <line x1="565" y1="285" x2="540" y2="325" stroke="#41B6E6" stroke-width="1.5" stroke-dasharray="3 3"/>
+          <text x="495" y="340" font-size="10" fill="#bcd4ec">Pussi normaali,</text>
+          <text x="495" y="354" font-size="10" fill="#bcd4ec">degeneraatio (▪ ▪ ▪)</text>
+
+          <text x="455" y="365" text-anchor="middle" font-size="11" font-weight="600" fill="#bcd4ec">MD-dg ~75 % MD-potilaista</text>
+
+          <!-- Yhteenveto alla -->
+          <text x="300" y="410" text-anchor="middle" font-size="11" fill="#212B32">Bächinger ym. 2019 osoitti, että vestibulaariakveduktin morfologia (kulma, paksuus)</text>
+          <text x="300" y="425" text-anchor="middle" font-size="11" fill="#212B32">korreloi obduktiotutkimusten endolymfaattisen pussin patologisiin muutoksiin.</text>
+          <text x="300" y="442" text-anchor="middle" font-size="10" font-weight="600" fill="#005EB8">→ MRI-löydös = aito biologinen vauriotyyppi, ei pelkkä variaatio</text>
+        </svg>
+        <figcaption>Kuva 10. Endolymfaattinen pussi gadolinium-tehosteisessa MRI-kuvassa. MD-hp:llä pussi on pieni ja vajaakehittynyt (kehityshäiriö); MD-dg:llä pussi on normaalikokoinen mutta sisältää degeneraatiomerkkejä. Bächingerin (2019) keskeinen havainto: radiologinen löydös ennustaa kudostason patologiaa, mikä tekee endotypityksestä luotettavaa.</figcaption>
+      </figure>
 
       <p class="blogi-source">Lähde: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6459933/" target="_blank" rel="noopener">Bächinger D, Brühlmann C, Honegger T et al. — Endotype-Phenotype Patterns in Meniere's Disease Based on Gadolinium-Enhanced MRI of the Vestibular Aqueduct. Front Neurol, 2019.</a></p>
     </div>
@@ -10152,9 +10584,18 @@ document.querySelectorAll('.landing-card[data-goto-tab], .landing-stat[data-goto
 
     var html = '';
 
-    // 1) HEADER
+    // 1) HEADER (sis. pienen sisäkorva-ikonin print-bannerina)
     html += '<div class="print-profile-header">';
-    html += '  <h1>Ménière-oirekyselyn raportti</h1>';
+    html += '  <div class="print-profile-banner">';
+    html += '    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="print-profile-banner-icon">';
+    html += '      <ellipse cx="20" cy="16" rx="8" ry="2.5" stroke="#212B32" fill="none" stroke-width="1.5"/>';
+    html += '      <ellipse cx="20" cy="16" rx="2.5" ry="8" stroke="#212B32" fill="none" stroke-width="1.5"/>';
+    html += '      <ellipse cx="20" cy="16" rx="6" ry="6" stroke="#212B32" fill="none" stroke-width="1.5" transform="rotate(45 20 16)"/>';
+    html += '      <path d="M22,32 Q28,28 28,22 Q28,16 22,16" stroke="#212B32" fill="none" stroke-width="2" stroke-linecap="round"/>';
+    html += '      <path d="M14,40 Q20,36 24,40 Q28,44 34,40" stroke="#212B32" fill="none" stroke-width="1.5" stroke-linecap="round"/>';
+    html += '    </svg>';
+    html += '    <h1>Ménière-oirekyselyn raportti</h1>';
+    html += '  </div>';
     html += '  <p class="print-profile-subhead">Yhteenveto terveydenhuollon ammattilaiselle keskustelun pohjaksi</p>';
     html += '  <div class="print-profile-meta">';
     html += '    <div class="print-profile-meta-item"><strong>Päivämäärä:</strong> ' + esc(fmtDate()) + '</div>';
