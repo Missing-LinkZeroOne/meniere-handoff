@@ -1,0 +1,50 @@
+# Node / npm
+node_modules/
+package-lock.json
+yarn.lock
+npm-debug.log
+yarn-error.log
+.npm/
+
+# OS-tiedostot
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Editorit
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.settings/
+
+# Väliaikaiset tiedostot
+*.tmp
+*.bak
+*.log
+.cache/
+
+# Build-tuotokset (jos koskaan otetaan käyttöön)
+dist/
+build/
+out/
+
+# Testien tuotokset
+coverage/
+.nyc_output/
+
+# Vanhat versiotiedostot — Git hoitaa versioinnin
+meniere_alatyypit_v*.html
+test_v*.js
+
+# Salaisuudet (vaikka tässä projektissa ei pitäisi olla)
+.env
+.env.local
+*.pem
