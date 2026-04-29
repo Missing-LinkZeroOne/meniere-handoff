@@ -2171,6 +2171,208 @@
     .arki-a { padding: 4px 18px 18px; font-size: 16px; }
   }
   /* ==================================================================
+     SITE FOOTER — alapalkki (tietosuoja, saavutettavuus, vastuuvapaus)
+     ================================================================== */
+  .site-footer {
+    background: var(--bg-card);
+    border-top: 1px solid var(--border);
+    margin-top: 32px;
+    padding: 22px 0;
+  }
+  .site-footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .site-footer-tagline {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--text-muted);
+    flex: 1 1 320px;
+  }
+  .site-footer-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 12px;
+    align-items: center;
+  }
+  .site-footer-link {
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--nhs-blue);
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    -webkit-tap-highlight-color: rgba(0, 94, 184, 0.15);
+    touch-action: manipulation;
+    min-height: 36px;
+  }
+  .site-footer-link:hover {
+    background: var(--blue-50);
+    text-decoration: none;
+  }
+  .site-footer-link:focus {
+    outline: 4px solid var(--warning-bg);
+    outline-offset: 2px;
+    background: var(--warning-bg);
+    color: var(--text);
+  }
+
+  @media (max-width: 600px) {
+    .site-footer-inner { padding: 0 20px; flex-direction: column; align-items: flex-start; }
+    .site-footer-tagline { font-size: 13px; }
+  }
+
+  /* ==================================================================
+     INFO-MODAALI — Tietosuoja, saavutettavuus, vastuuvapaus, tekijät
+     ================================================================== */
+  .info-modal {
+    max-width: 800px !important;
+    padding: 0 !important;
+    border-top: 8px solid var(--nhs-blue);
+  }
+  .info-modal-header {
+    background: var(--nhs-blue);
+    color: #ffffff;
+    padding: 22px 28px 18px;
+    margin: 0;
+    position: relative;
+  }
+  .info-modal-header h2 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 22px;
+    font-weight: 700;
+  }
+  .info-modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: rgba(255,255,255,0.2);
+    border: 2px solid #ffffff;
+    color: #ffffff;
+    font-size: 22px;
+    font-weight: 700;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    line-height: 1;
+    -webkit-tap-highlight-color: rgba(255,255,255,0.3);
+    touch-action: manipulation;
+  }
+  .info-modal-close:hover, .info-modal-close:focus {
+    background: #ffffff;
+    color: var(--nhs-blue);
+  }
+  .info-modal-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    padding: 12px 16px;
+    background: var(--blue-50);
+    border-bottom: 1px solid var(--border);
+  }
+  .info-modal-tab {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 999px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: rgba(0, 94, 184, 0.15);
+    touch-action: manipulation;
+    min-height: 36px;
+    white-space: nowrap;
+  }
+  .info-modal-tab:hover {
+    background: var(--blue-50);
+    color: var(--nhs-blue);
+    border-color: var(--nhs-blue);
+  }
+  .info-modal-tab:focus {
+    outline: 3px solid var(--warning-bg);
+    outline-offset: 2px;
+  }
+  .info-modal-tab.active {
+    background: var(--nhs-blue);
+    color: #ffffff;
+    border-color: var(--nhs-blue);
+  }
+  .info-modal-body {
+    padding: 24px 28px;
+    background: var(--bg-card);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  .info-section[hidden] { display: none; }
+  .info-section h3 {
+    margin: 0 0 10px;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--nhs-blue);
+  }
+  .info-section h4 {
+    margin: 22px 0 8px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .info-section p {
+    margin: 0 0 12px;
+  }
+  .info-section p.info-lead {
+    background: var(--blue-50);
+    border-left: 4px solid var(--nhs-blue);
+    padding: 12px 16px;
+    margin-bottom: 16px;
+  }
+  .info-section ul, .info-section ol {
+    margin: 6px 0 12px;
+    padding-left: 24px;
+  }
+  .info-section li {
+    margin-bottom: 6px;
+    line-height: 1.55;
+  }
+  .info-section a {
+    color: var(--nhs-blue);
+    word-break: break-word;
+  }
+  .info-section code {
+    background: var(--gray-50);
+    border: 1px solid var(--border);
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-size: 13px;
+    font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  }
+
+  @media (max-width: 600px) {
+    .info-modal-header { padding: 18px 22px 14px; }
+    .info-modal-header h2 { font-size: 18px; }
+    .info-modal-tabs { padding: 10px 12px; }
+    .info-modal-tab { font-size: 12px; padding: 7px 12px; }
+    .info-modal-body { padding: 18px 22px; font-size: 14px; }
+    .info-section h3 { font-size: 19px; }
+  }
+
+  /* ==================================================================
      ARKI — toissijainen subtab-navigaatio (Q&A vs. Elämäntavat ja näyttö)
      ================================================================== */
   .arki-subtab-nav {
@@ -5061,6 +5263,8 @@
 
 </div><!-- /.arki-subview elamantavat -->
 
+</div><!-- /panel-arki -->
+
 <div class="tab-panel" id="panel-lahteet" role="tabpanel">
 
 <div class="sources-intro">
@@ -6802,13 +7006,164 @@
 
 </div>
 
-<footer>
-  Tieto perustuu kirjallisuuskatsauksiin: Frejo et al. 2016/2017, Bächinger &amp; Eckhard 2019/2024, Chari et al. 2025, Yuan et al. 2025, AAO-HNS 2020 -ohjeistus.
-  Tämä materiaali on yleistietoa, ei lääketieteellistä neuvontaa. Hoitopäätökset tehdään aina KNK-erikoislääkärin arvion perusteella.
-</footer>
-
 </div><!-- /content-area -->
 </div><!-- /container -->
+
+<footer class="site-footer" role="contentinfo">
+  <div class="site-footer-inner">
+    <p class="site-footer-tagline">Ménière-tietopalvelu — opetuksellinen materiaali, ei lääketieteellistä neuvontaa. Hoitopäätökset tehdään aina KNK-erikoislääkärin arvion perusteella.</p>
+    <nav class="site-footer-nav" aria-label="Tietosuoja ja saavutettavuus">
+      <button type="button" class="site-footer-link" data-info-section="privacy">Tietosuoja</button>
+      <button type="button" class="site-footer-link" data-info-section="accessibility">Saavutettavuus</button>
+      <button type="button" class="site-footer-link" data-info-section="disclaimer">Vastuuvapaus</button>
+      <button type="button" class="site-footer-link" data-info-section="credits">Tekijät &amp; lähteet</button>
+    </nav>
+  </div>
+</footer>
+
+<!-- Tietosuoja, saavutettavuus ja vastuuvapauslauseke -modaali -->
+<div class="modal-overlay" id="info-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="info-modal-title">
+  <div class="modal info-modal">
+    <div class="info-modal-header">
+      <button type="button" class="info-modal-close" id="info-modal-close" aria-label="Sulje">×</button>
+      <h2 id="info-modal-title">Tietosuoja, saavutettavuus ja käyttöehdot</h2>
+    </div>
+    <nav class="info-modal-tabs" role="tablist" aria-label="Tietosuoja-osiot">
+      <button type="button" class="info-modal-tab active" data-info-section="privacy" role="tab" aria-selected="true">Tietosuoja</button>
+      <button type="button" class="info-modal-tab" data-info-section="accessibility" role="tab" aria-selected="false">Saavutettavuus</button>
+      <button type="button" class="info-modal-tab" data-info-section="disclaimer" role="tab" aria-selected="false">Vastuuvapaus</button>
+      <button type="button" class="info-modal-tab" data-info-section="credits" role="tab" aria-selected="false">Tekijät &amp; lähteet</button>
+    </nav>
+
+    <div class="info-modal-body">
+
+      <section class="info-section active" data-info-section-content="privacy">
+        <h3>Tietosuojaseloste</h3>
+        <p class="info-lead"><strong>Tämä verkkosivusto ei kerää käyttäjistään mitään henkilötietoja.</strong></p>
+
+        <h4>Mitä tämä tarkoittaa käytännössä?</h4>
+        <ul>
+          <li>Sivusto on yksittäinen staattinen HTML-tiedosto, jolla ei ole palvelinpuolen logiikkaa eikä tietokantaa.</li>
+          <li><strong>Oirekyselyn vastaukset ovat vain ja ainoastaan oman selaimesi muistissa.</strong> Niitä ei lähetetä mihinkään palvelimelle eikä tallenneta pysyvästi. Kun suljet sivun tai päivität sen, vastaukset häviävät.</li>
+          <li>Kyselyn tulokset näkyvät vain sinulle. Tulostettava raportti rakentuu paikallisesti selaimessasi — sen tulostaminen tai tallentaminen PDF:ksi on yksinomaan sinun valinta.</li>
+          <li>Sanaston haut ja Blogi-välilehden navigointi tapahtuvat täysin selaimessa. Hakutekstejä ei lähetetä mihinkään.</li>
+        </ul>
+
+        <h4>Käytetäänkö evästeitä?</h4>
+        <p>Sivusto <strong>ei käytä evästeitä</strong>. Ainoa selaimen pysyvä tallenne on <code>localStorage</code>-arvo avaimella <code>meniere-text-size</code>, joka tallentaa tekstikoon valintasi (A−/A/A+, arvot small/normal/large). Tämä ei ole henkilötieto eikä mahdollista tunnistamista. Voit nollata sen selaimesi asetuksista (Tyhjennä selaustiedot → Sivuston tiedot/localStorage).</p>
+
+        <h4>Käytetäänkö analytiikkaa tai seurantaa?</h4>
+        <p>Sivustolla <strong>ei ole analytiikkaa, seurantapikseliä, mainoksia eikä kolmannen osapuolen skriptejä</strong>. Lähdelinkit (mm. PubMed, Frontiers, AAO-HNSF, Käypä hoito) avautuvat erillisillä välilehdillä, ja niihin sovelletaan kyseisten palveluiden omia tietosuojakäytäntöjä.</p>
+
+        <h4>IP-osoitteet ja palveluntarjoaja</h4>
+        <p>Sivusto on julkaistu GitHub Pages -palvelussa (omistaja: GitHub, Inc.). Palveluntarjoaja voi kerätä teknisiä lokitietoja (mm. IP-osoite, selaintyyppi) palvelun toimimisen ja tietoturvan varmistamiseksi. Tämä on GitHub Pages -palvelun tietosuojakäytännön piiriin kuuluva tekninen toiminto, eikä sivuston ylläpitäjällä ole pääsyä näihin lokeihin. GitHub Pages -tietosuojakäytäntö on luettavissa osoitteessa <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener">docs.github.com/en/site-policy</a>.</p>
+
+        <h4>Henkilötietojen käsittely (GDPR)</h4>
+        <p>Sivusto <strong>ei käsittele henkilötietoja</strong> EU:n yleisen tietosuoja-asetuksen <em>(GDPR, EU 2016/679 art. 4)</em> tarkoittamassa merkityksessä. Tämän vuoksi rekisterinpitäjää tai tietosuojavastaavaa ei ole nimetty, eikä tietosuoja-asetuksen mukaisia tiedonsaanti-, oikaisu- tai poistopyyntöjä ole tarpeen esittää.</p>
+
+        <h4>Sinulla on aina oikeus</h4>
+        <ul>
+          <li>Tarkastella selaimesi tallenteita (localStorage, evästeet) ja tyhjentää ne</li>
+          <li>Käyttää sivustoa selaimen yksityisessä tilassa (incognito), jolloin tekstikoon valinta ei tallennu</li>
+          <li>Lopettaa sivuston käyttö milloin tahansa ilman jälkiseuraamuksia</li>
+        </ul>
+      </section>
+
+      <section class="info-section" data-info-section-content="accessibility" hidden>
+        <h3>Saavutettavuusseloste</h3>
+        <p class="info-lead">Sivusto pyrkii noudattamaan <strong>EU:n saavutettavuusdirektiivin (Directive (EU) 2016/2102)</strong> ja kansallisen <a href="https://www.finlex.fi/fi/laki/ajantasa/2019/20190306" target="_blank" rel="noopener">Lain digitaalisten palvelujen tarjoamisesta (306/2019)</a> vaatimuksia <strong>WCAG 2.2 AA -tasolla</strong>.</p>
+
+        <h4>Miten saavutettavuus on huomioitu</h4>
+        <ul>
+          <li><strong>Visuaalinen kieli</strong> perustuu NHS Design System v10 -ohjeistukseen, joka täyttää WCAG 2.2 AA -tason kontrastivaatimukset.</li>
+          <li><strong>Tekstikoko</strong> on säädettävissä yläpalkista (A−/A/A+); tukee jopa 200 % suurennusta selaimen omilla työkaluilla.</li>
+          <li><strong>Tap-target-kokojen minimit:</strong> 56×56 px kelluvalle akuuttinapille, 48×48 px muille napeille (täyttää WCAG 2.5.5 -kriteerin).</li>
+          <li><strong>Näppäimistöllä</strong> voidaan navigoida koko sivustolla (Tab, Enter, Space, Esc); kaikilla interaktiivisilla elementeillä on focus-tila.</li>
+          <li><strong>Focus-tila</strong> on aina näkyvä 4 px keltaisella outlinella (NHS-yhteensopiva).</li>
+          <li><strong>Aria-attribuutit</strong> käytössä modaaleissa (<code>role="dialog"</code>, <code>aria-modal</code>, <code>aria-labelledby</code>), navigaatiossa ja tab-painikkeissa.</li>
+          <li><strong>Selkeä kieli:</strong> kohderyhmä on noin 70-vuotiaat ja heidän läheisensä; tieteelliset termit linkittyvät automaattisesti sanastoon.</li>
+          <li><strong>iOS Safari -yhteensopivuus:</strong> <code>touch-action: manipulation</code> kaikkiin klikattaviin, double-tap-zoom estetty.</li>
+        </ul>
+
+        <h4>Tunnistetut rajoitteet</h4>
+        <ul>
+          <li>Sivusto on saatavilla vain suomeksi.</li>
+          <li>Sisältö on tekstipohjaista; ei video- tai audiosisältöjä, joten erillistä tekstitystä tai kuvailutulkkausta ei tarvita.</li>
+          <li>iOS Safari versioita 16.4 vanhempia tuetaan rajoitetusti (yksittäiset regex-piirteet).</li>
+        </ul>
+
+        <h4>Palaute saavutettavuudesta</h4>
+        <p>Tämä on henkilökohtainen oppimisprojekti, joten muodollista valitusprosessia ei ole. Jos kohtaat saavutettavuusongelmia, voit avata GitHub-tiketin sivuston repossa: <a href="https://github.com/Missing-LinkZeroOne/meniere-handoff" target="_blank" rel="noopener">github.com/Missing-LinkZeroOne/meniere-handoff</a>.</p>
+      </section>
+
+      <section class="info-section" data-info-section-content="disclaimer" hidden>
+        <h3>Vastuuvapauslauseke</h3>
+        <p class="info-lead">Tämä verkkosivusto on opetuksellinen tukimateriaali, <strong>ei lääketieteellinen palvelu</strong>.</p>
+
+        <h4>Sivusto EI ole</h4>
+        <ul>
+          <li>Lääketieteellinen diagnoosi tai henkilökohtainen hoitosuositus</li>
+          <li>Korvaa korva-, nenä- ja kurkkutautien erikoislääkärin (KNK) arviota</li>
+          <li>Korvaa Käypä hoito -suositusta tai Suomalaisen Lääkäriseura Duodecimin ohjeita</li>
+          <li>Lääketieteellistä neuvontaa kiireellisessä tilanteessa</li>
+        </ul>
+
+        <h4>Sivusto ON</h4>
+        <ul>
+          <li>Kokoelma vertaisarvioituihin tutkimuksiin perustuvaa selkokielistä tietoa Ménièren taudista</li>
+          <li>Apuväline ymmärtää sairauden mekanismeja, alatyyppejä ja hoitovaihtoehtoja</li>
+          <li>Keskustelun tuki hoitavan lääkärin kanssa</li>
+        </ul>
+
+        <h4>Hoitopäätökset</h4>
+        <p>Kaikki hoitopäätökset (lääkitys, leikkaukset, intratympaaniset hoidot, ablatiiviset toimenpiteet jne.) tehdään aina:</p>
+        <ol>
+          <li><strong>Kirjallisena diagnoosina</strong> KNK-erikoislääkärin tekemänä, audiogrammin tukemana</li>
+          <li><strong>Yksilöllisenä hoitosuunnitelmana</strong> hoitavan lääkärin kanssa neuvotellen</li>
+          <li><strong>Suomessa Käypä hoito -suosituksen ja AAO-HNS 2020 -ohjeistuksen mukaisesti</strong></li>
+        </ol>
+
+        <h4>Tieteellisten lähteiden ajantasaisuus</h4>
+        <p>Sisältö perustuu vertaisarvioituihin tutkimuksiin pääosin vuosilta 2010–2025. Lääketieteen tieto kehittyy kuitenkin nopeasti — yksittäiset johtopäätökset voivat muuttua uusilla tutkimuksilla. Suosittelemme aina vahvistamaan keskeiset tiedot omalta lääkäriltäsi tai tuoreesta tutkimuskirjallisuudesta (PubMed, Cochrane).</p>
+
+        <h4>Akuuttitilanteessa</h4>
+        <p>Tämä sivusto <strong>ei korvaa hätäpalvelua</strong>. Akuuteissa tilanteissa soita <strong>112</strong>. Kohtaus, johon liittyy uusia neurologisia oireita (puhehäiriö, raajan halvaus, kaksoiskuva, voimakas päänsärky), edellyttää välitöntä päivystysarvio.</p>
+      </section>
+
+      <section class="info-section" data-info-section-content="credits" hidden>
+        <h3>Tekijät, lähteet ja versio</h3>
+
+        <h4>Sivuston tekijä</h4>
+        <p>Henkilökohtainen oppimisprojekti.</p>
+
+        <h4>Tietopohjan keskeiset lähteet</h4>
+        <ul>
+          <li>AAO-HNS Clinical Practice Guideline (Basura ym. 2020)</li>
+          <li>Chari ym. (2025): A modern conceptual framework for study and treatment of Meniere's disease</li>
+          <li>Frejo ym. (2016, 2017, 2022, 2024): kliininen klusterointi ja immunologia</li>
+          <li>Bächinger ym. (2019, 2021): anatominen endotyypitys MD-hp/MD-dg</li>
+          <li>Yuan ym. (2025): immunologiset mekanismit Ménièressä</li>
+          <li>Lin ym. (2024): MD-hp ja sisäkorvaistute-ehdokkuus</li>
+          <li>Patel ym. (2016): Lancet RCT — IT methylprednisolone vs gentamicin</li>
+          <li>Lopez-Escamez ym. (2015): Bárány Society -diagnoosikriteerit</li>
+          <li>Cochrane (2018, 2023): elämäntapainterventiot</li>
+          <li>Käypä hoito -suositukset (Suomalainen Lääkäriseura Duodecim)</li>
+        </ul>
+        <p>Täysi 43 tutkimuksen kirjallisuusluettelo on <strong>Lähdekirjasto</strong>-välilehdellä, ja niiden suomenkieliset selkokieliset referaatit <strong>Blogi</strong>-välilehdellä.</p>
+
+        <h4>Lähdekoodi ja versiointi</h4>
+        <p>Sivuston lähdekoodi on avoimesti saatavilla GitHubissa: <a href="https://github.com/Missing-LinkZeroOne/meniere-handoff" target="_blank" rel="noopener">github.com/Missing-LinkZeroOne/meniere-handoff</a>. Versionhallinta tapahtuu Git-historian kautta.</p>
+
+        <h4>Tekijänoikeudet ja käyttöehdot</h4>
+        <p>Sivusto on henkilökohtainen oppimisprojekti. Sisältö perustuu julkisesti saatavilla oleviin tieteellisiin lähteisiin, ja sitä saa jakaa vapaasti henkilökohtaisessa käytössä lähde mainiten. Ei kaupalliseen käyttöön ilman erillistä lupaa.</p>
+
+        <h4>Tekninen toteutus</h4>
+        <p>Sivusto on toteutettu yhtenä staattisena HTML-tiedostona ilman ulkoisia riippuvuuksia. Tämä mahdollistaa offline-käytön kerran ladattuna sekä helpon julkaisun ja arkistoinnin. Visuaalinen kieli noudattaa NHS Design System v10 -ohjeistusta.</p>
+      </section>
+
+    </div>
+  </div>
+</div>
 
 <div class="modal-overlay" id="modal-overlay">
   <div class="modal" id="modal-content"></div>
@@ -7572,6 +7927,64 @@ overlay.addEventListener('click', (e) => {
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closeModal();
 });
+
+// Info-modaali: tietosuoja, saavutettavuus, vastuuvapaus, tekijät & lähteet.
+// Avataan footerin linkeistä; sisäinen tab-navigaatio vaihtaa osiota.
+(function setupInfoModal() {
+  var overlay = document.getElementById('info-modal-overlay');
+  if (!overlay) return;
+  var closeBtn = document.getElementById('info-modal-close');
+  var modalContent = overlay.querySelector('.info-modal');
+  var openers = document.querySelectorAll('.site-footer-link[data-info-section]');
+  var tabs = Array.from(overlay.querySelectorAll('.info-modal-tab'));
+  var sections = Array.from(overlay.querySelectorAll('.info-section'));
+
+  function showSection(name) {
+    tabs.forEach(function(t) {
+      var on = t.dataset.infoSection === name;
+      t.classList.toggle('active', on);
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    sections.forEach(function(s) {
+      var on = s.dataset.infoSectionContent === name;
+      s.classList.toggle('active', on);
+      if (on) s.removeAttribute('hidden');
+      else s.setAttribute('hidden', '');
+    });
+    // Vieritä modaalin runko alkuun kun osio vaihtuu
+    var body = overlay.querySelector('.info-modal-body');
+    if (body) body.scrollTop = 0;
+  }
+
+  function openModal(section) {
+    showSection(section || 'privacy');
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    if (closeBtn) { try { closeBtn.focus(); } catch(_) {} }
+  }
+  function closeModal() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  openers.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      openModal(btn.dataset.infoSection);
+    });
+  });
+  tabs.forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      showSection(tab.dataset.infoSection);
+    });
+  });
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', function(e) {
+    if (e.target === overlay) closeModal();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && overlay.classList.contains('open')) closeModal();
+  });
+})();
 
 // MD-logo → vaihda etusivu-välilehteen ja vieritä ylös
 (function setupLogoHomeLink() {
@@ -8847,7 +9260,9 @@ const SKIP_SELECTORS = [
   '.blogi-placeholder',   // blogi-välilehden "tulossa lisää" -laatikko
   '.blogi-cat-title',     // blogi-välilehden kategoria-otsikko
   '.blogi-cat-nav',       // blogi-välilehden sticky kategoria-navigaatio
-  '.arki-subtab-nav'      // arki-välilehden subtab-navigaatio (Q&A vs Elämäntavat)
+  '.arki-subtab-nav',     // arki-välilehden subtab-navigaatio (Q&A vs Elämäntavat)
+  '.site-footer',         // alapalkki tietosuoja-/saavutettavuuslinkkeineen
+  '.info-modal'           // tietosuoja-modaali (oma sisältö, omat linkit)
 ];
 
 function shouldSkip(el) {
