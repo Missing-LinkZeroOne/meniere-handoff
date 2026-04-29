@@ -2148,6 +2148,76 @@
     .arki-a { padding: 4px 18px 18px; font-size: 16px; }
   }
   /* ==================================================================
+     ARKI — toissijainen subtab-navigaatio (Q&A vs. Elämäntavat ja näyttö)
+     ================================================================== */
+  .arki-subtab-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0 0 24px;
+    padding: 12px 14px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+  }
+  .arki-subtab-link {
+    flex: 1 1 auto;
+    padding: 10px 18px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: inherit;
+    color: var(--text-muted);
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: rgba(0, 94, 184, 0.15);
+    touch-action: manipulation;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+    min-height: 44px;
+    text-align: center;
+  }
+  .arki-subtab-link:hover {
+    background: var(--blue-50);
+    color: var(--nhs-blue);
+    border-color: var(--blue-100);
+  }
+  .arki-subtab-link:focus {
+    outline: 4px solid var(--warning-bg);
+    outline-offset: 2px;
+    background: var(--warning-bg);
+    color: var(--text);
+  }
+  .arki-subtab-link.active {
+    background: var(--nhs-blue);
+    color: #ffffff;
+    border-color: var(--nhs-blue);
+  }
+  .arki-subtab-link.active:hover {
+    background: var(--nhs-dark-blue);
+    border-color: var(--nhs-dark-blue);
+    color: #ffffff;
+  }
+  .arki-subview[hidden] { display: none; }
+
+  /* Näyttötaso-tagi accordionin otsikossa */
+  .arki-q summary .treatment-step-evidence {
+    margin-left: 10px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 2px 8px;
+    border-radius: 3px;
+    vertical-align: middle;
+  }
+
+  @media (max-width: 480px) {
+    .arki-subtab-nav { padding: 10px 12px; gap: 6px; }
+    .arki-subtab-link { font-size: 14px; padding: 9px 14px; }
+  }
+
+  /* ==================================================================
      BLOGI — tieteellisten tutkimusten selkokielinen referointi suomeksi.
      Rakenne hyödyntää <details>/<summary>-mallia kuten Arki-välilehti.
      ================================================================== */
@@ -4091,6 +4161,13 @@
 
 <div class="tab-panel" id="panel-arki" role="tabpanel">
 
+<nav class="arki-subtab-nav" aria-label="Arjen näkymät">
+  <button type="button" class="arki-subtab-link active" data-subview="kysymykset" aria-pressed="true">Arjen kysymyksiä</button>
+  <button type="button" class="arki-subtab-link" data-subview="elamantavat" aria-pressed="false">Elämäntavat ja näyttö</button>
+</nav>
+
+<div class="arki-subview" data-subview-content="kysymykset">
+
 <div class="arki-intro">
   <h2>Arjen kysymyksiä Ménièren kanssa</h2>
   <p class="lead">Vastauksia tavallisimpiin kysymyksiin diagnoosin jälkeen. Klikkaa kysymystä avataksesi vastauksen. Tieto perustuu Traficomin ajoterveysohjeisiin, Käypä hoito -suositukseen ja kansainvälisiin Ménière-yhdistysten potilasoppaisiin.</p>
@@ -4525,7 +4602,423 @@
   <strong>Huom!</strong> Nämä ovat yleisiä ohjeita ja vastauksia. Yksilöllinen tilanteesi voi olla erilainen — keskustele aina hoitavan lääkärin kanssa konkreettisista päätöksistä, etenkin ajamisesta, työkykyarvioista ja lääkityksestä.
 </div>
 
+</div><!-- /.arki-subview kysymykset -->
+
+<div class="arki-subview" data-subview-content="elamantavat" hidden>
+
+<div class="arki-intro">
+  <h2>Mikä todella auttaa? — Tutkimuksen valossa</h2>
+  <p class="lead">Tällä sivulla puretaan tieteellinen näyttö Ménièren taudin yleisimmistä elämäntapasuosituksista. Kategoriat on jaoteltu sen mukaan, kuinka vahvaa tutkimusnäyttöä niiden tueksi on.</p>
+  <p class="lead"><strong>Tärkeä huomautus:</strong> Cochrane-katsaus 2023 totesi, että Ménièren elämäntapainterventioista on hyvin vähän satunnaistettua RCT-näyttöä. Tämä <em>ei tarkoita, että suositukset olisivat vääriä</em> — monilla potilailla tietyt muutokset selvästi auttavat. Mutta tarkkojen vaikuttavuuksien arvioiminen vaatii lisätutkimusta. Yksilölliset reaktiot vaihtelevat — pidä oirepäiväkirjaa, se on usein tärkeämpi työkalu kuin yleisten ohjeiden noudattaminen sokeasti.</p>
 </div>
+
+<div class="arki-categories">
+
+  <details class="arki-q">
+    <summary>🥗 1. Ruoka ja juoma <span class="treatment-step-evidence evidence-limited">rajallinen</span></summary>
+    <div class="arki-a">
+      <p>Suolarajoitus, kofeiinin vähentäminen ja alkoholin välttäminen ovat olleet ensilinjan suosituksia Ménière-potilaille vuosikymmeniä, ja niitä noudattaa yli 80 % kliinikoista. <strong>Korkealuokkaista RCT-näyttöä näiden tueksi ei kuitenkaan ole.</strong></p>
+
+      <p><strong>Keskeiset katsaukset:</strong></p>
+      <ul>
+        <li><strong>Cochrane 2018</strong> (Hussain ym.): suolan, kofeiinin ja alkoholin rajoittaminen — <em>ei yhtään RCT:tä</em> joka olisi täyttänyt katsauksen sisäänottokriteerit</li>
+        <li><strong>Cochrane 2023</strong> (Webster ym.): laajempi katsaus — vain 2 RCT:tä (n=274), näytön taso "very low" GRADE-asteikolla</li>
+        <li><strong>Mendelian randomisation 2024</strong> (Liu ym., Front Nutr): geenivariantteja käyttävä syy-yhteysanalyysi <em>ei löytänyt yhteyttä</em> suolan, kahvin tai alkoholin saannin ja MD:n riskin välillä</li>
+      </ul>
+
+      <p>Patofysiologinen perustelu suolarajoitukselle perustuu ajatukseen <strong>endolymfan tilavuuden alentamisesta</strong> — vähemmän natriumia → alempi plasman aldosteroni → muuttunut ionitasapaino sisäkorvassa. Mekanismi on uskottava, mutta sen kliinistä merkittävyyttä ei ole pystytty osoittamaan satunnaistetulla tutkimuksella.</p>
+
+      <p><strong>Tärkeä erottelu:</strong> Sairastumisriski (epidemiologiset tutkimukset) ja kohtausten laukeaminen jo sairastuneilla (kliininen kokemus) ovat eri asioita. Vaikka alkoholi ei lisäisi sairastumisriskiä, se voi yksilöillä laukaista kohtauksia.</p>
+
+      <h3>Mitä tämä tarkoittaa käytännössä</h3>
+      <ul>
+        <li><strong>Suolarajoitus alle 5 g/vrk (≈ 2 g natriumia):</strong> yleisesti suositeltua, koska se on muutenkin terveellistä sydämen ja verenpaineen kannalta. Yksilöllinen vaste vaihtelee — pidä päiväkirjaa parin kuukauden ajan kohtausten taajuudesta.</li>
+        <li><strong>Kahvi:</strong> aloita rajoittamalla 1–2 kuppiin/vrk ja seuraa. Jos huomaat selvän yhteyden, vähennä lisää.</li>
+        <li><strong>Alkoholi:</strong> vältä akuutissa kohtausvaiheessa. Vakaalla kaudella voit kokeilla pieniä määriä (esim. lasi valkoviiniä) ja seurata seuraavan vuorokauden ajan.</li>
+        <li><strong>MSG (E621), valmisruoat, leikkeleet:</strong> vähennä — niissä on usein huomaamatta paljon natriumia, ja MSG voi laukaista myös migreenityyppisiä oireita.</li>
+        <li><strong>Riittävä juominen:</strong> 1,5–2 litraa vettä päivässä — tästä lisää kategoriassa 2.</li>
+      </ul>
+
+      <h3>Suositellut toimintatavat</h3>
+      <ul>
+        <li>Vältä einesruokia, leikkeleitä, suolakaloja ja savustettuja tuotteita</li>
+        <li>Lue tuoteselosteet — etsi natriumpitoisuus per annos</li>
+        <li>Käytä yrttejä ja mausteita suolan sijaan</li>
+        <li>Noudata Mediterranean- tai DASH-tyyppistä ruokavaliota (paljon kasviksia, oliiviöljy, kala, vähän jalostettua sokeria)</li>
+        <li>Omega-3 (rasvainen kala 2× viikossa) on yleinen anti-inflammatorinen suositus</li>
+      </ul>
+
+      <h3>Mitä välttää tai mistä keskustella lääkärin kanssa</h3>
+      <ul>
+        <li><strong>Internetin "Ménière-ruokavaliot":</strong> moni niistä on liioiteltua tai kaupallista — älä luota niihin kritiikittömästi</li>
+        <li><strong>Ravintolisät:</strong> älä aloita keskustelematta lääkärin kanssa, etenkin jos käytät verenpaine- tai diureettilääkkeitä</li>
+        <li><strong>Magnesium ja B2 (riboflaviini):</strong> hyödyllisiä migreeniprofylaksissa ja siten mahdollisesti migreenityyppisessä Ménièressä — annosta ei pidä ylittää</li>
+      </ul>
+
+      <div class="arki-source">Lähteet: <a href="https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD012173.pub2/full" target="_blank" rel="noopener">Hussain 2018 (Cochrane)</a>; <a href="https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD015244.pub2/full" target="_blank" rel="noopener">Webster 2023 (Cochrane)</a>; <a href="https://www.frontiersin.org/journals/nutrition/articles/10.3389/fnut.2024.1460864/full" target="_blank" rel="noopener">Liu 2024 (Front Nutr)</a>; <a href="https://pubmed.ncbi.nlm.nih.gov/28523982/" target="_blank" rel="noopener">Sánchez-Sellero 2018 (kahvi)</a>; <a href="https://pubmed.ncbi.nlm.nih.gov/29733259/" target="_blank" rel="noopener">Sánchez-Sellero 2019 (alkoholi)</a></div>
+    </div>
+  </details>
+
+  <details class="arki-q">
+    <summary>💧 2. Nesteytys, uni ja vasopressiini <span class="treatment-step-evidence evidence-moderate">kohtalainen</span></summary>
+    <div class="arki-a">
+      <p><strong>Tämä on elämäntapainterventioiden vahvin yksittäinen näyttöryhmä.</strong> Kategoria yhdistää kolme toisiinsa liittyvää teemaa, jotka kaikki vaikuttavat <strong>vasopressiini (ADH) -hormoniin</strong> — anti-diureettiseen stressihormoniin, joka säätelee veden imeytymistä ja jonka tasot ovat koholla MD-potilailla.</p>
+
+      <p><strong>Avainmekanismi:</strong> Vasopressiini lisää aquaporiinin (vesikanavien) ekspressiota endolymfaattisessa pussissa, mikä lisää endolymfan tilavuutta — eli endolymfaattista hydropsia, joka on Ménièren patologinen tunnusmerkki. Vasopressiinin alentaminen on siis suora hoidollinen kohde.</p>
+
+      <h3>Vesijuonti — Kitahara 2016 -RCT</h3>
+      <p><strong>Kitahara ym. 2016 (PLOS ONE)</strong> on paras yksittäinen RCT lifestyle-interventioista. 297 selkeää MD-potilasta randomisoitiin neljään ryhmään, seuranta 2 vuotta:</p>
+      <ul>
+        <li><strong>Ryhmä I</strong> (kontrolli, perinteinen oraalilääkitys): 54 % saavutti täydellisen huimauksen hallinnan</li>
+        <li><strong>Ryhmä II</strong> (runsas vesijuonti 35 ml/kg/vrk): <strong>81 %</strong></li>
+        <li><strong>Ryhmä III</strong> (tärykalvon ilmaventtilirit): <strong>84 %</strong></li>
+        <li><strong>Ryhmä IV</strong> (pimeässä nukkuminen, 6–7 h yössä): <strong>80 %</strong></li>
+      </ul>
+      <p>Plasman vasopressiini laski ryhmissä II–IV mutta ei kontrollissa. Stressitasot eivät muuttuneet, joten interventiot toimivat <strong>fysiologisesti</strong>, eivät psykologisesti.</p>
+
+      <h3>Pimeä makuuhuone</h3>
+      <p>Yksi tutkituimmista tehokkaimmista interventioista. Yöllinen valoaltistus alentaa melatoniinia ja muuttaa vasopressiinin eritystä. Pimeä makuuhuone (pimennysverhot, ei sähköistä valoa, näytöt kiinni vähintään tuntia ennen nukahtamista) on yksinkertainen ja haitaton.</p>
+
+      <h3>Uniapnea (OSA) ja CPAP</h3>
+      <p><strong>Nakayama 2015</strong> (J Clin Sleep Med, pilotti n=20): aktiivisilla MD-potilailla, joilla oli myös uniapnea, <strong>pelkkä CPAP-hoito ilman muuta MD-hoitoa paransi merkittävästi sekä huimausta että audiometrisia tuloksia</strong>. Mekanismi: uniapnea aiheuttaa toistuvia hypoksiajaksoja, sympatikotonusta ja vasopressiinin vapautumista.</p>
+
+      <p><strong>Korean kohortti 2019</strong> (n=15 208 + 499 658): obstruktiivinen uniapnea oli yhteydessä kohonneeseen MD-riskiin (HR 1,27).</p>
+
+      <p><strong>Kliininen merkitys:</strong> jos potilas kuorsaa, on ylipainoinen, väsynyt päivisin tai herää kuristuksen tunteeseen, <strong>uniapnean tutkimus (yöpolygrafia) on indikoitu</strong>. Tämä on osa-alue, jota perinteisessä MD-hoidossa on aliarvioitu.</p>
+
+      <h3>Mitä tämä tarkoittaa käytännössä</h3>
+      <ul>
+        <li><strong>Juo vähintään 35 ml/kg vettä päivässä.</strong> 70-kiloiselle tämä on noin 2,5 litraa. Jakaudu päivän ajalle. Älä laske kahvia tai energiajuomia mukaan (diureettisia).</li>
+        <li><strong>Nuku pimeässä makuuhuoneessa.</strong> Pimennysverhot, kaikki LED-valot pois, peitä elektroniikka. 6–7 tunnin pimeä jakso yössä on minimi.</li>
+        <li><strong>Säännöllinen unirytmi.</strong> Vältä yli 1–2 tunnin vaihtelua arkena ja viikonloppuna. 7–9 tuntia yössä.</li>
+        <li><strong>Tutki uniapnea.</strong> Jos kuorsaat tai puolisosi raportoi hengityskatkoja, pyydä yöpolygrafia.</li>
+      </ul>
+
+      <h3>Suositellut toimintatavat</h3>
+      <ul>
+        <li>Aloita vesijuonnin lisääminen pikkuhiljaa (lisää 1 lasi/vrk parin viikon välein)</li>
+        <li>Pidä vesipullo aina mukana, asenna juomisen muistutus puhelimeen</li>
+        <li>Hanki pimennysverhot, jos huoneeseen tulee katuvaloja tai aamuvaloa</li>
+        <li>Laita puhelin lentokonetilaan tai eri huoneeseen yöksi</li>
+        <li>Jos epäilet uniapneaa: pyydä työterveydestä tai omalääkäriltä lähete keuhkolääkärille tai unihoitokeskukseen</li>
+      </ul>
+
+      <h3>Mitä välttää tai mistä keskustella lääkärin kanssa</h3>
+      <ul>
+        <li><strong>Sydän- tai munuaissairaus:</strong> keskustele lääkärin kanssa ennen kuin aloitat 35 ml/kg/vrk vesijuonnin. Sydämen vajaatoiminta ja jotkin munuaissairaudet rajoittavat nestekuormaa</li>
+        <li><strong>Diureettilääkitys:</strong> jos käytät esim. furosemidiä tai hydroklooritiatsidia, lisävesimäärän tarve voi olla erilainen</li>
+        <li><strong>Älä juo nestettä yhdellä kertaa</strong> — pieniä määriä tasaisesti pitkin päivää</li>
+        <li><strong>CPAP ei ole MD-lääke:</strong> se hoitaa uniapneaa, ja MD-oireiden parannus on bonus</li>
+      </ul>
+
+      <div class="arki-source">Lähteet: <a href="https://pubmed.ncbi.nlm.nih.gov/16885753/" target="_blank" rel="noopener">Naganuma 2006 (Laryngoscope)</a>; <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4928871/" target="_blank" rel="noopener">Kitahara 2016 (PLOS ONE)</a>; <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4582051/" target="_blank" rel="noopener">Nakayama 2015 (CPAP)</a>; <a href="https://jcsm.aasm.org/doi/10.5664/jcsm.27933" target="_blank" rel="noopener">Nakayama 2010 (unenlaatu)</a>; <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8511700/" target="_blank" rel="noopener">Kitahara 2021 (vasopressiini)</a></div>
+    </div>
+  </details>
+
+  <details class="arki-q">
+    <summary>🏃 3. Liikunta ja vestibulaarikuntoutus <span class="treatment-step-evidence evidence-moderate">kohtalainen</span></summary>
+    <div class="arki-a">
+      <p>Tämä kategoria jakautuu kahteen erilliseen mutta yhteen liittyvään aiheeseen: <strong>kohdistettu vestibulaarikuntoutus (VRT)</strong>, jonka näyttöpohja on vahvistunut merkittävästi 2020-luvulla, ja <strong>yleinen säännöllinen liikunta</strong>, jonka hyödyt MD:hen perustuvat enemmän logiikkaan kuin spesifiseen tutkimukseen.</p>
+
+      <h3>Vestibulaarikuntoutus (VRT)</h3>
+      <p><strong>Sulaiman ym. 2023 meta-analyysi</strong> (Eur Arch Otorhinolaryngol) on paras yksittäinen näyttö VRT:lle MD:ssä. Yhteensä 3 tutkimusta, 465 MD-potilasta. Päämuuttuja oli Dizziness Handicap Inventory (DHI) — elämänlaatumittari. Tulos: SMD = −0,58 (95 % CI −1,12…−0,05, p < 0,05) VRT:n hyväksi. Tulkinta: keskinkertainen vaikutus, tilastollisesti merkitsevä.</p>
+
+      <p>VRT on selvästi hyödyllinen etenkin:</p>
+      <ul>
+        <li>Kohtausten välisessä vaiheessa, jossa potilaalla on epätasapaino tai "rocking" -tunne</li>
+        <li>Kun kuulosäästävät hoidot (intratympaaninen steroidi) tai destruktiiviset hoidot (gentamisiini, labyrintektomia) on tehty</li>
+        <li>Kroonistuvassa vaiheessa, jossa kompensaatiomekanismit eivät kehity itsestään</li>
+      </ul>
+
+      <p><strong>VRT:n sisältö</strong> (Gottshall &amp; Hoffer):</p>
+      <ul>
+        <li>Adaptaatioharjoitukset (silmänliikkeet pään liikkuessa)</li>
+        <li>Habituaatioharjoitukset (toistuva altistus laukaiseville liikkeille kontrolloidusti)</li>
+        <li>Substituutioharjoitukset (visuaalisten ja proprioseptiivisten signaalien parempi käyttö)</li>
+        <li>Tasapainoharjoitukset (yhdellä jalalla seisominen, epätasaisilla pinnoilla kävely)</li>
+      </ul>
+
+      <p>Tyypillinen kesto: <strong>6–12 viikkoa</strong>, fysioterapeutin ohjauksessa 1–2× viikossa + päivittäin kotiharjoituksia. Virtual reality (VR) -pohjainen VRT (Garcia 2013) on yhtä tehokas tai tehokkaampi kuin perinteinen VRT.</p>
+
+      <p><strong>Suomessa:</strong> Vestibulaarikuntoutus on saatavilla Kelan kustantamana fysioterapeutilla, jolla on vestibulaarikoulutus. Lähete tarvitaan KNK-lääkäriltä tai omalääkäriltä. Suuremmissa kaupungeissa (Helsinki, Tampere, Turku, Oulu, Kuopio) on osaajia; pienemmillä paikkakunnilla voi joutua etsimään.</p>
+
+      <h3>Yleinen säännöllinen liikunta</h3>
+      <p>Suoraan MD-spesifistä RCT-näyttöä yleisestä liikunnasta on vähän, mutta:</p>
+      <ul>
+        <li>Liikunta parantaa unenlaatua → alentaa vasopressiinia</li>
+        <li>Liikunta vähentää ahdistusta ja masennusta → vähentää kohtauksia (ks. kategoria 4)</li>
+        <li>Liikunta tukee verenkiertoa, mukaan lukien sisäkorvan mikroverenkiertoa</li>
+        <li>Liikunta auttaa painonhallinnassa (ks. kategoria 5)</li>
+      </ul>
+
+      <p><strong>Suosi näitä lajeja:</strong></p>
+      <ul>
+        <li><strong>Kävely</strong> — yksinkertainen, turvallinen, tutkitusti hyödyllinen tasapainolle</li>
+        <li><strong>Uinti</strong> — vesi tukee tasapainoa, hyvää aerobista kuormitusta. <em>Vältä sukellusta veden alle</em></li>
+        <li><strong>Pyöräily</strong> — sisäpyörä turvallinen alkuun; ulkopyöräilyä vasta kun tasapaino on vakaa</li>
+        <li><strong>Tasapainoharjoitukset</strong> — jooga, tai chi, qigong</li>
+        <li><strong>Tanssi</strong> pareittain rauhallisesti — <em>vältä vauhdikkaita pyöräytyksiä</em></li>
+      </ul>
+
+      <h3>Mitä tämä tarkoittaa käytännössä</h3>
+      <ol>
+        <li><strong>Älä luovu liikkumisesta MD-diagnoosin jälkeen.</strong> Liikkumattomuus heikentää tasapainoa entisestään, lisää ahdistusta, ja viivästyttää kompensaatiota.</li>
+        <li><strong>Pyydä lähete vestibulaarikuntoutukseen</strong>, jos kohtausten välissä on jatkuvaa epätasapainoa, olet ollut intratympaanisessa hoidossa, tai kuulosi on heikentynyt eikä tasapaino tunnu palautuvan.</li>
+        <li><strong>Liiku säännöllisesti</strong> — vähintään 150 min kohtuullista intensiteettiä viikossa (WHO-suositus).</li>
+        <li><strong>Aloita rauhallisesti</strong> ja lisää kuormitusta vähitellen.</li>
+      </ol>
+
+      <h3>Mitä välttää tai mistä keskustella lääkärin kanssa</h3>
+      <ul>
+        <li><strong>Sukellusharrastus:</strong> lopeta. Painevaihtelut sisäkorvassa ovat vaarallisia.</li>
+        <li><strong>Korkealla työskentely</strong> (rakennusala, sähköasennus tikkailta): keskustele työterveyslääkärin kanssa työn mukautuksesta.</li>
+        <li><strong>Kontaktilajit</strong> (jääkiekko, judo, nyrkkeily): pään iskut voivat pahentaa.</li>
+        <li><strong>Vauhdikkaat huvipuistolaitteet, voimakkaat pään kallistukset:</strong> voivat laukaista kohtauksen.</li>
+        <li><strong>Akuutin kohtauksen aikana:</strong> ei liikuntaa. Asetu makuulle, lepo.</li>
+      </ul>
+
+      <div class="arki-source">Lähteet: <a href="https://pubmed.ncbi.nlm.nih.gov/37341761/" target="_blank" rel="noopener">Sulaiman 2023 (meta-analyysi)</a>; <a href="https://pubmed.ncbi.nlm.nih.gov/28112027/" target="_blank" rel="noopener">Van Vugt 2017</a>; <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8117149/" target="_blank" rel="noopener">Shiozaki 2021 (Front Neurol RCT)</a>; <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9443828/" target="_blank" rel="noopener">Garcia 2013 (VR-VRT)</a>; <a href="https://pubmed.ncbi.nlm.nih.gov/16143175/" target="_blank" rel="noopener">Gottshall &amp; Hoffer 2005</a></div>
+    </div>
+  </details>
+
+  <details class="arki-q">
+    <summary>🧘 4. Stressi ja mielenterveys <span class="treatment-step-evidence evidence-moderate">kohtalainen</span></summary>
+    <div class="arki-a">
+      <p>Stressi on yksi yleisimmin raportoiduista huimauskohtausten laukaisijoista — ja toisin kuin suolarajoituksen tai kahvin osalta, <strong>stressin merkitykselle on selkeä neurobiologinen mekanismi</strong>.</p>
+
+      <h3>Mekanismi: stressi → vasopressiini → endolymfaattinen hydrops</h3>
+      <p>Stressi aktivoi hypotalamus-aivolisäke-akselin (HPA-akseli), jonka seurauksena:</p>
+      <ol>
+        <li><strong>Vasopressiini (ADH)</strong> vapautuu aivolisäkkeen takalohkosta</li>
+        <li>Vasopressiini sitoutuu V2-reseptoreihin endolymfaattisen pussin epiteelisoluissa</li>
+        <li>Tämä lisää aquaporiini-2:n ekspressiota → enemmän vesikanavia</li>
+        <li>Endolymfaattinen tilavuus kasvaa → hydrops → kohtaus</li>
+      </ol>
+
+      <p><strong>Kitahara 2008</strong> (J Neuroendocrinol): MD-potilaiden sisäkorvan epiteelisoluissa on <strong>liikaa V2-reseptoreja</strong> verrattuna terveisiin. Tämä tekee MD-potilaista erityisen herkkiä vasopressiinin nousuille.</p>
+
+      <p><strong>Kitahara 2021</strong> (Front Neurol): 100 vaikeaa MD-potilasta, joille tehtiin endolymfaattisen pussin drenaasileikkaus. Plasman vasopressiinin pitoisuus laski merkittävästi viikon sisällä leikkauksesta, ja <strong>alhainen vasopressiinin pitoisuus 1–2 vuotta leikkauksen jälkeen ennusti hyvää kirurgista lopputulosta</strong>. Tämä on poikkeuksellisen suora todiste siitä, että vasopressiini on syy-yhteydessä MD-kohtauksiin.</p>
+
+      <h3>Mielenterveysyhteys</h3>
+      <p><strong>Lin ym. 2025 meta-analyysi</strong> (Eur Arch Otorhinolaryngol): 35 havainnoivaa tutkimusta, n = 15 890 MD-potilasta:</p>
+      <ul>
+        <li><strong>Masennus 34 %</strong> (95 % CI 18–54 %), SMD 0,73 — iso vaikutus</li>
+        <li><strong>Ahdistus 23 %</strong> (95 % CI 16–32 %), SMD 0,69 — iso vaikutus</li>
+      </ul>
+
+      <p><strong>Phillips 2024</strong> (Laryngoscope): brittiläisessä 411 potilaan kohortissa tunnistettiin selkeä <strong>stressi-klusteri</strong> — potilasryhmä, jolla samanaikaisesti esiintyy ahdistusta, depressiota ja unihäiriöitä, ja jolla MD-kohtaukset ovat selvästi stressivetoisia.</p>
+
+      <p><strong>Yuan ym. 2025</strong> (Front Immunol) ehdottaa <strong>β-adrenergistä alatyyppiä</strong>: stressi → noradrenaliini → β-adrenergiset reseptorit myeloideissa soluissa → tulehdus → MD-oireet. Tämä antaisi rationaalin esim. propranololin (β-salpaaja) käytölle juuri tässä alatyypissä.</p>
+
+      <h3>Hoitomuodot stressiin ja mielenterveyteen</h3>
+      <p><strong>Kognitiivis-behavioraalinen terapia (CBT):</strong></p>
+      <ul>
+        <li><strong>Wan ym. 2018</strong> (Acta Otolaryngol): CBT yhdistettynä matala-annoksiseen betahistiiniin tuotti samat tulokset kuin korkea-annoksinen betahistiini yksin — eli CBT korvasi puolet lääkityksestä</li>
+        <li><strong>Waterson 2021:</strong> CBT vähentää sekä ahdistusta että huimausoireita PPPD:ssä (persistent postural-perceptual dizziness), joka on yleinen MD:n komorbiditeetti</li>
+      </ul>
+
+      <p>CBT:n perusajatus: pelko (kohtauksesta, kaatumisesta, oireiden uusiutumisesta) muuttaa käyttäytymistä → välttely → tasapainojärjestelmä ei kompensoidu → enemmän pelkoa. CBT katkaisee tämän kierteen.</p>
+
+      <p><strong>Mindfulness ja meditaatio:</strong> vähemmän tutkittu MD-spesifissä kontekstissa, mutta yleisempi tutkimuskirjallisuus tukee niiden hyötyä ahdistus- ja masennusoireissa.</p>
+
+      <p><strong>Sosiaalinen tuki ja vertaistuki:</strong> Suomessa Huimaus- ja Meniere-liitto (paikallisyhdistyksiä), Facebook-vertaistukiryhmät, sopeutumisvalmennuskurssit Kelan kautta.</p>
+
+      <p><strong>SSRI/SNRI-lääkkeet:</strong> useat tapausselostukset ovat raportoineet, että SSRI:t (esim. sertraliini 50 mg/vrk) voivat sekä parantaa MD-oireita että hoitaa samanaikaista ahdistusta. Mekanismi epäselvä — voi olla välillistä stressin vähentämisen kautta.</p>
+
+      <h3>Mitä tämä tarkoittaa käytännössä</h3>
+      <ol>
+        <li><strong>Älä jätä mielenterveyttä huomiotta.</strong> Joka kolmas MD-potilas kärsii masennuksesta ja joka neljäs ahdistuksesta. Tämä ei ole "luonteenheikkoutta" vaan suora seuraus pitkäaikaisesta sairaudesta — ja samalla patofysiologinen tekijä, joka pahentaa kohtauksia.</li>
+        <li><strong>Stressinhallinta on yhtä tärkeää kuin ruokavalio</strong>, mahdollisesti tärkeämpää. Mekanismi on selkeä ja näyttö suora.</li>
+        <li><strong>Hae apua aikaisin.</strong> Lyhyt CBT-jakso (8–12 käyntiä) voi olla tehokkaampi kuin lääkityksen tehostaminen.</li>
+      </ol>
+
+      <h3>Suositellut toimintatavat</h3>
+      <ul>
+        <li><strong>Tunnista omat stressinaiheuttajasi.</strong> Pidä päiväkirjaa: minä päivinä kohtaukset tulevat? Onko niissä ennen ollut työpaineita, riitelyä, unen puutetta?</li>
+        <li><strong>Mindfulness-harjoittelu päivittäin 10–20 min.</strong> Maksuttomia sovelluksia: Insight Timer, Calm, Headspace (osa ilmaista). Suomeksi: Mielenterveystalon harjoitukset.</li>
+        <li><strong>Säännöllinen liikunta</strong> — ks. kategoria 3</li>
+        <li><strong>Sosiaalinen tuki</strong> — älä eristäydy. Huimaus- ja Meniere-liiton paikallisyhdistykset järjestävät tapaamisia.</li>
+        <li><strong>Pyydä lähete CBT-terapiaan</strong>, jos tunnistat ahdistusta tai masennusta. Suomessa Kelan kuntoutuspsykoterapia (alle 67-v) tai työterveyslääkärin kautta.</li>
+        <li><strong>Hengitysharjoitukset:</strong> 4-7-8 -tekniikka (sisään 4 s, pidä 7 s, ulos 8 s) tai pallea-hengitys voi nopeasti vähentää akuuttia stressireaktiota.</li>
+      </ul>
+
+      <h3>Mitä välttää tai mistä keskustella lääkärin kanssa</h3>
+      <ul>
+        <li><strong>Älä yritä "pinnistellä" ahdistusta yli.</strong> Pitkäaikainen krooninen stressi heikentää MD:tä, ei paranna sitä.</li>
+        <li><strong>Älä omatoimisesti aloita SSRI- tai SNRI-lääkitystä.</strong> Nämä vaativat lääkärin määräyksen ja aloittamisseurannan.</li>
+        <li><strong>Bentsodiatsepiinit</strong> (esim. diatsepaami, oksatsepaami): käytetään joskus akuutin kohtauksen pahoinvointiin tai paniikkiin, mutta <strong>eivät sopiviin pitkäaikaiskäyttöön</strong> riippuvuusriskin takia. Voivat myös pahentaa uniapneaa.</li>
+        <li><strong>Itsehoito alkoholilla:</strong> yleinen mutta haitallinen tapa hoitaa ahdistusta. Pahentaa unta, vasopressiinia ja yleistä mielialaa.</li>
+        <li><strong>Akuutti kriisi:</strong> Mielenterveyspuhelin <strong>09 2525 0111</strong> (klo 9–07).</li>
+      </ul>
+
+      <div class="arki-source">Lähteet: <a href="https://pubmed.ncbi.nlm.nih.gov/40087158/" target="_blank" rel="noopener">Lin 2025 (meta-analyysi)</a>; <a href="https://onlinelibrary.wiley.com/doi/10.1002/lary.31272" target="_blank" rel="noopener">Phillips 2024</a>; <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12420328/" target="_blank" rel="noopener">Yuan 2025</a>; <a href="https://pubmed.ncbi.nlm.nih.gov/19094077/" target="_blank" rel="noopener">Kitahara 2008</a>; <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8511700/" target="_blank" rel="noopener">Kitahara 2021</a></div>
+    </div>
+  </details>
+
+  <details class="arki-q">
+    <summary>🚭 5. Tupakka ja paino <span class="treatment-step-evidence evidence-limited">rajallinen</span></summary>
+    <div class="arki-a">
+      <p>Tupakointi ja painonhallinta ovat osa-alueita, joista on alkanut kertyä <strong>suurten kohorttitutkimusten näyttöä</strong> vasta 2020-luvulla. Aiemmin näiden suositukset perustuivat lähinnä yleisen verenkiertoterveyden logiikkaan.</p>
+
+      <h3>Tupakointi</h3>
+      <p><strong>Korean kansallinen kohortti 2022</strong> (Kim ym., J Clin Med, n = 15 208 + 499 658) on paras yksittäinen näyttö MD:n ja tupakoinnin yhteydestä:</p>
+      <ul>
+        <li>Yleisesti aikuisväestössä tupakoinnilla EI ollut tilastollisesti merkitsevää yhteyttä MD:hen adjustoidussa mallissa</li>
+        <li><strong>MUTTA stratifioidussa analyysissä miehillä yhteys oli merkitsevä:</strong> nykyinen tupakointi liittyi kohonneeseen MD-riskiin</li>
+        <li>Naisilla yhteyttä ei nähty</li>
+      </ul>
+      <p>Tämä viittaa siihen, että tupakoinnin haittavaikutukset MD:hen voivat olla sukupuolikohtaisia — mahdollisesti hormonaalisten erojen takia (estrogeenin verisuonia suojaava vaikutus naisilla).</p>
+
+      <p><strong>Mekanismi:</strong> Mohseni-Dargah ym. 2023 -katsaus kuvaa, miten tupakointi heikentää sisäkorvan mikroverenkiertoa (vasokonstriktio nikotiinin vaikutuksesta), vähentää hapen kulkua sisäkorvaan ja lisää oksidatiivista stressiä. Sisäkorvan verisuonet ovat erittäin pieniä (loppupäässä vain mikroniä leveitä), joten ne ovat erityisen herkkiä verisuonia supistaville tekijöille.</p>
+
+      <h3>Painonhallinta</h3>
+      <p><strong>Falah ym. 2026</strong> (Sci Rep, case-control n=200): 100 selkeää MD-potilasta + 100 verrokkia. Tulokset:</p>
+      <ul>
+        <li><strong>Ylipaino MD-potilailla 73 %, kontrolleilla 22 %</strong> (p &lt; 0,001)</li>
+        <li>Normaalipaino MD-potilailla vain 19 %, kontrolleilla 72 %</li>
+        <li>Lihavuus liittyi vahvasti MD-diagnoosiin myös monimuuttuja-analyysissä</li>
+      </ul>
+
+      <p><strong>Korean kohortti 2022:</strong> alipaino liittyi <em>alentuneeseen</em> MD-riskiin (aOR = 0,80) — vahvistaa lihavuuden ja MD:n yhteyttä toiselta puolelta.</p>
+
+      <p><strong>Mahdolliset välittävät mekanismit:</strong></p>
+      <ol>
+        <li><strong>Insuliiniresistenssi ja hyperinsulinemia</strong> — voivat vaikuttaa sisäkorvan ionihomeostaasiin</li>
+        <li><strong>Krooninen matala-asteinen tulehdus</strong> — viskeraalinen rasvakudos erittää inflammatorisia sytokiineja (IL-6, TNF-α)</li>
+        <li><strong>Verenpaine ja dyslipidemia</strong> — yleiset komorbiditeetit, jotka heikentävät mikroverenkiertoa</li>
+        <li><strong>Uniapnea</strong> — paljon yleisempää ylipainoisilla, ja yhdistää tämän kategoriaan 2</li>
+      </ol>
+
+      <h3>Mitä tämä tarkoittaa käytännössä</h3>
+      <ol>
+        <li><strong>Jos tupakoit, lopettaminen on yksi tärkeimmistä terveysteoista</strong>, ei vain MD:n vuoksi vaan kokonaisvaltaisesti. Tukea lopettamiseen saa Hengitysliiton STUMPPI-puhelimesta (0800 148 484) ja terveyskeskuksesta.</li>
+        <li><strong>Jos olet ylipainoinen,</strong> asteittainen 5–10 % painonpudotus parantaa metabolista terveyttä merkittävästi ja voi vähentää MD:tä epäsuorasti (uniapnea, verenpaine, yleinen tulehdus).</li>
+        <li><strong>Älä syyllisty.</strong> Lihavuus tai tupakointi eivät ole MD:n "syy" — sairauden taustalla on geneettisiä, immunologisia ja anatomisia tekijöitä, joihin et voi vaikuttaa. Mutta nämä elämäntavat voivat olla modifioitavia tekijöitä, joilla parannat tilannetta.</li>
+      </ol>
+
+      <h3>Suositellut toimintatavat</h3>
+      <p><strong>Tupakoinnin lopettaminen:</strong></p>
+      <ul>
+        <li>Nikotiinikorvaushoidot (laastari, purukumi); reseptilääkkeet (varenikliini, bupropioni)</li>
+        <li>STUMPPI-puhelin <strong>0800 148 484</strong> (maksuton)</li>
+        <li>Terveyskeskuksen tupakkavieroitusryhmät</li>
+        <li>Sovellukset: SmokeFree, QuitNow</li>
+      </ul>
+
+      <p><strong>Painonhallinta:</strong></p>
+      <ul>
+        <li>Pieniä, kestäviä muutoksia: ei dieettejä, vaan ruokavalion ja liikunnan asteittaista mukautusta</li>
+        <li>Mediterranean- tai DASH-tyyppinen ruokavalio (paljon kasviksia, oliiviöljy, kala, vähän jalostettua sokeria)</li>
+        <li>150 min/vk kohtuullista liikuntaa (ks. kategoria 3)</li>
+        <li>Riittävä uni (alle 6 h/yö lisää nälkää ja painoa)</li>
+        <li>Tarvittaessa ravitsemusterapeutti (Kela tukee, jos lääkärin lähete)</li>
+      </ul>
+
+      <p><strong>Yhteistyö lääkärin kanssa:</strong> verenpaineen seuranta, glukoosi- ja lipidiseuranta vuosittain, uniapnean tutkimus jos kuorsausta tai päiväväsymystä.</p>
+
+      <h3>Mitä välttää tai mistä keskustella lääkärin kanssa</h3>
+      <ul>
+        <li><strong>Räjähdysdieetit:</strong> eivät tehoa pitkällä aikavälillä. Lisäksi äkillinen suolan rajoittaminen voi olla MD-potilaalle haitallista.</li>
+        <li><strong>Sähkösavukkeet ja vape:</strong> nikotiini on edelleen mukana ja voi vaikuttaa mikroverenkiertoon. Eivät ole "turvallinen" vaihtoehto.</li>
+        <li><strong>Painonpudotuslääkkeet</strong> (esim. semaglutidi, GLP-1-agonistit): voivat olla hyödyllisiä joillakin, mutta sivuvaikutuksena voi olla pahoinvointia ja huimausta — keskustele lääkärin kanssa.</li>
+      </ul>
+
+      <div class="arki-source">Lähteet: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9457180/" target="_blank" rel="noopener">Kim 2022 (Korean kohortti)</a>; <a href="https://www.sciencedirect.com/science/article/pii/S0013935123017760" target="_blank" rel="noopener">Mohseni-Dargah 2023</a>; <a href="https://www.nature.com/articles/s41598-026-40363-3" target="_blank" rel="noopener">Falah 2026 (Sci Rep)</a></div>
+    </div>
+  </details>
+
+  <details class="arki-q">
+    <summary>⏰ 6. Yksilöllinen oirepäiväkirja <span class="treatment-step-evidence evidence-emerging" style="background: var(--blue-50); color: var(--nhs-blue); border-color: var(--nhs-blue);">työkalu</span></summary>
+    <div class="arki-a">
+      <p>Oirepäiväkirja ei ole "hoito" tieteellisessä mielessä — sitä on vaikea satunnaistaa tutkimukseen. Mutta se on <strong>kliinikoiden vahvasti suosittelema työkalu</strong>, jolla on kolme keskeistä tarkoitusta:</p>
+      <ol>
+        <li><strong>Yksilöllisten laukaisijoiden tunnistaminen</strong> — Ménièren tauti on heterogeeninen, eri potilailla on erilaisia laukaisijoita</li>
+        <li><strong>Hoidon vasteen seuranta</strong> — onko uusi lääkitys tai elämäntapamuutos auttanut?</li>
+        <li><strong>Lääkärikäynnin valmistelu</strong> — strukturoitua dataa on paljon helpompi tulkita kuin "joskus minulla on huimausta"</li>
+      </ol>
+
+      <h3>Mitä kirjata</h3>
+      <p><strong>Päivittäinen perusrunko:</strong></p>
+      <ul>
+        <li>Päivämäärä ja kellonaika</li>
+        <li>Kohtauksen kesto (minuutteina/tunteina)</li>
+        <li>Vakavuus 1–10 (1 = lievä huimaus, 10 = kykenemätön mihinkään)</li>
+        <li>Oireet: pyörimishuimaus, pahoinvointi, oksentelu, kuulonmenetys, tinnituksen voimakkuus, korvan painetunne</li>
+        <li>Kummalla puolella oireet ovat? (auttaa erottamaan toisesta puolesta tulevia)</li>
+      </ul>
+
+      <p><strong>Konteksti — viime 24 h:</strong></p>
+      <ul>
+        <li>Mitä söit? (erityisesti suolaisia ruokia, kahvia, alkoholia, MSG-pitoisia)</li>
+        <li>Kuinka paljon joit vettä?</li>
+        <li>Kuinka monta tuntia nukuit ja miten unen laatu oli?</li>
+        <li>Stressitilanteita? (työ, perhe, pelot)</li>
+        <li>Liikunta?</li>
+        <li>Säätiedot ja ilmanpaine? (jotkut potilaat herkkiä)</li>
+        <li>Allergiakauden tilanne?</li>
+        <li>Hormonaalinen vaihe (naisilla — kuukautiskierto, vaihdevuodet)</li>
+        <li>Lääkitys (myös käsikauppalääkkeet)</li>
+      </ul>
+
+      <p><strong>Hoitovaste:</strong></p>
+      <ul>
+        <li>Mitä lääkettä otit kohtauksen aikana?</li>
+        <li>Miten nopeasti se auttoi?</li>
+        <li>Miten kauan toipuminen kesti?</li>
+      </ul>
+
+      <h3>Eliminaatiokokeet</h3>
+      <p>Oirepäiväkirja mahdollistaa myös strukturoidut eliminaatiokokeet:</p>
+      <ol>
+        <li>Valitse yksi epäilty laukaisija (esim. kahvi)</li>
+        <li>Poista se ruokavaliosta täysin 4–6 viikoksi</li>
+        <li>Kirjaa kohtaukset tämän aikana</li>
+        <li>Palauta laukaisija takaisin</li>
+        <li>Vertaa: muuttuiko kohtausten taajuus tai vakavuus?</li>
+      </ol>
+
+      <h3>Yleisiä laukaisijoita, joita kannattaa tarkkailla</h3>
+      <ol>
+        <li>Stressi ja unen puute — yleisimpiä</li>
+        <li>Suolaiset ruoat (esim. ravintolapizza, suomalainen savustettu kala)</li>
+        <li>Alkoholi (etenkin punaviini, samppanja)</li>
+        <li>Kahvi ja kofeiini</li>
+        <li>Ilmanpaineen muutokset (sääfrontit, lentokoneet)</li>
+        <li>Allergiakausi (varsinkin Th2-allergisessa alatyypissä)</li>
+        <li>MSG (E621) — yleinen aasialaisissa ruoissa, valmismausteissa</li>
+        <li>Hormonaaliset vaihtelut (kuukautiskierron tietyt vaiheet)</li>
+        <li>Liikuntaylikuormitus (harvinainen mutta mahdollinen)</li>
+        <li>Kuumuus, dehydraatio, sauna</li>
+      </ol>
+
+      <h3>Käytännön työkalut</h3>
+      <ul>
+        <li><strong>Paperinen päiväkirja:</strong> yksinkertaisin — vihko, johon kirjoitat päivittäin</li>
+        <li><strong>Mobiilisovellukset:</strong> Migraine Buddy (alun perin migreenille, soveltuu MD:hen), Bezzy MD (englanniksi, Ménière-spesifinen), Symptom Tracker (geneerinen)</li>
+        <li><strong>Excel-pohjainen taulukko:</strong> päivämäärä, oire, vakavuus, mahdollinen laukaisija — hyvä jos haluat itse analysoida pidemmän aikavälin trendejä</li>
+      </ul>
+
+      <p><strong>Mitä viedä lääkärikäynnille:</strong> yhteenveto viimeisestä 1–3 kuukaudesta — kohtausten määrä, keskimääräinen kesto, keskimääräinen vakavuus, tunnistetut laukaisijat, hoitojen tehot. Tämä helpottaa lääkärin päätöksentekoa merkittävästi.</p>
+
+      <h3>Mitä päiväkirja auttaa tunnistamaan</h3>
+      <ul>
+        <li><strong>Selkeitä laukaisijoita</strong>, joita et muuten muistaisi yhdistää (esim. "joka kerta kun käyn lounaalla X-ravintolassa, saan kohtauksen seuraavana päivänä")</li>
+        <li><strong>Suojatekijöitä</strong> — minä päivinä kohtauksia EI ole? Olethan silloin yleensä rauhallinen, hyvin nukkunut, hyvin nesteytetty</li>
+        <li><strong>Hoidon vasteen muutokset</strong> (uusi lääkitys parantaa tai pahentaa tilannetta)</li>
+        <li><strong>Sairauden trendin</strong> — vähenevätkö kohtaukset ajan myötä? (Tämä on usein MD:n luonnollinen kulku 5–10 vuoden kuluttua diagnoosista.)</li>
+      </ul>
+
+      <div class="arki-source">Lähteet: <a href="https://aao-hnsfjournals.onlinelibrary.wiley.com/doi/10.1177/0194599820909438" target="_blank" rel="noopener">AAO-HNS 2020 -ohjeistus</a>; <a href="https://pubmed.ncbi.nlm.nih.gov/28166395/" target="_blank" rel="noopener">Frejo 2017 (klusterianalyysi)</a>; <a href="https://onlinelibrary.wiley.com/doi/10.1002/lary.31272" target="_blank" rel="noopener">Phillips 2024</a></div>
+    </div>
+  </details>
+
+</div><!-- /.arki-categories elamantavat -->
+
+<div class="arki-disclaimer">
+  <strong>Yhteenveto:</strong> Useimmat tämän sivun suosituksista ovat vähäriskisiä ja samalla yleisesti terveellisiä. Niiden kokeilu on järkevää vaikka tieteellinen näyttö olisi epävarmaa. Tärkeintä on <strong>systemaattinen omaseuranta</strong> — pidä oirepäiväkirjaa, kokeile yhtä muutosta kerrallaan, ja arvioi vaikutusta useiden viikkojen ajalta. Tämä sivu ei korvaa lääkärin tai fysioterapeutin neuvoja.
+</div>
+
+</div><!-- /.arki-subview elamantavat -->
 
 <div class="tab-panel" id="panel-lahteet" role="tabpanel">
 
@@ -7057,6 +7550,37 @@ document.addEventListener('keydown', (e) => {
   });
 })();
 
+// Arki-välilehden subtab-navigaatio: vaihtaa Q&A-näkymän ja Elämäntavat-
+// näkymän välillä paneelin sisällä (ei lisää uutta päätason tab-buttonia).
+(function setupArkiSubtabNav() {
+  var nav = document.querySelector('.arki-subtab-nav');
+  if (!nav) return;
+  var buttons = Array.from(nav.querySelectorAll('.arki-subtab-link'));
+  var views = Array.from(document.querySelectorAll('[data-subview-content]'));
+  if (!buttons.length || !views.length) return;
+
+  function activate(name) {
+    buttons.forEach(function(b) {
+      var on = b.dataset.subview === name;
+      b.classList.toggle('active', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    views.forEach(function(v) {
+      var on = v.dataset.subviewContent === name;
+      if (on) v.removeAttribute('hidden');
+      else v.setAttribute('hidden', '');
+    });
+    // Vieritä paneelin alkuun jotta käyttäjä näkee uuden näkymän alusta
+    try { window.scrollTo(0, 0); } catch (_) {}
+    // Lazy-autolinkitys uuden näkymän sisällölle
+    try { lazyLinkPanel('arki'); } catch (_) {}
+  }
+
+  buttons.forEach(function(btn) {
+    btn.addEventListener('click', function() { activate(btn.dataset.subview); });
+  });
+})();
+
 // Blogi-välilehden kategoria-navigaatio: smooth scroll klikkauksessa,
 // active-tila scroll-listenerillä (luotettavampi kuin IntersectionObserver
 // kun viewport on pieni tai sticky-elementtejä on useita).
@@ -8281,7 +8805,8 @@ const SKIP_SELECTORS = [
   '.blogi-source',        // blogi-artikkelin lähde-rivi (sisältää jo linkin)
   '.blogi-placeholder',   // blogi-välilehden "tulossa lisää" -laatikko
   '.blogi-cat-title',     // blogi-välilehden kategoria-otsikko
-  '.blogi-cat-nav'        // blogi-välilehden sticky kategoria-navigaatio
+  '.blogi-cat-nav',       // blogi-välilehden sticky kategoria-navigaatio
+  '.arki-subtab-nav'      // arki-välilehden subtab-navigaatio (Q&A vs Elämäntavat)
 ];
 
 function shouldSkip(el) {
@@ -8423,9 +8948,10 @@ function lazyLinkPanel(panelId) {
   } else if (panelId === 'arki' && !arkiLinked) {
     // Arjessa jokainen kysymys-vastaus -pari on oma säiliö (yksi linkki per termi per kysymys)
     autoLinkContainer(panel, { scopeSelector: '.arki-a' });
-    // Erityiskäsittely intro-laatikolle
-    const intro = panel.querySelector('.arki-intro');
-    if (intro) autoLinkContainer(intro);
+    // Erityiskäsittely intro-laatikoille — kummassakin subview-näkymässä on oma
+    panel.querySelectorAll('.arki-intro').forEach(function(intro) {
+      autoLinkContainer(intro);
+    });
     arkiLinked = true;
   } else if (panelId === 'blogi' && !blogiLinked) {
     // Blogissa jokainen artikkelin body on oma säiliö
