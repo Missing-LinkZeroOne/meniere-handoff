@@ -2373,6 +2373,72 @@
   }
 
   /* ==================================================================
+     KUVAT — figure-elementit (Sprint 1: inline SVG -diagrammit)
+     ================================================================== */
+  .figure-scientific {
+    max-width: 100%;
+    margin: 24px auto;
+    padding: 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    text-align: center;
+  }
+  .figure-scientific svg,
+  .figure-scientific img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+  .figure-scientific figcaption {
+    font-size: 14px;
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: 10px;
+    font-style: italic;
+    line-height: 1.5;
+  }
+  .figure-inline {
+    margin: 16px 0;
+    text-align: center;
+  }
+  .figure-inline svg,
+  .figure-inline img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+  .figure-inline figcaption {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 6px;
+  }
+  /* Logo SVG yläbannerissa korvaa MD-tekstin */
+  .nhs-logo svg {
+    width: 36px;
+    height: 36px;
+    display: block;
+  }
+  .nhs-logo:has(svg) {
+    padding: 4px;
+    line-height: 0;
+  }
+  @media print {
+    .figure-scientific {
+      page-break-inside: avoid;
+      border: 1px solid #000;
+    }
+    .figure-scientific figcaption,
+    .figure-inline figcaption {
+      color: #000 !important;
+    }
+  }
+
+  /* ==================================================================
      ARKI — toissijainen subtab-navigaatio (Q&A vs. Elämäntavat ja näyttö)
      ================================================================== */
   .arki-subtab-nav {
@@ -3371,7 +3437,14 @@
 <div class="nhs-header">
   <div class="nhs-header-inner">
     <span class="nhs-logo" id="nhs-logo-home" role="button" tabindex="0"
-          aria-label="Siirry etusivulle" onclick="void(0)">MD</span>
+          aria-label="Siirry etusivulle" onclick="void(0)"><svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+      <rect width="48" height="48" rx="8" fill="#005EB8"/>
+      <ellipse cx="20" cy="16" rx="8" ry="2.5" stroke="#ffffff" fill="none" stroke-width="1.5"/>
+      <ellipse cx="20" cy="16" rx="2.5" ry="8" stroke="#ffffff" fill="none" stroke-width="1.5"/>
+      <ellipse cx="20" cy="16" rx="6" ry="6" stroke="#ffffff" fill="none" stroke-width="1.5" transform="rotate(45 20 16)"/>
+      <path d="M22,32 Q28,28 28,22 Q28,16 22,16" stroke="#ffffff" fill="none" stroke-width="2" stroke-linecap="round"/>
+      <path d="M14,40 Q20,36 24,40 Q28,44 34,40" stroke="#ffffff" fill="none" stroke-width="1.5" stroke-linecap="round"/>
+    </svg></span>
     <span class="nhs-header-title">Ménièren tauti — tietopalvelu</span>
     <div class="text-size-control" role="group" aria-label="Tekstikoon säätö">
       <span class="text-size-label" aria-hidden="true">Tekstikoko:</span>
@@ -3534,6 +3607,28 @@
 </div>
 
 <div class="tab-panel" id="panel-mindmap" role="tabpanel">
+
+<figure class="figure-scientific">
+  <svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="img03-title img03-desc">
+    <title id="img03-title">Ménièren taudin alatyypitys — kolme rinnakkaista akselia</title>
+    <desc id="img03-desc">Venn-diagrammi joka näyttää kolme leikkaavaa alatyypitysakselia: kliininen klusteri (Frejo), anatominen endotyyppi (Bächinger) ja immunofenotyyppi (Yuan). Keskellä, missä kaikki kolme leikkaavat, on yksilöllinen profiili.</desc>
+    <text x="400" y="30" text-anchor="middle" font-size="18" font-weight="600" fill="#212B32">Ménièren taudin alatyypitys — kolme rinnakkaista akselia</text>
+    <circle cx="320" cy="220" r="120" fill="#005EB8" fill-opacity="0.3" stroke="#005EB8" stroke-width="2"/>
+    <circle cx="480" cy="220" r="120" fill="#007F3B" fill-opacity="0.3" stroke="#007F3B" stroke-width="2"/>
+    <circle cx="400" cy="320" r="120" fill="#330072" fill-opacity="0.3" stroke="#330072" stroke-width="2"/>
+    <text x="240" y="200" text-anchor="middle" font-size="14" font-weight="600" fill="#005EB8">Kliininen klusteri</text>
+    <text x="240" y="218" text-anchor="middle" font-size="11" fill="#212B32">(Frejo)</text>
+    <text x="240" y="234" text-anchor="middle" font-size="11" fill="#212B32">5 alaryhmää</text>
+    <text x="560" y="200" text-anchor="middle" font-size="14" font-weight="600" fill="#007F3B">Anatominen endotyyppi</text>
+    <text x="560" y="218" text-anchor="middle" font-size="11" fill="#212B32">(Bächinger)</text>
+    <text x="560" y="234" text-anchor="middle" font-size="11" fill="#212B32">MD-hp vs MD-dg</text>
+    <text x="400" y="380" text-anchor="middle" font-size="14" font-weight="600" fill="#330072">Immunofenotyyppi</text>
+    <text x="400" y="396" text-anchor="middle" font-size="11" fill="#212B32">(Yuan) — Th2 / autoinflammaatio / β-adrenerg.</text>
+    <text x="400" y="260" text-anchor="middle" font-size="13" font-weight="700" fill="#212B32">Yksilöllinen</text>
+    <text x="400" y="278" text-anchor="middle" font-size="13" font-weight="700" fill="#212B32">profiili</text>
+  </svg>
+  <figcaption>Kuva 1. Ménièren taudin kolme rinnakkaista alatyypitysakselia. Yksittäinen potilas voi sijoittua kaikille kolmelle akselille samanaikaisesti — kuvauksen keskiöön muodostuu yksilöllinen profiili, johon hoitovalinnat perustuvat.</figcaption>
+</figure>
 
 <div class="stage-label">Vaihe 1 — oirekuva</div>
 <div class="row single">
@@ -3700,6 +3795,50 @@
         <label><input type="radio" name="kuulonmenetys" value="ei"> Ei</label>
         <label><input type="radio" name="kuulonmenetys" value="epavarma"> En osaa sanoa</label>
       </div>
+      <figure class="figure-scientific">
+        <svg viewBox="0 0 500 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="img08-title img08-desc">
+          <title id="img08-title">Tyypillinen Ménièren taudin audiogrammi</title>
+          <desc id="img08-desc">Audiogrammi näyttää matala-keskitaajuisen kuulonmenetyksen hoidettavassa (vasen) korvassa: 250 Hz noin 50 dB, 1000 Hz noin 60 dB, 2000 Hz noin 30 dB, 8000 Hz noin 25 dB. Toinen (oikea) korva on normaali 5–15 dB:ssä.</desc>
+          <text x="250" y="20" text-anchor="middle" font-size="14" font-weight="600" fill="#212B32">Tyypillinen Ménièren taudin audiogrammi</text>
+          <line x1="60" y1="50" x2="60" y2="320" stroke="#212B32" stroke-width="1.5"/>
+          <line x1="60" y1="320" x2="460" y2="320" stroke="#212B32" stroke-width="1.5"/>
+          <text x="50" y="55" text-anchor="end" font-size="10">0</text>
+          <text x="50" y="105" text-anchor="end" font-size="10">20</text>
+          <text x="50" y="155" text-anchor="end" font-size="10">40</text>
+          <text x="50" y="205" text-anchor="end" font-size="10">60</text>
+          <text x="50" y="255" text-anchor="end" font-size="10">80</text>
+          <text x="50" y="305" text-anchor="end" font-size="10">100</text>
+          <text x="20" y="180" text-anchor="middle" font-size="11" transform="rotate(-90, 20, 180)">Kuulokynnys (dB)</text>
+          <text x="80" y="335" text-anchor="middle" font-size="10">250</text>
+          <text x="140" y="335" text-anchor="middle" font-size="10">500</text>
+          <text x="220" y="335" text-anchor="middle" font-size="10">1000</text>
+          <text x="300" y="335" text-anchor="middle" font-size="10">2000</text>
+          <text x="380" y="335" text-anchor="middle" font-size="10">4000</text>
+          <text x="450" y="335" text-anchor="middle" font-size="10">8000</text>
+          <text x="250" y="355" text-anchor="middle" font-size="11">Taajuus (Hz)</text>
+          <line x1="60" y1="105" x2="460" y2="105" stroke="#d8dde0" stroke-width="0.5"/>
+          <line x1="60" y1="155" x2="460" y2="155" stroke="#d8dde0" stroke-width="0.5"/>
+          <line x1="60" y1="205" x2="460" y2="205" stroke="#d8dde0" stroke-width="0.5"/>
+          <line x1="60" y1="255" x2="460" y2="255" stroke="#d8dde0" stroke-width="0.5"/>
+          <polyline points="80,180 140,210 220,210 300,135 380,120 450,115" fill="none" stroke="#005EB8" stroke-width="2.5"/>
+          <text x="80" y="184" text-anchor="middle" font-size="14" font-weight="700" fill="#005EB8">×</text>
+          <text x="140" y="214" text-anchor="middle" font-size="14" font-weight="700" fill="#005EB8">×</text>
+          <text x="220" y="214" text-anchor="middle" font-size="14" font-weight="700" fill="#005EB8">×</text>
+          <text x="300" y="139" text-anchor="middle" font-size="14" font-weight="700" fill="#005EB8">×</text>
+          <text x="380" y="124" text-anchor="middle" font-size="14" font-weight="700" fill="#005EB8">×</text>
+          <text x="450" y="119" text-anchor="middle" font-size="14" font-weight="700" fill="#005EB8">×</text>
+          <polyline points="80,80 140,80 220,90 300,85 380,90 450,100" fill="none" stroke="#DA291C" stroke-width="2.5"/>
+          <circle cx="80" cy="80" r="6" fill="none" stroke="#DA291C" stroke-width="2"/>
+          <circle cx="140" cy="80" r="6" fill="none" stroke="#DA291C" stroke-width="2"/>
+          <circle cx="220" cy="90" r="6" fill="none" stroke="#DA291C" stroke-width="2"/>
+          <circle cx="300" cy="85" r="6" fill="none" stroke="#DA291C" stroke-width="2"/>
+          <circle cx="380" cy="90" r="6" fill="none" stroke="#DA291C" stroke-width="2"/>
+          <circle cx="450" cy="100" r="6" fill="none" stroke="#DA291C" stroke-width="2"/>
+          <text x="100" y="365" font-size="10" fill="#005EB8">× Vasen (hoidettava)</text>
+          <text x="320" y="365" font-size="10" fill="#DA291C">○ Oikea (normaali)</text>
+        </svg>
+        <figcaption>Kuva 2. Tyypillinen Ménière-audiogrammi: matala-keskitaajuinen kuulonmenetys hoidettavassa korvassa, "kauhakaiverrus"-muoto. Kuulo voi vaihdella samalla potilaalla kohtausten välillä.</figcaption>
+      </figure>
     </div>
 
     <div class="question">
@@ -4279,6 +4418,81 @@
         <li>Pidä oirepäiväkirjaa: aika, kesto, vakavuus, mahdollinen laukaisija</li>
         <li>Hae lääkärille jos kohtaus poikkeuksellisen pitkä, kuume, voimakas päänsärky, neurologisia oireita (puhevaikeus, halvausoireet)</li>
       </ul>
+      <figure class="figure-scientific">
+        <svg viewBox="0 0 600 450" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="img12-title img12-desc">
+          <title id="img12-title">Kolmen vaiheen ohje akuuttiin kohtaukseen</title>
+          <desc id="img12-desc">Kolmen vaiheen kuvasarja: 1) Tunnista ennakkomerkki — paineen tunne korvassa. 2) Asetu turvalliseen asentoon — makuulle, pää tuettuna, silmät kiinni. 3) Soita apua jos tarvitset — puhelin lähellä, soita läheinen tai 112 jos epätavallisia oireita.</desc>
+          <rect width="600" height="450" fill="#F5F8FB"/>
+          <text x="300" y="28" text-anchor="middle" font-size="16" font-weight="700" fill="#212B32">Akuutti kohtaus — kolme vaihetta</text>
+
+          <!-- Paneeli 1: Tunnista -->
+          <rect x="20" y="50" width="180" height="370" fill="#ffffff" stroke="#005EB8" stroke-width="2" rx="8"/>
+          <circle cx="50" cy="80" r="18" fill="#005EB8"/>
+          <text x="50" y="86" text-anchor="middle" font-size="20" font-weight="700" fill="#ffffff">1</text>
+          <text x="110" y="78" text-anchor="middle" font-size="13" font-weight="700" fill="#212B32">Tunnista</text>
+          <text x="110" y="94" text-anchor="middle" font-size="13" font-weight="700" fill="#212B32">ennakkomerkki</text>
+          <!-- Ihminen istuu (yksinkertainen ihmiskuva) -->
+          <circle cx="110" cy="180" r="22" fill="none" stroke="#212B32" stroke-width="2"/>
+          <path d="M 88 200 Q 110 230 132 200 L 132 250 L 88 250 Z" fill="none" stroke="#212B32" stroke-width="2"/>
+          <line x1="80" y1="220" x2="60" y2="195" stroke="#212B32" stroke-width="2" stroke-linecap="round"/>
+          <line x1="60" y1="195" x2="55" y2="178" stroke="#212B32" stroke-width="2" stroke-linecap="round"/>
+          <line x1="140" y1="220" x2="160" y2="240" stroke="#212B32" stroke-width="2" stroke-linecap="round"/>
+          <line x1="100" y1="250" x2="100" y2="290" stroke="#212B32" stroke-width="2" stroke-linecap="round"/>
+          <line x1="120" y1="250" x2="120" y2="290" stroke="#212B32" stroke-width="2" stroke-linecap="round"/>
+          <!-- Puhekupla -->
+          <rect x="35" y="310" width="150" height="50" rx="8" fill="#FFF7BF" stroke="#B58F00" stroke-width="1"/>
+          <text x="110" y="332" text-anchor="middle" font-size="11" fill="#212B32">"Korvassa nyt</text>
+          <text x="110" y="348" text-anchor="middle" font-size="11" fill="#212B32">outo paineen tunne"</text>
+          <text x="110" y="395" text-anchor="middle" font-size="11" fill="#4c6272">Tinnitus voimistuu,</text>
+          <text x="110" y="409" text-anchor="middle" font-size="11" fill="#4c6272">huimaus alkaa</text>
+
+          <!-- Paneeli 2: Asetu -->
+          <rect x="210" y="50" width="180" height="370" fill="#ffffff" stroke="#005EB8" stroke-width="2" rx="8"/>
+          <circle cx="240" cy="80" r="18" fill="#005EB8"/>
+          <text x="240" y="86" text-anchor="middle" font-size="20" font-weight="700" fill="#ffffff">2</text>
+          <text x="305" y="78" text-anchor="middle" font-size="13" font-weight="700" fill="#212B32">Asetu</text>
+          <text x="305" y="94" text-anchor="middle" font-size="13" font-weight="700" fill="#212B32">makuulle</text>
+          <!-- Henkilö makaa sängyllä — sänky/petisivu -->
+          <rect x="230" y="200" width="140" height="14" fill="#5b6770" rx="2"/>
+          <rect x="230" y="160" width="40" height="40" fill="#bcd4ec" rx="4"/>
+          <!-- Tyyny -->
+          <ellipse cx="265" cy="170" rx="18" ry="8" fill="#ffffff" stroke="#212B32" stroke-width="1.5"/>
+          <!-- Pää -->
+          <circle cx="265" cy="166" r="14" fill="none" stroke="#212B32" stroke-width="2"/>
+          <!-- Suljetut silmät: pieni vaakaviiva -->
+          <line x1="259" y1="164" x2="262" y2="164" stroke="#212B32" stroke-width="1.5"/>
+          <line x1="268" y1="164" x2="271" y2="164" stroke="#212B32" stroke-width="1.5"/>
+          <!-- Vartalo -->
+          <path d="M 277 168 L 360 178 L 360 198 L 277 198 Z" fill="#bcd4ec" stroke="#212B32" stroke-width="1.5"/>
+          <text x="300" y="270" text-anchor="middle" font-size="11" fill="#4c6272">Pää tuettuna,</text>
+          <text x="300" y="284" text-anchor="middle" font-size="11" fill="#4c6272">silmät kiinni,</text>
+          <text x="300" y="298" text-anchor="middle" font-size="11" fill="#4c6272">älä yritä liikkua</text>
+          <text x="300" y="350" text-anchor="middle" font-size="11" font-weight="700" fill="#005EB8">Hengitä rauhallisesti</text>
+          <text x="300" y="368" text-anchor="middle" font-size="11" fill="#4c6272">Kohtaus kestää</text>
+          <text x="300" y="382" text-anchor="middle" font-size="11" fill="#4c6272">tyypillisesti 20 min – 4 h</text>
+
+          <!-- Paneeli 3: Soita apua -->
+          <rect x="400" y="50" width="180" height="370" fill="#ffffff" stroke="#005EB8" stroke-width="2" rx="8"/>
+          <circle cx="430" cy="80" r="18" fill="#005EB8"/>
+          <text x="430" y="86" text-anchor="middle" font-size="20" font-weight="700" fill="#ffffff">3</text>
+          <text x="500" y="78" text-anchor="middle" font-size="13" font-weight="700" fill="#212B32">Soita apua</text>
+          <text x="500" y="94" text-anchor="middle" font-size="13" font-weight="700" fill="#212B32">jos tarvitset</text>
+          <!-- Puhelin -->
+          <rect x="465" y="160" width="70" height="120" rx="10" fill="#212B32"/>
+          <rect x="470" y="170" width="60" height="100" rx="3" fill="#bcd4ec"/>
+          <text x="500" y="220" text-anchor="middle" font-size="22" font-weight="700" fill="#DA291C">112</text>
+          <circle cx="500" cy="290" r="3" fill="#ffffff"/>
+          <!-- Selitykset -->
+          <rect x="415" y="305" width="150" height="100" rx="6" fill="#FFE3E0" stroke="#DA291C" stroke-width="1"/>
+          <text x="490" y="325" text-anchor="middle" font-size="11" font-weight="700" fill="#DA291C">Soita 112 jos:</text>
+          <text x="490" y="343" text-anchor="middle" font-size="10" fill="#212B32">• puhevaikeus</text>
+          <text x="490" y="357" text-anchor="middle" font-size="10" fill="#212B32">• raajan halvaus</text>
+          <text x="490" y="371" text-anchor="middle" font-size="10" fill="#212B32">• kaksoiskuva</text>
+          <text x="490" y="385" text-anchor="middle" font-size="10" fill="#212B32">• voimakas päänsärky</text>
+          <text x="490" y="399" text-anchor="middle" font-size="10" fill="#212B32">• kuume</text>
+        </svg>
+        <figcaption>Kuva 3. Akuutin kohtauksen kolmen vaiheen ohje. Sama ohje näkyy aina käden ulottuvilla "Kohtaus käynnissä?" -napin kautta sivun oikeassa alalaidassa.</figcaption>
+      </figure>
     </div>
     <div class="treatment-refs"><a href="https://www.kaypahoito.fi/" target="_blank" rel="noopener">Käypä hoito</a></div>
   </div>
@@ -7186,6 +7400,66 @@
     </div>
     <div class="acute-modal-body">
 
+      <figure class="figure-scientific" style="margin-top: 0;">
+        <svg viewBox="0 0 600 450" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="img12b-title img12b-desc">
+          <title id="img12b-title">Kolmen vaiheen ohje akuuttiin kohtaukseen</title>
+          <desc id="img12b-desc">Kolmen vaiheen kuvasarja: 1) Tunnista ennakkomerkki — paineen tunne korvassa. 2) Asetu turvalliseen asentoon — makuulle, pää tuettuna, silmät kiinni. 3) Soita 112 jos epätavallisia oireita.</desc>
+          <rect width="600" height="450" fill="#F5F8FB"/>
+          <text x="300" y="28" text-anchor="middle" font-size="16" font-weight="700" fill="#212B32">Akuutti kohtaus — kolme vaihetta</text>
+          <rect x="20" y="50" width="180" height="370" fill="#ffffff" stroke="#005EB8" stroke-width="2" rx="8"/>
+          <circle cx="50" cy="80" r="18" fill="#005EB8"/>
+          <text x="50" y="86" text-anchor="middle" font-size="20" font-weight="700" fill="#ffffff">1</text>
+          <text x="110" y="78" text-anchor="middle" font-size="13" font-weight="700" fill="#212B32">Tunnista</text>
+          <text x="110" y="94" text-anchor="middle" font-size="13" font-weight="700" fill="#212B32">ennakkomerkki</text>
+          <circle cx="110" cy="180" r="22" fill="none" stroke="#212B32" stroke-width="2"/>
+          <path d="M 88 200 Q 110 230 132 200 L 132 250 L 88 250 Z" fill="none" stroke="#212B32" stroke-width="2"/>
+          <line x1="80" y1="220" x2="60" y2="195" stroke="#212B32" stroke-width="2" stroke-linecap="round"/>
+          <line x1="60" y1="195" x2="55" y2="178" stroke="#212B32" stroke-width="2" stroke-linecap="round"/>
+          <line x1="140" y1="220" x2="160" y2="240" stroke="#212B32" stroke-width="2" stroke-linecap="round"/>
+          <line x1="100" y1="250" x2="100" y2="290" stroke="#212B32" stroke-width="2" stroke-linecap="round"/>
+          <line x1="120" y1="250" x2="120" y2="290" stroke="#212B32" stroke-width="2" stroke-linecap="round"/>
+          <rect x="35" y="310" width="150" height="50" rx="8" fill="#FFF7BF" stroke="#B58F00" stroke-width="1"/>
+          <text x="110" y="332" text-anchor="middle" font-size="11" fill="#212B32">"Korvassa nyt</text>
+          <text x="110" y="348" text-anchor="middle" font-size="11" fill="#212B32">outo paineen tunne"</text>
+          <text x="110" y="395" text-anchor="middle" font-size="11" fill="#4c6272">Tinnitus voimistuu,</text>
+          <text x="110" y="409" text-anchor="middle" font-size="11" fill="#4c6272">huimaus alkaa</text>
+          <rect x="210" y="50" width="180" height="370" fill="#ffffff" stroke="#005EB8" stroke-width="2" rx="8"/>
+          <circle cx="240" cy="80" r="18" fill="#005EB8"/>
+          <text x="240" y="86" text-anchor="middle" font-size="20" font-weight="700" fill="#ffffff">2</text>
+          <text x="305" y="78" text-anchor="middle" font-size="13" font-weight="700" fill="#212B32">Asetu</text>
+          <text x="305" y="94" text-anchor="middle" font-size="13" font-weight="700" fill="#212B32">makuulle</text>
+          <rect x="230" y="200" width="140" height="14" fill="#5b6770" rx="2"/>
+          <rect x="230" y="160" width="40" height="40" fill="#bcd4ec" rx="4"/>
+          <ellipse cx="265" cy="170" rx="18" ry="8" fill="#ffffff" stroke="#212B32" stroke-width="1.5"/>
+          <circle cx="265" cy="166" r="14" fill="none" stroke="#212B32" stroke-width="2"/>
+          <line x1="259" y1="164" x2="262" y2="164" stroke="#212B32" stroke-width="1.5"/>
+          <line x1="268" y1="164" x2="271" y2="164" stroke="#212B32" stroke-width="1.5"/>
+          <path d="M 277 168 L 360 178 L 360 198 L 277 198 Z" fill="#bcd4ec" stroke="#212B32" stroke-width="1.5"/>
+          <text x="300" y="270" text-anchor="middle" font-size="11" fill="#4c6272">Pää tuettuna,</text>
+          <text x="300" y="284" text-anchor="middle" font-size="11" fill="#4c6272">silmät kiinni,</text>
+          <text x="300" y="298" text-anchor="middle" font-size="11" fill="#4c6272">älä yritä liikkua</text>
+          <text x="300" y="350" text-anchor="middle" font-size="11" font-weight="700" fill="#005EB8">Hengitä rauhallisesti</text>
+          <text x="300" y="368" text-anchor="middle" font-size="11" fill="#4c6272">Kohtaus kestää</text>
+          <text x="300" y="382" text-anchor="middle" font-size="11" fill="#4c6272">tyypillisesti 20 min – 4 h</text>
+          <rect x="400" y="50" width="180" height="370" fill="#ffffff" stroke="#005EB8" stroke-width="2" rx="8"/>
+          <circle cx="430" cy="80" r="18" fill="#005EB8"/>
+          <text x="430" y="86" text-anchor="middle" font-size="20" font-weight="700" fill="#ffffff">3</text>
+          <text x="500" y="78" text-anchor="middle" font-size="13" font-weight="700" fill="#212B32">Soita apua</text>
+          <text x="500" y="94" text-anchor="middle" font-size="13" font-weight="700" fill="#212B32">jos tarvitset</text>
+          <rect x="465" y="160" width="70" height="120" rx="10" fill="#212B32"/>
+          <rect x="470" y="170" width="60" height="100" rx="3" fill="#bcd4ec"/>
+          <text x="500" y="220" text-anchor="middle" font-size="22" font-weight="700" fill="#DA291C">112</text>
+          <circle cx="500" cy="290" r="3" fill="#ffffff"/>
+          <rect x="415" y="305" width="150" height="100" rx="6" fill="#FFE3E0" stroke="#DA291C" stroke-width="1"/>
+          <text x="490" y="325" text-anchor="middle" font-size="11" font-weight="700" fill="#DA291C">Soita 112 jos:</text>
+          <text x="490" y="343" text-anchor="middle" font-size="10" fill="#212B32">• puhevaikeus</text>
+          <text x="490" y="357" text-anchor="middle" font-size="10" fill="#212B32">• raajan halvaus</text>
+          <text x="490" y="371" text-anchor="middle" font-size="10" fill="#212B32">• kaksoiskuva</text>
+          <text x="490" y="385" text-anchor="middle" font-size="10" fill="#212B32">• voimakas päänsärky</text>
+          <text x="490" y="399" text-anchor="middle" font-size="10" fill="#212B32">• kuume</text>
+        </svg>
+      </figure>
+
       <div class="acute-step">
         <span class="acute-step-number">1</span>
         <h3>Asetu makuulle heti</h3>
@@ -9262,7 +9536,11 @@ const SKIP_SELECTORS = [
   '.blogi-cat-nav',       // blogi-välilehden sticky kategoria-navigaatio
   '.arki-subtab-nav',     // arki-välilehden subtab-navigaatio (Q&A vs Elämäntavat)
   '.site-footer',         // alapalkki tietosuoja-/saavutettavuuslinkkeineen
-  '.info-modal'           // tietosuoja-modaali (oma sisältö, omat linkit)
+  '.info-modal',          // tietosuoja-modaali (oma sisältö, omat linkit)
+  'figure',               // <figure> ei autolinkity (kuvat ja kaaviot)
+  'figcaption',           // figcaption-tekstit
+  'svg',                  // SVG-elementit kokonaan
+  '.nhs-logo'             // yläbannerin logo-elementti (sisältää SVG:n)
 ];
 
 function shouldSkip(el) {
